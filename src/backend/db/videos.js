@@ -1,21 +1,106 @@
-/**
- * Videos Database can be added here.
- * You can add videos of your wish with different attributes
- * */
-
 export const videos = [
   {
-    _id: "Wo5dMEP_BbI",
-    title: "Awesome Video about Coding",
-    description:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
-    creator: "Soham Shah",
+    _id: "eNtv1_8MQds",
+    title: "How to draw a Manga Page | Drawlikeasir",
+    description: "",
+    categoryName: "Manga",
+    creator: "Drawlikeasir",
   },
   {
-    _id: "F_Riqjdh2oM",
-    title: "Neural Networks from Scratch - P.1 Intro and Neuron Code",
-    creator: "Sentdex",
-    description:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
+    _id: "m583-GDIFCQ",
+    title: "HOW TO DRAW MUSCLES IN 10 MINUTES",
+    creator: "Drawlikeasir",
+    categoryName: "Manga, Anatomy",
+    description: "",
+  },
+  {
+    _id: "5W3Wj-a_7Vo",
+    title: "How to DRAW FACES",
+    creator: "Drawlikeasir",
+    categoryName: "Manga, Anatomy",
+    description: "",
+  },
+  ,
+  {
+    _id: "aLUI7M7MW3",
+    title: "How to draw HAIR",
+    creator: "Drawlikeasir",
+    categoryName: "Manga, Anatomy",
+    description: "",
+  },
+  {
+    _id: "aPflB7_XXaY",
+    title: "How to DRAW FACES",
+    creator: "Drawlikeasir",
+    categoryName: "Manga, Anatomy",
+    description: "",
+  },
+  ,
+  {
+    _id: "aLUI7M7MW3",
+    title: "How to draw HAIR",
+    creator: "Drawlikeasir",
+    categoryName: "Manga, Anatomy",
+    description: "",
+  },
+  {
+    _id: "ewMksAbgdBI",
+    title: "Sketching Basics + Materials",
+    creator: "SchaeferArt",
+    categoryName: "Beginner, Pencil Sketch",
+    description: "",
+  },
+  ,
+  {
+    _id: "nDe7kHa6MVo",
+    title: "Simplifying Objects + Learning to See",
+    creator: "SchaeferArt",
+    categoryName: "Beginner, Pencil Sketch",
+    description: "",
+  },
+  {
+    _id: "5Zc1xVS_X7Q",
+    title: "Shading Techniques",
+    creator: "SchaeferArt",
+    categoryName: "Manga, Anatomy",
+    description: "",
+  },
+  ,
+  {
+    _id: "agir1oR0gc0",
+    title: "How to Draw a Tiger",
+    creator: "Jon Harris",
+    categoryName: "Pencil Sketch",
+    description: "",
+  },
+  {
+    _id: "3kojEoKgrTY",
+    title: "Easy Watercolor Painting Ideas for Beginners Step by Step",
+    creator: "Makoccino",
+    categoryName: "Beginner, Watercolor",
+    description: "",
+  },
+  {
+    _id: "9P0ot0ifwXk",
+    title:
+      "Make Your Watercolor Painting Look MAGICAL With These Easy Watercolor Techniques & Ideas!",
+    creator: "Makoccino",
+    categoryName: "Watercolor",
+    description: "",
+  },
+  ,
+  {
+    _id: "tDru2siHbaM",
+    title: "Watercolor painting process",
+    creator: "HamRib Art",
+    categoryName: "Watercolor, Portrait",
+    description: "",
+  },
+  {
+    _id: "AWvTb69cm24",
+    title: "How to improve your drawing RIGHT NOW.",
+    creator: "Silvie Mahdal",
+    categoryName: "Portrait, Pencil Sketch",
+    description: "",
   },
 ];
