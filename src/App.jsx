@@ -1,7 +1,7 @@
-import "./App.css";
+import "./App.scss";
 
 const App = () => {
-  return <>hi</>;
+  return <h1 className="h1">Draw Flix</h1>;
 };
 
 export default App;
