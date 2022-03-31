@@ -19,6 +19,6 @@ html {
 
 body {
   font-family: inherit;
-  background-color: var(--bg-color);
+  /* background-color: var(--bg-color); */
   color: var(--text-color);
 }

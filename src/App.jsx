@@ -1,7 +1,13 @@
 import "./App.scss";
 
+import { Navbar, Sidebar } from "./components";
+
 const App = () => {
-  return <h1 className="h1">Draw Flix</h1>;
+  return (
+    <main className="App">
+      <Navbar />
+    </main>
+  );
 };
 
 export default App;
