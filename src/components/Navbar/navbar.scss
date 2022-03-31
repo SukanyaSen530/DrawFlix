@@ -4,11 +4,17 @@
   padding-left: 6rem;
   padding-right: 6rem;
   height: 9rem;
-  position: sticky;
+  position: fixed;
   top: 0;
   transition: 0.5s background-color ease;
   color: $color-white;
-  z-index: 5;
+  z-index: 20;
+  background: transparent;
+
+  @include respond(phone) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 
   .brand {
     height: 6rem;
@@ -40,15 +46,11 @@
         background-color: rgba($color-white, 0.4);
       }
     }
-
-    .menu-btn.hide {
-      visibility: hidden;
-    }
   }
 
   .nav-links {
     a {
-      color: $color-white;;
+      color: $color-white;
       margin: 0 1rem;
       font-size: 1.7rem;
       padding: 0.5rem 1rem;
@@ -71,9 +73,9 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba($color-black, 0.3);
+  background-color: rgba($color-black, 0.7);
   opacity: 0.7;
-  z-index: 10;
+  z-index: 5;
   cursor: pointer;
   transition: 0.2s;
 }
@@ -87,13 +89,17 @@
   padding-top: 2rem;
   left: -25rem;
   transition: 0.85s;
-  z-index: 100;
+  z-index: 10;
   background-color: var(--bg-color);
+
+  &__links-container {
+    padding-top: 10rem;
+  }
 
   &__links {
     display: flex;
     align-items: center;
-    color: $color-white;;
+    color: $color-white;
     font-size: 2rem;
     padding: 1rem 0 1rem 3rem;
     transition: 0.4s all ease-in;
@@ -113,26 +119,14 @@
       color: $color-white;
     }
   }
-
-  .menuClose-btn {
-    position: fixed;
-    top: 3rem;
-    left: 7rem;
-    font-size: 3rem;
-    display: none;
-    cursor: pointer;
-    font-weight: 600;
-  }
 }
 
 .sidebar.active {
   left: 0;
   transition: 0.35s;
-
-  .menuClose-btn {
-    display: block;
-  }
 }
+
+
 
 .sidebar__links.active_link {
   color: var(--default);

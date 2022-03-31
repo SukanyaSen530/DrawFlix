@@ -29,14 +29,12 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className={`${darkNav ? "dark" : null} navbar`}>
+      <nav className={`${darkNav ? "dark" : ""} navbar`}>
         <div className="brand">
-          <span
-            className={`${show ? "menu-btn hide" : "menu-btn"}`}
-            onClick={() => setShow(true)}
-          >
+          <span className="menu-btn" onClick={() => setShow((val) => !val)}>
             <FaBars />
           </span>
+
           <img src={logo} alt="logo image" className="img-responsive" />
           <span className="brand__divider">|</span>
           <span className="brand__path"> {pathName} </span>
@@ -44,16 +42,11 @@ const Navbar = () => {
 
         <ul className="nav-links">
           <Link to="/signin">Sign In</Link>
-          <Link to="/signup">Create an account</Link>
         </ul>
       </nav>
 
       <aside className={`${show ? "active sidebar" : "sidebar"}`}>
-        <ul>
-          <li className="menuClose-btn">
-            <AiOutlineClose onClick={() => setShow(false)} />
-          </li>
-
+        <ul className="sidebar__links-container">
           {navData.map((item) => (
             <NavLink
               key={item.id}

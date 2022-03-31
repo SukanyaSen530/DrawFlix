@@ -1,6 +1,8 @@
 :root {
   --bg-color: #303030;
-  --default: #f3c669;
+  --default: #f6d48d;
+  --defaultLight: #f3c669;
+  --defaultDark: #f0b845;
   --text-color: #f8f9fa;
 }
 
