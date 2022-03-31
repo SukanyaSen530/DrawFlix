@@ -97,15 +97,15 @@
   background-color: var(--bg-color);
 
   &__links-container {
-    padding-top: 10rem;
+    padding-top: 8rem;
   }
 
   &__links {
     display: flex;
     align-items: center;
     color: $color-white;
-    font-size: 2rem;
-    padding: 1rem 0 1rem 3rem;
+    font-size: 1.7rem;
+    padding: 0.5rem 0 0.5rem 3rem;
     transition: 0.4s all ease-in;
 
     &:hover {

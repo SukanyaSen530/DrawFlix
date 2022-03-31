@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { navData } from "./data";
+import { navData, authNavigation } from "./data";
 
 import { FaBars } from "react-icons/fa";
 
@@ -49,6 +49,22 @@ const Navbar = () => {
       <aside className={`${show ? "active sidebar" : "sidebar"}`}>
         <ul className="sidebar__links-container">
           {navData.map((item) => (
+            <NavLink
+              key={item.id}
+              to={`${item.path}`}
+              onClick={() => setShow(false)}
+              className={({ isActive }) =>
+                isActive ? "active_link sidebar__links" : "sidebar__links"
+              }
+            >
+              <span>{item.icon}</span>
+              {item.name}
+            </NavLink>
+          ))}
+
+          <p className="divider"></p>
+
+          {authNavigation.map((item) => (
             <NavLink
               key={item.id}
               to={`${item.path}`}

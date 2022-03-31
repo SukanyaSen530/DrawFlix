@@ -1,4 +1,5 @@
 import { userAuthActions } from "../constants/authConstants";
+import { tokenName } from "..";
 
 const authReducer = (state, action) => {
   const { type, payload } = action;
@@ -9,7 +10,7 @@ const authReducer = (state, action) => {
 
     case userAuthActions.LOAD_USER:
       if (payload.token !== "" || !payload.token) {
-        window.localStorage.setItem("drawFlixToken", payload.token);
+        window.localStorage.setItem(tokenName, payload.token);
       }
 
       return {
@@ -35,7 +36,7 @@ const authReducer = (state, action) => {
       };
 
     case userAuthActions.LOGOUT: {
-      window.localStorage.removeItem("weeboToken");
+      window.localStorage.removeItem(tokenName);
 
       return {
         ...state,

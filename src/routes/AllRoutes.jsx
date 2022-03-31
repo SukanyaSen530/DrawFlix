@@ -9,6 +9,10 @@ const AllRoutes = () => {
       {/* Public Routes */}
       <Route path="/" element={<Home />} />
       <Route path="/explore" element={<VideoListing />} />
+
+      {/* Prevented Routes */}
+      <Route path="/signin" element={<SignIn />} />
+      <Route path="/signup" element={<SignUp />} />
     </Routes>
   );
 };
