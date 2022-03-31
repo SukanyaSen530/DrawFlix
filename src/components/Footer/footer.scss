@@ -1,0 +1,89 @@
+@import "../../sass/global";
+
+.footer {
+  background-color: rgba($color-black, 0.5);
+  font-size: 1.4rem;
+  color: $color-white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem 10rem;
+
+  @include respond(phone) {
+    padding: 0 2rem;
+  }
+
+  &__brand-icon {
+    width: 15rem;
+    height: auto;
+
+    @include respond(phone) {
+      width: 10rem;
+    }
+  }
+
+  &__navigation {
+    padding-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 1rem;
+    text-transform: capitalize;
+
+    & > div {
+      @include respond(phone) {
+        margin-top: 1rem;
+      }
+    }
+
+    @include respond(phone) {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+
+  &__links-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    @include respond(phone) {
+      align-items: center;
+    }
+  }
+
+  &__links {
+    &:link,
+    &:visited {
+      color: $color-white;
+      text-decoration: none;
+      display: inline-block;
+      max-width: 120px;
+      transition: all 0.4s;
+    }
+
+    &:hover,
+    &:active {
+      color: var(--default);
+      transform: scale(1.2);
+      padding-left: 0.8rem;
+    }
+  }
+
+  &__copyright {
+    border-top: 1px solid $color-white;
+    padding-top: 2rem;
+    width: 100%;
+    text-align: center;
+
+    & > * {
+      margin-bottom: 0.5rem;
+    }
+
+    @include respond(tab-port) {
+      width: 100%;
+      float: none;
+    }
+  }
+}

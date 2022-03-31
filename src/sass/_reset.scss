@@ -1,0 +1,25 @@
+@import "./mixins";
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%; /* 10px */
+
+  @include respond(tab-land) {
+    font-size: 56.25%;  /* 9px */
+  }
+
+  @include respond(tab-port) {
+    font-size: 50%;  /* 8px */
+  }
+}
+
+body {
+  box-sizing: border-box;
+}

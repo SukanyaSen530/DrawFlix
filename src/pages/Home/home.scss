@@ -1,0 +1,25 @@
+@import "../../sass/global";
+
+.home-section {
+  position: relative;
+  padding: 4rem;
+  min-height: calc(100vh);
+  position: relative;
+}
+
+.home-section:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-image: linear-gradient(rgba($default, 0.4), rgba($default, 0.4)),
+    url("../../assets/banner.jpg");
+  opacity: 0.3;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  overflow-x: hidden;
+}

@@ -1,0 +1,133 @@
+@import "../../sass/global";
+
+.navbar {
+  padding-left: 6rem;
+  padding-right: 6rem;
+  height: 9rem;
+  position: fixed;
+  top: 0;
+  transition: 0.5s background-color ease;
+  color: $color-white;
+  z-index: 20;
+  background: transparent;
+
+  @include respond(phone) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .brand {
+    height: 6rem;
+    gap: 2rem;
+
+    &__divider {
+      font-size: 3rem;
+    }
+
+    &__path {
+      color: var(--default);
+      font-size: 1.7rem;
+      text-transform: capitalize;
+    }
+
+    .menu-btn {
+      font-size: 3rem;
+      cursor: pointer;
+      padding: 0.3rem 1.5rem;
+      height: 5rem;
+      width: 5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: 0.4s background-color ease;
+
+      &:hover {
+        background-color: rgba($color-white, 0.4);
+      }
+    }
+  }
+
+  .nav-links {
+    a {
+      color: $color-white;
+      margin: 0 1rem;
+      font-size: 1.7rem;
+      padding: 0.5rem 1rem;
+      transition: 0.3s background-color ease;
+
+      &:hover {
+        background-color: rgba($color-white, 0.3);
+      }
+    }
+  }
+}
+
+.navbar.dark {
+  background-color: rgba($color-black, 0.5);
+}
+
+.sidebar-overlay {
+  position: fixed;
+  top: 9rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba($color-black, 0.7);
+  opacity: 0.7;
+  z-index: 5;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.sidebar {
+  position: fixed;
+  background-color: rgba($color-black, 1);
+  width: 25rem;
+  height: 100%;
+  font-size: 2rem;
+  padding-top: 2rem;
+  left: -25rem;
+  transition: 0.85s;
+  z-index: 10;
+  background-color: var(--bg-color);
+
+  &__links-container {
+    padding-top: 10rem;
+  }
+
+  &__links {
+    display: flex;
+    align-items: center;
+    color: $color-white;
+    font-size: 2rem;
+    padding: 1rem 0 1rem 3rem;
+    transition: 0.4s all ease-in;
+
+    &:hover {
+      background-color: rgba($color-white, 0.2);
+    }
+
+    span {
+      margin-right: 1rem;
+      font-size: 3rem;
+      display: inline-block;
+      margin-top: 1rem;
+    }
+
+    a {
+      color: $color-white;
+    }
+  }
+}
+
+.sidebar.active {
+  left: 0;
+  transition: 0.35s;
+}
+
+
+
+.sidebar__links.active_link {
+  color: var(--default);
+}
