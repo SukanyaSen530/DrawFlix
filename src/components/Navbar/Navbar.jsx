@@ -3,7 +3,6 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import { navData } from "./data";
 
 import { FaBars } from "react-icons/fa";
-import { AiOutlineClose } from "react-icons/ai";
 
 import "./navbar.scss";
 
@@ -35,7 +34,9 @@ const Navbar = () => {
             <FaBars />
           </span>
 
-          <img src={logo} alt="logo image" className="img-responsive" />
+          <Link to="/" className="brand__link">
+            <img src={logo} alt="logo image" className="img-responsive" />
+          </Link>
           <span className="brand__divider">|</span>
           <span className="brand__path"> {pathName} </span>
         </div>

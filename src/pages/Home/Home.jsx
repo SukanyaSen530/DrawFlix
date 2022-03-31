@@ -11,10 +11,10 @@ export default function Home() {
           Learn from expert professionals
         </p>
         <div className="flex flex-center gap-md t-margin-md">
-          <Link to="/signup" className="btn btn-default-outline btn-md">
+          <Link to="/explore" className="btn btn-contained btn-md secondary">
             View Videos
           </Link>
-          <Link to="/explore" className="btn btn-contained btn-md defaultDark">
+          <Link to="/signup" className="btn btn-contained btn-md defaultDark">
             Create Account
           </Link>
         </div>
