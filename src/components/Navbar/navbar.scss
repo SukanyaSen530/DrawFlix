@@ -14,10 +14,20 @@
     height: 6rem;
     gap: 2rem;
 
+    &__divider {
+      font-size: 3rem;
+    }
+
+    &__path {
+      color: var(--default);
+      font-size: 1.7rem;
+      text-transform: capitalize;
+    }
+
     .menu-btn {
       font-size: 3rem;
       cursor: pointer;
-      padding: 0.3rem 1.5rem ;
+      padding: 0.3rem 1.5rem;
       height: 5rem;
       width: 5rem;
       display: flex;
@@ -26,13 +36,27 @@
       border-radius: 50%;
       transition: 0.4s background-color ease;
 
-      &:hover{
-          background-color: rgba(white, 0.4);
+      &:hover {
+        background-color: rgba(white, 0.4);
       }
     }
 
-    .menu-btn.hide{
+    .menu-btn.hide {
       visibility: hidden;
+    }
+  }
+
+  .nav-links {
+    a {
+      color: white;
+      margin: 0 1rem;
+      font-size: 1.7rem;
+      padding: 0.5rem 1rem;
+      transition: 0.3s background-color ease;
+
+      &:hover {
+        background-color: rgba(white, 0.3);
+      }
     }
   }
 }
@@ -63,15 +87,16 @@
   padding-top: 2rem;
   left: -25rem;
   transition: 0.85s;
-  z-index: 15;
+  z-index: 100;
+  background-color: var(--bg-color);
 
   &__links {
     display: flex;
     align-items: center;
     color: white;
     font-size: 2rem;
-    padding: 1rem;
-    transition: 0.4 all ease-in;
+    padding: 1rem 0 1rem 3rem;
+    transition: 0.4s all ease-in;
 
     &:hover {
       background-color: rgba(white, 0.2);
@@ -100,11 +125,15 @@
   }
 }
 
-.sidebar.active{
-    left: 0;
-    transition: 0.35s;
+.sidebar.active {
+  left: 0;
+  transition: 0.35s;
 
-    .menuClose-btn{
-        display: block;
-    }
+  .menuClose-btn {
+    display: block;
+  }
+}
+
+.sidebar__links.active_link {
+  color: var(--default);
 }

@@ -1,11 +1,16 @@
 import "./App.scss";
 
-import { Navbar, Sidebar } from "./components";
+import { Footer, Navbar } from "./components";
+import AllRoutes from "./routes/AllRoutes";
 
 const App = () => {
   return (
-    <main className="App">
+    <main>
       <Navbar />
+      <section className="main-section">
+        <AllRoutes />
+      </section>
+      <Footer />
     </main>
   );
 };
