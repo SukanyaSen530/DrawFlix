@@ -30,6 +30,10 @@
       text-transform: capitalize;
     }
 
+    &__link{
+      height: 6rem;;
+    }
+
     .menu-btn {
       font-size: 3rem;
       cursor: pointer;
@@ -49,12 +53,15 @@
   }
 
   .nav-links {
-    a {
+    a, button {
       color: $color-white;
       margin: 0 1rem;
       font-size: 1.7rem;
       padding: 0.5rem 1rem;
       transition: 0.3s background-color ease;
+      background: transparent;
+      border: none;
+    
 
       &:hover {
         background-color: rgba($color-white, 0.3);
@@ -93,15 +100,15 @@
   background-color: var(--bg-color);
 
   &__links-container {
-    padding-top: 10rem;
+    padding-top: 8rem;
   }
 
   &__links {
     display: flex;
     align-items: center;
     color: $color-white;
-    font-size: 2rem;
-    padding: 1rem 0 1rem 3rem;
+    font-size: 1.7rem;
+    padding: 0.5rem 0 0.5rem 3rem;
     transition: 0.4s all ease-in;
 
     &:hover {
