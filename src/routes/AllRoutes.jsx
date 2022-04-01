@@ -4,6 +4,7 @@ import PreventedRoutes from "./PreventedRoutes";
 import ProtectedRoutes from "./ProtectedRoutes";
 
 import { Home, VideoListing, SignIn, SignUp } from "../pages";
+import Mockman from "mockman-js";
 
 const AllRoutes = () => {
   return (
@@ -12,7 +13,6 @@ const AllRoutes = () => {
       {/* Public Routes */}
       <Route path="/" element={<Home />} />
       <Route path="/explore" element={<VideoListing />} />
-
       {/* Protected Routes */}
       <Route path="/likes" element={<ProtectedRoutes></ProtectedRoutes>} />
       <Route path="/watchlater" element={<ProtectedRoutes></ProtectedRoutes>} />
@@ -21,7 +21,6 @@ const AllRoutes = () => {
         path="/playlists/:id"
         element={<ProtectedRoutes></ProtectedRoutes>}
       />
-
       {/* Prevented Routes */}
       <Route
         path="/signin"
@@ -39,6 +38,7 @@ const AllRoutes = () => {
           </PreventedRoutes>
         }
       />
+      <Route path="/mockman" element={<Mockman />} />;
     </Routes>
   );
 };

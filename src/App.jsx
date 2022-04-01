@@ -5,9 +5,9 @@ import AllRoutes from "./routes/AllRoutes";
 
 const App = () => {
   return (
-    <main className="main">
+    <main>
       <Navbar />
-      <section className="main-section">
+      <section className="main-section pad-default">
         <Alert />
         <AllRoutes />
       </section>
