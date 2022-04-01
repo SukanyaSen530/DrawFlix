@@ -83,7 +83,7 @@ const Navbar = () => {
               {authNavigation.map((item) => (
                 <NavLink
                   key={item.id}
-                  to={`${item.path}`}
+                  to={item.path}
                   onClick={() => setShow(false)}
                   className={({ isActive }) =>
                     isActive ? "active_link sidebar__links" : "sidebar__links"
