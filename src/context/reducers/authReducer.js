@@ -1,41 +1,32 @@
-import { userAuthActions } from "../constants/authConstants";
-import { tokenName } from "..";
+import { tokenName } from "../providers/AuthProvider";
+
+import { authActions } from "../actions/authActions";
 
 const authReducer = (state, action) => {
   const { type, payload } = action;
 
   switch (type) {
-    case userAuthActions.LOADING:
-      return { ...state, loading: true, error: null };
+    case authActions.LOADING:
+      return { ...state, loading: true };
 
-    case userAuthActions.LOAD_USER:
+    case authActions.LOAD_USER:
       if (payload.token !== "" || !payload.token) {
         window.localStorage.setItem(tokenName, payload.token);
       }
-
       return {
         ...state,
         loading: false,
-        modalOpen: false,
         user: { token: payload.token, details: payload.user },
       };
 
-    case userAuthActions.ERROR:
-      return {
-        ...state,
-        loading: false,
-        user: {},
-        fetchError: payload,
-      };
-
-    case userAuthActions.LOAD_USER_PROFILE:
+    case authActions.LOAD_USER_PROFILE:
       return {
         ...state,
         loading: false,
         user: { ...state.user, details: payload },
       };
 
-    case userAuthActions.LOGOUT: {
+    case authActions.LOGOUT: {
       window.localStorage.removeItem(tokenName);
 
       return {

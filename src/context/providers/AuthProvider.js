@@ -1,14 +1,15 @@
 import { useReducer, useContext, createContext } from "react";
 
+export const tokenName = "drawFlixToken";
+
 import authReducer from "../reducers/authReducer";
 
 const authContext = createContext();
 
 const initialState = {
   loading: false,
-  error: null,
   user: {
-    token: localStorage.getItem("weeboToken"),
+    token: localStorage.getItem(`${tokenName}`),
     details: null,
   },
 };

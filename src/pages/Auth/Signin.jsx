@@ -6,11 +6,17 @@ import "./auth.scss";
 import sketchLogo from "../../assets/sketch.png";
 import { InputField } from "../../components";
 
-import { testCredentials, initialFormValues, validateInputs } from "./helper";
+import { testCredentials, initialFormValues } from "./helper";
+import { loginUser } from "../../services/authentication";
+import { useAuthContext, useGlobalContext } from "../../context";
 
 const Signin = () => {
+  const { authDispatch } = useAuthContext();
+  const {
+    globalHandlers: { openAlert },
+  } = useGlobalContext();
+
   const [userData, setUserData] = useState({ ...initialFormValues });
-  const [errors, setErrors] = useState({});
 
   const handleChange = ({ target: { name, value } }) =>
     setUserData((data) => ({ ...data, [name]: value }));
@@ -23,16 +29,13 @@ const Signin = () => {
 
   const handleAuth = (e) => {
     e.preventDefault();
-    const err = validateInputs(userData);
-    setErrors(err);
 
-    if (Object.keys(err).length === 0) {
-      loginUser(
-        { email: userData.email, password: userData.password },
-        authDispatch
-      );
-      setUserData({ ...initialFormValues });
-    }
+    loginUser(
+      { email: userData.email, password: userData.password },
+      authDispatch,
+      openAlert
+    );
+    setUserData({ ...initialFormValues });
   };
 
   return (
@@ -46,31 +49,32 @@ const Signin = () => {
 
         <p className="para-lg center-aligned t-margin-md">Sign In</p>
 
-        <InputField
-          type="email"
-          label="Email"
-          name="email"
-          autoFocus
-          value={userData.email}
-          onChange={handleChange}
-          errorMessage={errors.email}
-        />
-        <InputField
-          type="password"
-          label="Password"
-          name="password"
-          required
-          value={userData.password}
-          onChange={handleChange}
-          errorMessage={errors.password}
-        />
+        <form onSubmit={(e) => handleAuth(e)}>
+          <InputField
+            type="email"
+            label="Email"
+            name="email"
+            autoFocus
+            required
+            value={userData.email}
+            onChange={handleChange}
+          />
+          <InputField
+            type="password"
+            label="Password"
+            name="password"
+            required
+            value={userData.password}
+            onChange={handleChange}
+          />
 
-        <button
-          className="btn btn-contained defaultDark block-btn btn-md t-margin-sm"
-          onClick={handleAuth}
-        >
-          Sign In
-        </button>
+          <button
+            className="btn btn-contained defaultDark block-btn btn-md t-margin-sm"
+            type="submit"
+          >
+            Sign In
+          </button>
+        </form>
 
         <div className="t-margin-md center-aligned signup-route">
           <span> New to Drawflix? </span>

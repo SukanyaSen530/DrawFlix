@@ -8,7 +8,15 @@ import { InputField } from "../../components";
 
 import { initialFormValues, validateInputs } from "./helper";
 
+import { registerUser } from "../../services/authentication";
+import { useAuthContext, useGlobalContext } from "../../context";
+
 const Signup = () => {
+  const { authDispatch } = useAuthContext();
+  const {
+    globalHandlers: { openAlert },
+  } = useGlobalContext();
+
   const [userData, setUserData] = useState({ ...initialFormValues });
   const [errors, setErrors] = useState({});
 
@@ -27,7 +35,8 @@ const Signup = () => {
           password: userData.password,
           fullName: userData.fullName,
         },
-        authDispatch
+        authDispatch,
+        openAlert
       );
       setUserData({ ...initialFormValues });
     }
@@ -47,7 +56,6 @@ const Signup = () => {
         <InputField
           type="text"
           label="Full Name"
-          required
           name="fullName"
           autoFocus
           value={userData.fullName}
@@ -63,11 +71,11 @@ const Signup = () => {
           onChange={handleChange}
           errorMessage={errors.email}
         />
+
         <InputField
           type="password"
           label="Password"
           name="password"
-          required
           value={userData.password}
           onChange={handleChange}
           errorMessage={errors.password}
@@ -76,7 +84,6 @@ const Signup = () => {
         <InputField
           type="password"
           label="Confirm Password"
-          required
           name="confirmPassword"
           value={userData.confirmPassword}
           onChange={handleChange}

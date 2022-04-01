@@ -1,4 +1,11 @@
-
 .main-section {
   min-height: calc(100vh - 10rem);
+  position: relative;
+
+  .alert{
+    position: absolute;
+    max-width: 30rem;
+    right: 2rem;
+    top: 20%;
+  }
 }

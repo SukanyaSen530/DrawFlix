@@ -1,0 +1,16 @@
+.animate {
+  animation: topToBottom 2s ease;
+  animation-fill-mode: none, forwards;
+}
+
+@keyframes topToBottom {
+  0% {
+    top: -20%;
+    opacity: 0;
+  }
+
+  100% {
+    top: 20%;
+    opacity: 1;
+  }
+}

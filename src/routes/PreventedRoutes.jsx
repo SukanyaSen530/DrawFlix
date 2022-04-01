@@ -1,7 +1,7 @@
 import { Navigate, useLocation } from "react-router-dom";
 import { useAuthContext } from "../context";
 
-const ProtectedRoutes = ({ children }) => {
+const PreventedRoutes = ({ children }) => {
   const {
     authState: {
       user: { token },
@@ -10,11 +10,11 @@ const ProtectedRoutes = ({ children }) => {
 
   let location = useLocation();
 
-  if (!token) {
-    return <Navigate to="/login" state={{ from: location }} replace />;
+  if (token) {
+    return <Navigate to="/explore" state={{ from: location }} replace />;
   }
 
   return children;
 };
 
-export default ProtectedRoutes;
+export default PreventedRoutes;

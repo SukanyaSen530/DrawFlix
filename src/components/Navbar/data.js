@@ -7,7 +7,7 @@ import { FaUserPlus } from "react-icons/fa";
 
 export const navData = [
   { id: "n1", name: "Home", path: "/", icon: <SiHomeadvisor /> },
-  { id: "n2", name: "Explore", path: "/expore", icon: <SiAirplayvideo /> },
+  { id: "n2", name: "Explore", path: "/explore", icon: <SiAirplayvideo /> },
   { id: "n3", name: "Playlist", path: "/playlists", icon: <BsPlayBtnFill /> },
   {
     id: "n4",

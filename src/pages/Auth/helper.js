@@ -1,9 +1,13 @@
-export const validateInputs = (values, type = false) => {
+export const validateInputs = (values) => {
   const errors = {};
 
   const pwdRegex =
     /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/;
   const emailRegex = /^\S+@\S+\.\S+$/;
+
+  if (!values.fullName) {
+    errors.fullName = "Full name is required!";
+  }
 
   if (!values.email) {
     errors.email = "Email is required!";
@@ -18,14 +22,8 @@ export const validateInputs = (values, type = false) => {
       "Password must be 6 characters long and contain atleast 1 letter , 1 digit & 1 special character!";
   }
 
-  if (type === true) {
-    if (!values.fullName) {
-      errors.fullName = "Can't be empty!";
-    }
-
-    if (!values.confirmPassword || values.confirmPassword !== values.password) {
-      errors.confirmPassword = "Passwords do not match";
-    }
+  if (!values.confirmPassword || values.confirmPassword !== values.password) {
+    errors.confirmPassword = "Passwords do not match!";
   }
 
   return errors;
