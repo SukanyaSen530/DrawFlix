@@ -86,6 +86,49 @@ const userReducer = (state, action) => {
           items: payload,
         },
       };
+
+    // Watch Later
+
+    case watchLaterConstants.LOADING:
+      return {
+        ...state,
+        watchLater: { ...state.watchLater, loading: true },
+      };
+
+    case watchLaterConstants.GET_WATCH_LATER:
+      return {
+        ...state,
+        watchLater: {
+          error: null,
+          loading: false,
+          items: payload,
+        },
+      };
+
+    case watchLaterConstants.ERROR:
+      return {
+        ...state,
+        watchLater: { error: payload, loading: false, items: [] },
+      };
+
+    case watchLaterConstants.ADD_TO_WATCH_LATER:
+      return {
+        ...state,
+        watchLater: {
+          error: null,
+          loading: false,
+          items: payload,
+        },
+      };
+
+    case watchLaterConstants.REMOVE_FROM_WATCH_LATER:
+      return {
+        ...state,
+        watchLater: {
+          ...state.watchLater,
+          items: payload,
+        },
+      };
   }
 };
 
