@@ -8,7 +8,7 @@ import "./navbar.scss";
 
 import logo from "../../assets/logo.png";
 
-import { authActions, useAuthContext } from "../../context";
+import { authActions, useAuthContext, useGlobalContext } from "../../context";
 
 const Navbar = () => {
   const {
@@ -17,6 +17,9 @@ const Navbar = () => {
     },
     authDispatch,
   } = useAuthContext();
+  const {
+    globalHandlers: { openAlert },
+  } = useGlobalContext();
 
   const [darkNav, setDarkNav] = useState(false);
   const [show, setShow] = useState(false);
@@ -35,6 +38,13 @@ const Navbar = () => {
       ? location.pathname.split("/")[1]
       : "home";
 
+  const handleLogout = () => {
+    setTimeout(() => {
+      openAlert({ message: "Logged out successfully!", type: "success" });
+      authDispatch({ type: authActions.LOGOUT });
+    }, 1000);
+  };
+
   return (
     <>
       <nav className={`${darkNav ? "dark" : ""} navbar`}>
@@ -52,9 +62,7 @@ const Navbar = () => {
 
         <ul className="nav-links">
           {token ? (
-            <button onClick={() => authDispatch({ type: authActions.LOGOUT })}>
-              Logout
-            </button>
+            <button onClick={handleLogout}>Logout</button>
           ) : (
             <Link to="/signin">Sign In</Link>
           )}
