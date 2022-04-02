@@ -6,7 +6,8 @@ export const loadwatchLaterVideos = async (dispatch) => {
   try {
     dispatch({ type: watchLaterConstants.LOADING });
     const response = await axios.get(
-      `${process.env.REACT_APP_URL}/user/watchlater`
+      `${process.env.REACT_APP_URL}/user/watchlater`,
+      config
     );
 
     if (response.status === 200) {
@@ -46,7 +47,8 @@ export const addToWatchLater = async (video, dispatch, openAlert) => {
 export const removeFromWatchLater = async (id, dispatch, openAlert) => {
   try {
     const response = await axios.delete(
-      `${process.env.REACT_APP_URL}/user/watchlater/${id}`
+      `${process.env.REACT_APP_URL}/user/watchlater/${id}`,
+      config
     );
 
     if (response.status === 200) {

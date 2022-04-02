@@ -27,7 +27,9 @@ export const historyConstants = {
   ERROR: "HISTORY_ERROR",
   ADD_TO_HISTORY: "ADD_TO_HISTORY",
   REMOVE_FROM_HISTORY: "REMOVE_FROM_HISTORY",
+  CLEAR_HISTORY: "CLEAR_HISTORY",
 };
+
 
 export const playlistConstants = {
   LOADING: "PLAYLIST_LOADING",

@@ -129,6 +129,50 @@ const userReducer = (state, action) => {
           items: payload,
         },
       };
+
+    // History
+
+    case historyConstants.LOADING:
+      return { ...state, history: { ...state.history, loading: true } };
+
+    case historyConstants.GET_HISTORY:
+      return {
+        ...state,
+        history: { loading: false, error: null, items: payload },
+      };
+
+    case historyConstants.ERROR:
+      return {
+        ...state,
+        history: { loading: false, error: null, items: [] },
+      };
+
+    case historyConstants.ADD_TO_HISTORY:
+      return {
+        ...state,
+        history: {
+          ...state.history,
+          items: payload,
+        },
+      };
+
+    case historyConstants.REMOVE_FROM_HISTORY:
+      return {
+        ...state,
+        history: {
+          ...state.history,
+          items: payload,
+        },
+      };
+
+    case historyConstants.CLEAR_HISTORY:
+      return {
+        ...state,
+        history: {
+          ...state.history,
+          items: [],
+        },
+      };
   }
 };
 
