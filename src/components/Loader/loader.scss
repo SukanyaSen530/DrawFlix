@@ -1,0 +1,43 @@
+
+.loader-section {
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+  height: 10rem;
+  width: 15rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+
+  &__child {
+    width: 2rem;
+    height: 2rem;
+    border-radius: $border-circle;
+    background-color: var(--defaultDark);
+    animation: loader_animation 0.5s ease-out infinite alternate;
+
+    &:nth-child(2) {
+      background-color: lighten(var(--defaultDark), 10%);
+      animation-delay: 0.1s;
+    }
+
+    &:nth-child(3) {
+      background-color: lighten(var(--defaultDark), 20%);
+      animation-delay: 0.2s;
+    }
+
+    &:nth-child(4) {
+      background-color: lighten(var(--defaultDark), 30%);
+      animation-delay: 0.3s;
+    }
+
+    &:nth-child(5) {
+      background-color: lighten(var(--defaultDark), 40%);
+      animation-delay: 0.4s;
+    }
+  }
+}

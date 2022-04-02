@@ -7,7 +7,7 @@ const App = () => {
   return (
     <main>
       <Navbar />
-      <section className="main-section pad-default">
+      <section className="main-section">
         <Alert />
         <AllRoutes />
       </section>
