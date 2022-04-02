@@ -10,6 +10,12 @@ const userReducer = (state, action) => {
   const { type, payload } = action;
 
   switch (type) {
+    case videoConstants.GET_CATEGORIES:
+      return {
+        ...state,
+        categories: payload,
+      };
+
     case videoConstants.LOADING:
       return {
         ...state,

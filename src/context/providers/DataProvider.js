@@ -5,6 +5,7 @@ import dataReducer from "../reducers/dataReducer";
 const dataContext = createContext();
 
 const initialState = {
+  categories: [],
   vid: {
     loading: false,
     items: [],

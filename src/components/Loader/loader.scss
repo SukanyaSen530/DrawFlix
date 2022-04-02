@@ -1,6 +1,7 @@
+@import "../../sass/global";
 
 .loader-section {
-  height: 80vh;
+  height: 60vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,27 +17,27 @@
   &__child {
     width: 2rem;
     height: 2rem;
-    border-radius: $border-circle;
+    border-radius: var(--border-radius-circle);
     background-color: var(--defaultDark);
     animation: loader_animation 0.5s ease-out infinite alternate;
 
     &:nth-child(2) {
-      background-color: lighten(var(--defaultDark), 10%);
+      background-color: lighten($defaultDark, 10%);
       animation-delay: 0.1s;
     }
 
     &:nth-child(3) {
-      background-color: lighten(var(--defaultDark), 20%);
+      background-color: lighten($defaultDark, 20%);
       animation-delay: 0.2s;
     }
 
     &:nth-child(4) {
-      background-color: lighten(var(--defaultDark), 30%);
+      background-color: lighten($defaultDark, 30%);
       animation-delay: 0.3s;
     }
 
     &:nth-child(5) {
-      background-color: lighten(var(--defaultDark), 40%);
+      background-color: lighten($defaultDark, 40%);
       animation-delay: 0.4s;
     }
   }

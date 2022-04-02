@@ -42,3 +42,18 @@ export const loadSingleVideo = async (id, dispatch) => {
     });
   }
 };
+
+export const getCategories = async (dispatch) => {
+  try {
+    const response = await axios.get(`${process.env.REACT_APP_URL}/categories`);
+
+    if (response.status === 200) {
+      dispatch({
+        type: videoConstants.GET_CATEGORIES,
+        payload: response.data.categories,
+      });
+    }
+  } catch (e) {
+    console.log(e);
+  }
+};

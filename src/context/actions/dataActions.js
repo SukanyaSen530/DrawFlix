@@ -2,6 +2,7 @@ export const videoConstants = {
   LOADING: "VIDEO_LOADING",
   GET_VIDEOS: "GET_VIDEOS",
   GET_VIDEO: "GET_VIDEO",
+  GET_CATEGORIES: "GET_CATEGORIES",
   ERROR: "VIDEO_ERROR",
 };
 
