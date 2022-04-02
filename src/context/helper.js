@@ -1,7 +1,7 @@
 export const compose =
   (...fns) =>
   (state, data) =>
-    fns.reduceRight((acc, curr) => curr(state, acc), data);
+    fns.reduce((acc, curr) => curr(state, acc), data);
 
 export const getSearchResults = (
   {
@@ -11,11 +11,10 @@ export const getSearchResults = (
   },
   data
 ) => {
+  console.log("searchQuery", searchQuery);
   if (searchQuery !== "") {
-    return data?.filter(
-      (video) =>
-        video.title?.toLowerCase().includes(searchQuery?.toLowerCase()) ||
-        video.categoryName?.toLowerCase().includes(searchQuery?.toLowerCase())
+    return data?.filter((video) =>
+      video.title?.toLowerCase().includes(searchQuery?.toLowerCase())
     );
   }
   return data;
@@ -29,9 +28,9 @@ export const filterByCategory = (
   },
   data
 ) => {
-  if (category === "all") return data;
+  if (category === "all" || category === "") return data;
   else
-    data?.filter((video) =>
-      video.categoryName?.toLowerCase().includes(category.toLowerCase())
+    return data?.filter((video) =>
+      video.categoryName?.toLowerCase().includes(category?.toLowerCase())
     );
 };

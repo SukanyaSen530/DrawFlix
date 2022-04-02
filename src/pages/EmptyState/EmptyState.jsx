@@ -24,12 +24,14 @@ const EmptyState = ({
       />
       <div>
         <p className="error-text t-margin-sm b-margin-sm">{msg}</p>
-        <button
-          className="btn btn-contained secondaryLight btn-sm"
-          onClick={() => (path ? navigate(path) : navigate(-1))}
-        >
-          {buttonText}
-        </button>
+        {path ? (
+          <button
+            className="btn btn-contained secondaryLight btn-sm"
+            onClick={() => navigate(path)}
+          >
+            {buttonText}
+          </button>
+        ) : null}
       </div>
     </section>
   );

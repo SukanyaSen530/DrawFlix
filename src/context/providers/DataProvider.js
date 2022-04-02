@@ -7,7 +7,6 @@ import dataReducer from "../reducers/dataReducer";
 const dataContext = createContext();
 
 const initialState = {
-  categories: [],
   vid: {
     loading: false,
     items: [],
@@ -15,7 +14,7 @@ const initialState = {
     single_video: {},
     filterOptions: {
       searchQuery: "",
-      category: "all",
+      category: "",
     },
   },
   liked: {
@@ -44,17 +43,17 @@ const initialState = {
 const DataProvider = ({ children }) => {
   const [state, dispatch] = useReducer(dataReducer, initialState);
 
-  const filteredVideos =
-    compose(getSearchResults, filterByCategory)(
-      state,
-      state?.vid?.items || []
-    ) || [];
+  const filteredVideos = compose(filterByCategory, getSearchResults)(
+    state,
+    state?.vid?.items || []
+  );
 
   return (
     <dataContext.Provider
       value={{
-        dataState: { ...state, filteredVideos },
+        dataState: state,
         dataDispatch: dispatch,
+        filteredVideos,
       }}
     >
       {children}

@@ -10,12 +10,6 @@ const userReducer = (state, action) => {
   const { type, payload } = action;
 
   switch (type) {
-    case videoConstants.GET_CATEGORIES:
-      return {
-        ...state,
-        categories: payload,
-      };
-
     case videoConstants.LOADING:
       return {
         ...state,
@@ -51,20 +45,28 @@ const userReducer = (state, action) => {
       };
 
     case videoConstants.FILTER_CATEGORY:
+      console.log("category", payload);
       return {
         ...state,
-        filterOptions: {
-          ...state.filterOptions,
-          category: payload,
+        vid: {
+          ...state.vid,
+          filterOptions: {
+            ...state.vid.filterOptions,
+            category: payload,
+          },
         },
       };
 
     case videoConstants.SEARCH:
+      console.log("search", payload);
       return {
         ...state,
-        filterOptions: {
-          ...state.filterOptions,
-          searchQuery: payload,
+        vid: {
+          ...state.vid,
+          filterOptions: {
+            ...state.vid.filterOptions,
+            searchQuery: payload,
+          },
         },
       };
 
