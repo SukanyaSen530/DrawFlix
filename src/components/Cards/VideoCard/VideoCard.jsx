@@ -33,8 +33,8 @@ const VideoCard = ({
         </div>
       </Link>
       <div className="video-card__content">
-        <figure class="avatar avatar-sm">
-          <img class="avatar-img" src={creatorImg} alt="creator image" />
+        <figure className="avatar avatar-sm">
+          <img className="avatar-img" src={creatorImg} alt="creator image" />
         </figure>
         <p className="video-card__content__title">{title}</p>
 

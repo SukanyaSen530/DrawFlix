@@ -12,13 +12,14 @@ const VideoListing = () => {
   const {
     dataState: {
       categories,
-      vid: { loading, error, items: videos },
+      vid: { loading, error },
+      filteredVideos,
     },
     dataDispatch,
   } = useDataContext();
 
   useEffect(() => {
-    if (videos?.length === 0) loadVideos(dataDispatch);
+    if (filteredVideos?.length === 0) loadVideos(dataDispatch);
   }, []);
 
   useEffect(() => {
@@ -33,7 +34,7 @@ const VideoListing = () => {
     return <EmptyState msg={error} type="error" />;
   }
 
-  if (videos.length === 0) {
+  if (filteredVideos?.length === 0) {
     return (
       <EmptyState
         type="empty"
@@ -45,7 +46,7 @@ const VideoListing = () => {
   return (
     <section className="explore-section pad-default">
       <div className="explore-section__videos">
-        {videos?.map((video) => (
+        {filteredVideos?.map((video) => (
           <VideoCard key={video._id} {...video} />
         ))}
       </div>
