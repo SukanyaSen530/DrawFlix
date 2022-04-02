@@ -1,1 +1,14 @@
 @import "../../sass/global";
+
+.explore-section {
+  &__videos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
+    gap: 4rem;
+    justify-items: center;
+
+    @include respond(tab-port) {
+      grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    }
+  }
+}

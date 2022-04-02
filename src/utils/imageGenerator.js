@@ -1,7 +1,8 @@
-export const videoImage = (videoId) => {
-  return `https://i.ytimg.com/vi/${videoId}/mqdefault.jpg`;
-};
-
-export const creatorImage = (creatorId) => {
-  return `https://yt3.ggpht.com/ytc/${creatorId}=s176-c-k-c0x00ffffff-no-rj`;
+export const videoImage = (videoId, type = "sm") => {
+  if (type === "sm") return `https://i.ytimg.com/vi/${videoId}/default.jpg`;
+  else if (type === "md")
+    return `https://i.ytimg.com/vi/${videoId}/mqdefault.jpg`;
+  else if (type === "lg")
+    return `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
+  else return "";
 };
