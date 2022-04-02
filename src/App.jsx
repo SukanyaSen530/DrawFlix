@@ -7,7 +7,7 @@ const App = () => {
   return (
     <main>
       <Navbar />
-      <section className="main-section" style={{ paddingTop: "10rem" }}>
+      <section className="main-section">
         <Alert />
         <AllRoutes />
       </section>

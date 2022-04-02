@@ -1,6 +1,8 @@
 @import "../../sass/global";
 
 .explore-section {
+  padding-top: 15rem;
+  
   &__videos {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));

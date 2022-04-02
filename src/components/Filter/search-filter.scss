@@ -16,7 +16,7 @@
   border-top-left-radius: var(--border-radius-sm);
   border-top-right-radius: var(--border-radius-sm);
   position: relative;
-  border-bottom: 2px solid $color-black;
+  border-bottom: 4px solid $defaultDark;
   width: 100%;
   display: flex;
   align-items: center;
@@ -58,7 +58,7 @@
   &__icon {
     flex: 0 0 3rem;
     font-size: 2.5rem;
-    color: black;
+    color: var(--bg-color);
   }
 }
 
