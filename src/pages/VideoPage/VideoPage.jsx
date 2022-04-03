@@ -18,6 +18,10 @@ import { CgPlayListAdd } from "react-icons/cg";
 import { BsPlayCircle } from "react-icons/bs";
 
 import { addToLiked, removeFromLiked } from "../../services/likes";
+import {
+  addToWatchLater,
+  removeFromWatchLater,
+} from "../../services/watchlater";
 
 import "./video-page.scss";
 
@@ -31,6 +35,7 @@ const Video = () => {
     dataState: {
       vid: { loading, error, single_video },
       liked: { items: likedVideos },
+      watchLater: { items: watchLaterVideos },
     },
     dataDispatch,
   } = useDataContext();
@@ -44,12 +49,24 @@ const Video = () => {
   } = useAuthContext();
 
   let inLikedVideos = likedVideos.some((item) => item._id === single_video._id);
+  const inWatchLater = watchLaterVideos.some(
+    (item) => item._id === single_video._id
+  );
 
   const handleLike = () => {
     if (token) {
       if (inLikedVideos) removeFromLiked(videoId, dataDispatch, openAlert);
       else addToLiked(single_video, dataDispatch, openAlert);
     } else navigate("/signin");
+  };
+
+  const handleWatchLater = () => {
+    if (token) {
+      if (inWatchLater) removeFromWatchLater(videoId, dataDispatch, openAlert);
+      else addToWatchLater(video, dataDispatch, openAlert);
+    } else {
+      navigate("/signin");
+    }
   };
 
   useEffect(() => {
@@ -90,8 +107,12 @@ const Video = () => {
                   <AiOutlineLike />
                 )}
               </li>
-              <li onClick={() => alert("watch later")}>
-                <MdOutlineAccessTime />
+              <li onClick={handleWatchLater}>
+                {inWatchLater && token ? (
+                  <MdOutlineAccessTimeFilled className="item-active" />
+                ) : (
+                  <MdOutlineAccessTime />
+                )}
               </li>
               <li onClick={() => alert("add to playlist")}>
                 <CgPlayListAdd />

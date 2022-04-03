@@ -117,7 +117,7 @@ const userReducer = (state, action) => {
     case watchLaterConstants.LOADING:
       return {
         ...state,
-        watchLater: { ...state.watchLater, loading: true },
+        watchLater: { ...state.watchLater, loading: true, error: null },
       };
 
     case watchLaterConstants.GET_WATCH_LATER:

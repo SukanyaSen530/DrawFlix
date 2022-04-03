@@ -17,6 +17,10 @@ import {
   useAuthContext,
 } from "../../../context";
 import { addToLiked, removeFromLiked } from "../../../services/likes";
+import {
+  addToWatchLater,
+  removeFromWatchLater,
+} from "../../../services/watchlater";
 import useClickOutside from "../../../hooks/useClickOutside";
 
 // Styles
@@ -32,6 +36,7 @@ const VideoCard = ({ _id, title, categoryName, creatorImg, creator }) => {
   const { dataState, dataDispatch } = useDataContext();
   const {
     liked: { items: likedVideos },
+    watchLater: { items: watchLaterVideos },
   } = dataState;
   const {
     globalHandlers: { openAlert },
@@ -43,11 +48,21 @@ const VideoCard = ({ _id, title, categoryName, creatorImg, creator }) => {
   } = useAuthContext();
 
   const inLikedVideos = likedVideos.some((item) => item._id === _id);
+  const inWatchLater = watchLaterVideos.some((item) => item._id === _id);
 
   const handleLike = () => {
     if (token) {
-      if (inLikedVideos) removeFromLiked(videoId, dataDispatch, openAlert);
+      if (inLikedVideos) removeFromLiked(_id, dataDispatch, openAlert);
       else addToLiked(video, dataDispatch, openAlert);
+    } else {
+      navigate("/signin");
+    }
+  };
+
+  const handleWatchLater = () => {
+    if (token) {
+      if (inWatchLater) removeFromWatchLater(_id, dataDispatch, openAlert);
+      else addToWatchLater(video, dataDispatch, openAlert);
     } else {
       navigate("/signin");
     }
@@ -80,8 +95,12 @@ const VideoCard = ({ _id, title, categoryName, creatorImg, creator }) => {
                 <AiOutlineLike />
               )}
             </li>
-            <li onClick={() => alert("watch later")}>
-              <MdOutlineAccessTime />
+            <li onClick={handleWatchLater}>
+              {inWatchLater && token ? (
+                <MdOutlineAccessTimeFilled className="item-active" />
+              ) : (
+                <MdOutlineAccessTime />
+              )}
             </li>
             <li onClick={() => alert("add to playlist")}>
               <CgPlayListAdd />

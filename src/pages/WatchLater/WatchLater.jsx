@@ -1,5 +1,47 @@
-import React from "react";
+import { useDataContext } from "../../context";
 
-export default function WatchLater() {
-  return <div>WatchLater</div>;
-}
+import EmptyState from "../EmptyState/EmptyState";
+import { Loader, VideoCard } from "../../components";
+
+import "./water-later.scss";
+
+const WatchLater = () => {
+  const { dataState } = useDataContext();
+
+  const {
+    watchLater: { loading, error, items: watchLaterVideos },
+  } = dataState;
+
+  if (loading) {
+    return <Loader />;
+  }
+
+  if (error) {
+    <EmptyState msg={error} type="error" path="/explore" />;
+  }
+
+  return (
+    <section className="watchLater-section pad-default">
+      {watchLaterVideos?.length === 0 ? (
+        <EmptyState
+          type="empty"
+          msg="Look's like you have no videos! Add some..."
+        />
+      ) : (
+        <>
+          <h1 className="h3 b-margin-lg">
+            Videos to Watch Later ({watchLaterVideos?.length})
+          </h1>
+
+          <div className="watchLater-section__videos">
+            {watchLaterVideos?.map((video) => (
+              <VideoCard key={video._id} {...video} />
+            ))}
+          </div>
+        </>
+      )}
+    </section>
+  );
+};
+
+export default WatchLater;
