@@ -12,9 +12,6 @@ const Liked = () => {
     liked: { loading, error, items: likedVideos },
   } = dataState;
 
-  console.log("loading", loading);
-  console.log("error", error);
-
   if (loading) {
     return <Loader />;
   }
