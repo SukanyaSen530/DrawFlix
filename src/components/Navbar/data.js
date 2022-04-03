@@ -15,7 +15,7 @@ export const navData = [
     path: "/watchlater",
     icon: <MdWatchLater />,
   },
-  { id: "n5", name: "Playlist", path: "/playlists", icon: <BsPlayBtnFill /> },
+  // { id: "n5", name: "Playlist", path: "/playlists", icon: <BsPlayBtnFill /> },
   { id: "n6", name: "History", path: "/history", icon: <BiHistory /> },
 ];
 

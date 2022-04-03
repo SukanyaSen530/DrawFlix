@@ -84,17 +84,18 @@
 
     li {
       font-size: 3rem;
-      background: $defaultDark;
+      background: rgb(112, 112, 112);
       margin: 0 0.5rem;
       cursor: pointer;
       padding: 0.5rem 1rem;
       display: flex;
       border-radius: var(--border-radius-md);
-      color: var(--bg-color);
+      color: white;
       transition: 0.3s background;
 
       &:hover {
-        background: darken($defaultDark, 10%);
+        background: var(--defaultLight);
+        color: var(--bg-color);
       }
     }
   }
