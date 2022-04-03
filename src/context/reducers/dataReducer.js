@@ -73,7 +73,7 @@ const userReducer = (state, action) => {
     case likeConstants.LOADING:
       return {
         ...state,
-        liked: { ...state.liked, loading: true },
+        liked: { ...state.liked, loading: true, error: null },
       };
 
     case likeConstants.GET_LIKED:
@@ -106,7 +106,8 @@ const userReducer = (state, action) => {
       return {
         ...state,
         liked: {
-          ...state.liked,
+          error: null,
+          loading: false,
           items: payload,
         },
       };

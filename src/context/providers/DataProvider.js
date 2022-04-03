@@ -1,6 +1,9 @@
-import { useReducer, useContext, createContext } from "react";
+import { useReducer, useContext, createContext, useEffect } from "react";
 
 import { compose, filterByCategory, getSearchResults } from "../helper";
+import { useAuthContext } from "./AuthProvider";
+import { loadLikedVideos } from "../../services/likes";
+import { loadwatchLaterVideos } from "../../services/watchlater";
 
 import dataReducer from "../reducers/dataReducer";
 
@@ -47,6 +50,21 @@ const DataProvider = ({ children }) => {
     state,
     state?.vid?.items || []
   );
+
+  const {
+    authState: {
+      user: { token },
+    },
+  } = useAuthContext();
+
+  useEffect(() => {
+    if (state.liked.items?.length === 0 && token) loadLikedVideos(dispatch);
+  }, [token]);
+
+  useEffect(() => {
+    if (state.watchLater.items?.length === 0 && token)
+      loadwatchLaterVideos(dispatch);
+  }, [token]);
 
   return (
     <dataContext.Provider

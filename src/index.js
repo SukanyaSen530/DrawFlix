@@ -15,11 +15,11 @@ ReactDOM.render(
   <React.StrictMode>
     <Router>
       <GlobalProvider>
-        <DataProvider>
-          <AuthProvider>
+        <AuthProvider>
+          <DataProvider>
             <App />
-          </AuthProvider>
-        </DataProvider>
+          </DataProvider>
+        </AuthProvider>
       </GlobalProvider>
     </Router>
   </React.StrictMode>,
