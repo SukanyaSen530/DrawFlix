@@ -1,10 +1,14 @@
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 import { Loader } from "../../components";
 import { EmptyState } from "..";
 
-import { useDataContext, useGlobalContext } from "../../context";
+import {
+  useDataContext,
+  useGlobalContext,
+  useAuthContext,
+} from "../../context";
 import { loadSingleVideo } from "../../services/videos";
 
 import { BiDotsVertical } from "react-icons/bi";
@@ -19,6 +23,7 @@ import "./video-page.scss";
 
 const Video = () => {
   const params = useParams();
+  const navigate = useNavigate();
   const videoId = params.id;
   const [readMore, setReadMore] = useState(false);
 
@@ -32,12 +37,19 @@ const Video = () => {
   const {
     globalHandlers: { openAlert },
   } = useGlobalContext();
+  const {
+    authState: {
+      user: { token },
+    },
+  } = useAuthContext();
 
   let inLikedVideos = likedVideos.some((item) => item._id === single_video._id);
 
   const handleLike = () => {
-    if (inLikedVideos) removeFromLiked(videoId, dataDispatch, openAlert);
-    else addToLiked(single_video, dataDispatch, openAlert);
+    if (token) {
+      if (inLikedVideos) removeFromLiked(videoId, dataDispatch, openAlert);
+      else addToLiked(single_video, dataDispatch, openAlert);
+    } else navigate("/signin");
   };
 
   useEffect(() => {
@@ -72,7 +84,7 @@ const Video = () => {
 
             <ul className="video-section__menu">
               <li onClick={handleLike}>
-                {inLikedVideos ? (
+                {inLikedVideos && token ? (
                   <AiFillLike className="item-active" />
                 ) : (
                   <AiOutlineLike />

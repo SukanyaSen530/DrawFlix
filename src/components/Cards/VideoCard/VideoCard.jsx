@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // Icons
 import { BiDotsVertical } from "react-icons/bi";
@@ -8,33 +8,50 @@ import { MdOutlineAccessTime, MdOutlineAccessTimeFilled } from "react-icons/md";
 import { CgPlayListAdd } from "react-icons/cg";
 import { BsPlayCircle } from "react-icons/bs";
 
-import { useDataContext } from "../../../context";
-import { useGlobalContext } from "../../../context";
-import { addToLiked, removeFromLiked } from "../../../services/likes";
+// Image
 import { videoImage } from "../../../utils/imageGenerator";
+
+import {
+  useDataContext,
+  useGlobalContext,
+  useAuthContext,
+} from "../../../context";
+import { addToLiked, removeFromLiked } from "../../../services/likes";
 import useClickOutside from "../../../hooks/useClickOutside";
 
+// Styles
 import "./video-card.scss";
 
 const VideoCard = ({ _id, title, categoryName, creatorImg, creator }) => {
   const [open, setOpen] = useState(false);
-  let domNode = useClickOutside(() => setOpen(false));
+  const domNode = useClickOutside(() => setOpen(false));
+  const navigate = useNavigate();
+
   const video = { _id, title, categoryName, creatorImg, creator };
 
   const { dataState, dataDispatch } = useDataContext();
   const {
     liked: { items: likedVideos },
   } = dataState;
-   const {
-     globalHandlers: { openAlert },
-   } = useGlobalContext();
+  const {
+    globalHandlers: { openAlert },
+  } = useGlobalContext();
+  const {
+    authState: {
+      user: { token },
+    },
+  } = useAuthContext();
 
-  let inLikedVideos = likedVideos.some((item) => item._id === _id);
+  const inLikedVideos = likedVideos.some((item) => item._id === _id);
 
   const handleLike = () => {
-    if (inLikedVideos) removeFromLiked(_id, dataDispatch, openAlert);
-    else addToLiked(video, dataDispatch, openAlert);
-  }
+    if (token) {
+      if (inLikedVideos) removeFromLiked(videoId, dataDispatch, openAlert);
+      else addToLiked(video, dataDispatch, openAlert);
+    } else {
+      navigate("/signin");
+    }
+  };
 
   return (
     <article className="video-card">
@@ -56,9 +73,12 @@ const VideoCard = ({ _id, title, categoryName, creatorImg, creator }) => {
             onClick={() => setOpen((val) => !val)}
           />
           <ul className={`menu__items ${open ? "active" : ""}`}>
-            
             <li onClick={handleLike}>
-              {inLikedVideos ? <AiFillLike className="item-active"/> : <AiOutlineLike />}
+              {inLikedVideos && token ? (
+                <AiFillLike className="item-active" />
+              ) : (
+                <AiOutlineLike />
+              )}
             </li>
             <li onClick={() => alert("watch later")}>
               <MdOutlineAccessTime />
