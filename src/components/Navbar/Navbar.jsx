@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { navData, authNavigation } from "./data";
 
 import { FaBars } from "react-icons/fa";
@@ -10,6 +10,7 @@ import logo from "../../assets/logo.png";
 
 import { authActions, useAuthContext, useGlobalContext } from "../../context";
 import useChangeColor from "../../hooks/useChangeColor";
+import { getNavRoute } from "../../utils/getNavRoute";
 
 const Navbar = () => {
   const {
@@ -25,12 +26,7 @@ const Navbar = () => {
   const [darkNav, setDarkNav] = useState(false);
   const [show, setShow] = useState(false);
 
-  const location = useLocation();
-
-  const pathName =
-    location.pathname.split("/")[1] !== ""
-      ? location.pathname.split("/")[1]
-      : "home";
+  const pathName = getNavRoute();
 
   useChangeColor(setDarkNav);
 

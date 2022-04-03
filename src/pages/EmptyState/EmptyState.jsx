@@ -3,22 +3,35 @@ import { useNavigate } from "react-router-dom";
 import "./empty-state.scss";
 import errorImage from "../../assets/error.png";
 import emptyImage from "../../assets/no-video.png";
+import notFoundImage from "../../assets/pageNotFound.png";
 
 const EmptyState = ({
   msg = "Unable to fetch data. Check your internet connection!",
-  imgSrc = errorImage,
+  imgSrc,
   buttonText = "Go back",
   path,
-  type = "error",
+  type,
 }) => {
   const navigate = useNavigate();
+
+  let image = null;
+
+  switch (type) {
+    case "error":
+      image = errorImage;
+      break;
+    case "empty":
+      image = emptyImage;
+      break;
+    case "not found":
+      image = notFoundImage;
+      break;
+  }
 
   return (
     <section className="error-section">
       <img
-        src={
-          type === "error" ? errorImage : type === "empty" ? emptyImage : imgSrc
-        }
+        src={type ? image : imgSrc}
         alt={`${type} image`}
         className="error-img"
       />

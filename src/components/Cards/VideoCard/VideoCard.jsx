@@ -12,21 +12,14 @@ import { MdOutlineAccessTime, MdOutlineAccessTimeFilled } from "react-icons/md";
 import { CgPlayListAdd } from "react-icons/cg";
 import { BsPlayCircle } from "react-icons/bs";
 
-const VideoCard = ({
-  _id,
-  title,
-  categoryName,
-  creatorImg,
-  creator,
-  stats: { viewCount },
-}) => {
+const VideoCard = ({ _id, title, categoryName, creatorImg, creator }) => {
   const [open, setOpen] = useState(false);
 
   let domNode = useClickOutside(() => setOpen(false));
 
   return (
     <article className="video-card">
-      <Link to={`/videos/${_id}`}>
+      <Link to={`/explore/${_id}`}>
         <div className="video-card__img-container">
           <img src={videoImage(_id, "lg")} className="img-responsive" />
           <BsPlayCircle className="video-card__play" />
