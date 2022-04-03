@@ -2,7 +2,11 @@ import axios from "axios";
 
 import { watchLaterConstants } from "../context";
 
+import getConfig from "./config";
+
 export const loadwatchLaterVideos = async (dispatch) => {
+  const config = getConfig();
+
   try {
     dispatch({ type: watchLaterConstants.LOADING });
     const response = await axios.get(
@@ -25,14 +29,16 @@ export const loadwatchLaterVideos = async (dispatch) => {
 };
 
 export const addToWatchLater = async (video, dispatch, openAlert) => {
+  const config = getConfig();
+
   try {
     const response = await axios.post(
       `${process.env.REACT_APP_URL}/user/watchlater`,
-      config,
-      video
+      { video },
+      config
     );
 
-    if (response.status === 200) {
+    if (response.status === 201) {
       openAlert({ message: "Added to Watch Later!", type: "info" });
       dispatch({
         type: watchLaterConstants.ADD_TO_WATCH_LATER,
@@ -45,6 +51,8 @@ export const addToWatchLater = async (video, dispatch, openAlert) => {
 };
 
 export const removeFromWatchLater = async (id, dispatch, openAlert) => {
+  const config = getConfig();
+
   try {
     const response = await axios.delete(
       `${process.env.REACT_APP_URL}/user/watchlater/${id}`,
