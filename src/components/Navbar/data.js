@@ -13,9 +13,9 @@ export const navData = [
     id: "n4",
     name: "Watch Later",
     path: "/watchlater",
-    icon: <AiFillLike />,
+    icon: <MdWatchLater />,
   },
-  { id: "n5", name: "Like", path: "/liked", icon: <MdWatchLater /> },
+  { id: "n5", name: "Like", path: "/liked", icon: <AiFillLike /> },
   { id: "n6", name: "History", path: "/history", icon: <BiHistory /> },
 ];
 

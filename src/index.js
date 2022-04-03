@@ -4,22 +4,24 @@ import "./index.css";
 import App from "./App";
 import { makeServer } from "./server";
 
-import { BrowserRouter, BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 
-import { GlobalProvider, AuthProvider } from "./context";
+import { GlobalProvider, AuthProvider, DataProvider } from "./context";
 
 // Call make Server
 makeServer();
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <Router>
       <GlobalProvider>
-        <AuthProvider>
-          <App />
-        </AuthProvider>
+        <DataProvider>
+          <AuthProvider>
+            <App />
+          </AuthProvider>
+        </DataProvider>
       </GlobalProvider>
-    </BrowserRouter>
+    </Router>
   </React.StrictMode>,
   document.getElementById("root")
 );

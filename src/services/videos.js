@@ -42,3 +42,15 @@ export const loadSingleVideo = async (id, dispatch) => {
     });
   }
 };
+
+export const getCategories = async (setCategories) => {
+  try {
+    const response = await axios.get(`${process.env.REACT_APP_URL}/categories`);
+
+    if (response.status === 200) {
+      setCategories(response?.data.categories);
+    }
+  } catch (e) {
+    console.log(e);
+  }
+};

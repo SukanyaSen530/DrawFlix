@@ -9,6 +9,7 @@ import "./navbar.scss";
 import logo from "../../assets/logo.png";
 
 import { authActions, useAuthContext, useGlobalContext } from "../../context";
+import useChangeColor from "../../hooks/useChangeColor";
 
 const Navbar = () => {
   const {
@@ -26,17 +27,12 @@ const Navbar = () => {
 
   const location = useLocation();
 
-  const changeNavColor = () => {
-    if (window.scrollY > 90) setDarkNav(true);
-    else setDarkNav(false);
-  };
-
-  window.addEventListener("scroll", changeNavColor);
-
   const pathName =
     location.pathname.split("/")[1] !== ""
       ? location.pathname.split("/")[1]
       : "home";
+
+  useChangeColor(setDarkNav);
 
   const handleLogout = () => {
     setTimeout(() => {

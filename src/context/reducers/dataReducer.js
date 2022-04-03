@@ -44,6 +44,30 @@ const userReducer = (state, action) => {
         vid: { ...state.vid, error: payload, loading: false, items: [] },
       };
 
+    case videoConstants.FILTER_CATEGORY:
+      return {
+        ...state,
+        vid: {
+          ...state.vid,
+          filterOptions: {
+            ...state.vid.filterOptions,
+            category: payload,
+          },
+        },
+      };
+
+    case videoConstants.SEARCH:
+      return {
+        ...state,
+        vid: {
+          ...state.vid,
+          filterOptions: {
+            ...state.vid.filterOptions,
+            searchQuery: payload,
+          },
+        },
+      };
+
     //Likes
 
     case likeConstants.LOADING:

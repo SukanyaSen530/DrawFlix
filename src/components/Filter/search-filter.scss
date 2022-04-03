@@ -1,0 +1,79 @@
+@import "../../sass/global";
+
+.search-filter {
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+
+  @include respond(xs-phone) {
+    flex-direction: column;
+  }
+}
+
+.search-container {
+  padding: 0 1rem;
+  background-color: whitesmoke;
+  border-top-left-radius: var(--border-radius-sm);
+  border-top-right-radius: var(--border-radius-sm);
+  position: relative;
+  border-bottom: 4px solid $defaultDark;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-height: 5rem;
+  flex-basis: 40%;
+
+  @include respond(tab-port){
+   flex-basis: 60%;
+  }
+
+  @include respond(phone){
+   flex-basis: 80%;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 1.2rem;
+    font-size: 1.7rem;
+    background: transparent;
+    border: none;
+    font-family: inherit;
+
+    &:focus {
+      outline: none;
+    }
+
+    &::placeholder {
+      color: gray;
+      transition: 0.5s color ease;
+      font-weight: 500;
+    }
+
+    &:focus::placeholder {
+      color: transparent;
+    }
+  }
+
+  &__icon {
+    flex: 0 0 3rem;
+    font-size: 2.5rem;
+    color: var(--bg-color);
+  }
+}
+
+.category-dropdown {
+  border-radius: var(--border-radius-sm);
+  padding: 1.4rem;
+  transition: all 0.5s all;
+  width: 100%;
+  flex-basis: 30%;
+  font-family: inherit;
+  font-size: 1.7rem;
+
+  &:focus {
+    outline: none;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+      rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+  }
+}

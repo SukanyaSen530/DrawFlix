@@ -3,5 +3,16 @@ import Footer from "./Footer/Footer";
 import InputField from "./InputField/InputField";
 import { HorizontalCard, VideoCard } from "./Cards";
 import Alert from "./Alert/Alert";
+import Loader from "./Loader/Loader";
+import SearchFilter from "./Filter/SearchFilter";
 
-export { Navbar, Footer, Alert, InputField, HorizontalCard, VideoCard };
+export {
+  Navbar,
+  Footer,
+  Alert,
+  InputField,
+  HorizontalCard,
+  VideoCard,
+  Loader,
+  SearchFilter,
+};
