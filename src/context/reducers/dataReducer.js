@@ -45,7 +45,6 @@ const userReducer = (state, action) => {
       };
 
     case videoConstants.FILTER_CATEGORY:
-      console.log("category", payload);
       return {
         ...state,
         vid: {
