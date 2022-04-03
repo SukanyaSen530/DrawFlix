@@ -11,7 +11,6 @@ export const getSearchResults = (
   },
   data
 ) => {
-  console.log("searchQuery", searchQuery);
   if (searchQuery !== "") {
     return data?.filter((video) =>
       video.title?.toLowerCase().includes(searchQuery?.toLowerCase())

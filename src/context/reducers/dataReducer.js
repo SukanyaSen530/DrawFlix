@@ -58,7 +58,6 @@ const userReducer = (state, action) => {
       };
 
     case videoConstants.SEARCH:
-      console.log("search", payload);
       return {
         ...state,
         vid: {
