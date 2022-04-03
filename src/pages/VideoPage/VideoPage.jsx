@@ -4,7 +4,7 @@ import { useParams, Link } from "react-router-dom";
 import { Loader } from "../../components";
 import { EmptyState } from "..";
 
-import { useDataContext } from "../../context";
+import { useDataContext, useGlobalContext } from "../../context";
 import { loadSingleVideo } from "../../services/videos";
 
 import { BiDotsVertical } from "react-icons/bi";
@@ -12,6 +12,8 @@ import { AiOutlineLike, AiFillLike } from "react-icons/ai";
 import { MdOutlineAccessTime, MdOutlineAccessTimeFilled } from "react-icons/md";
 import { CgPlayListAdd } from "react-icons/cg";
 import { BsPlayCircle } from "react-icons/bs";
+
+import { addToLiked, removeFromLiked } from "../../services/likes";
 
 import "./video-page.scss";
 
@@ -23,9 +25,20 @@ const Video = () => {
   const {
     dataState: {
       vid: { loading, error, single_video },
+      liked: { items: likedVideos },
     },
     dataDispatch,
   } = useDataContext();
+  const {
+    globalHandlers: { openAlert },
+  } = useGlobalContext();
+
+  let inLikedVideos = likedVideos.some((item) => item._id === single_video._id);
+
+  const handleLike = () => {
+    if (inLikedVideos) removeFromLiked(videoId, dataDispatch, openAlert);
+    else addToLiked(single_video, dataDispatch, openAlert);
+  };
 
   useEffect(() => {
     loadSingleVideo(videoId, dataDispatch);
@@ -58,8 +71,12 @@ const Video = () => {
             <span className="video-section__title">{title}</span>
 
             <ul className="video-section__menu">
-              <li onClick={() => alert("like")}>
-                <AiOutlineLike />
+              <li onClick={handleLike}>
+                {inLikedVideos ? (
+                  <AiFillLike className="item-active" />
+                ) : (
+                  <AiOutlineLike />
+                )}
               </li>
               <li onClick={() => alert("watch later")}>
                 <MdOutlineAccessTime />
