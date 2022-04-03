@@ -93,7 +93,7 @@ export const videos = [
   },
   {
     _id: "jDvvlHONjJA",
-    title: "The8 | Watercolor Speedpaint| Seventeen Fanart",
+    title: "The8 | Watercolor Speedpaint | Seventeen Fanart",
     creator: "Rinspirit_art",
     categoryName: "Manga, Water Color",
     creatorImg:
@@ -135,7 +135,7 @@ export const videos = [
     _id: "5Zc1xVS_X7Q",
     title: "Shading Techniques",
     creator: "SchaeferArt",
-    categoryName: "Manga, Anatomy",
+    categoryName: "Beginner, Pencil Sketch",
     creatorImg:
       "https://yt3.ggpht.com/ytc/AKedOLRjhevbpiE8Qwdsg-p1JXpRFTSH8nMllZItibB8uQ=s176-c-k-c0x00ffffff-no-rj",
     description:
