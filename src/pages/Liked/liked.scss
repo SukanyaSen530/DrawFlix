@@ -1,0 +1,7 @@
+@import "../../sass/global";
+
+.liked-section{
+    &__videos{
+        @include video-container;
+    }
+}

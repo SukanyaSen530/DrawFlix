@@ -62,6 +62,10 @@
       align-items: center;
       transition: 0.3s background;
 
+      svg.item-active{
+        color: $defaultDark;
+      }
+
       &:hover{
         background: rgba($default, 0.2);
       }

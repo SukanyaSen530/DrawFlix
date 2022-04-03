@@ -1,10 +1,14 @@
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 import { Loader } from "../../components";
 import { EmptyState } from "..";
 
-import { useDataContext } from "../../context";
+import {
+  useDataContext,
+  useGlobalContext,
+  useAuthContext,
+} from "../../context";
 import { loadSingleVideo } from "../../services/videos";
 
 import { BiDotsVertical } from "react-icons/bi";
@@ -13,19 +17,40 @@ import { MdOutlineAccessTime, MdOutlineAccessTimeFilled } from "react-icons/md";
 import { CgPlayListAdd } from "react-icons/cg";
 import { BsPlayCircle } from "react-icons/bs";
 
+import { addToLiked, removeFromLiked } from "../../services/likes";
+
 import "./video-page.scss";
 
 const Video = () => {
   const params = useParams();
+  const navigate = useNavigate();
   const videoId = params.id;
   const [readMore, setReadMore] = useState(false);
 
   const {
     dataState: {
       vid: { loading, error, single_video },
+      liked: { items: likedVideos },
     },
     dataDispatch,
   } = useDataContext();
+  const {
+    globalHandlers: { openAlert },
+  } = useGlobalContext();
+  const {
+    authState: {
+      user: { token },
+    },
+  } = useAuthContext();
+
+  let inLikedVideos = likedVideos.some((item) => item._id === single_video._id);
+
+  const handleLike = () => {
+    if (token) {
+      if (inLikedVideos) removeFromLiked(videoId, dataDispatch, openAlert);
+      else addToLiked(single_video, dataDispatch, openAlert);
+    } else navigate("/signin");
+  };
 
   useEffect(() => {
     loadSingleVideo(videoId, dataDispatch);
@@ -58,8 +83,12 @@ const Video = () => {
             <span className="video-section__title">{title}</span>
 
             <ul className="video-section__menu">
-              <li onClick={() => alert("like")}>
-                <AiOutlineLike />
+              <li onClick={handleLike}>
+                {inLikedVideos && token ? (
+                  <AiFillLike className="item-active" />
+                ) : (
+                  <AiOutlineLike />
+                )}
               </li>
               <li onClick={() => alert("watch later")}>
                 <MdOutlineAccessTime />

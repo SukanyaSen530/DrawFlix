@@ -34,7 +34,7 @@
   }
 
   &__content {
-    padding: 1rem;
+    padding: 1rem 0;
     display: flex;
     justify-content: space-between;
 
@@ -50,7 +50,6 @@
 
    &__info{
      font-size: 1.5rem;
-     padding: 0 1rem;
 
      span:not(:first-child){
        margin-left: 1rem;
@@ -84,17 +83,26 @@
 
     li {
       font-size: 3rem;
-      background: $defaultDark;
+      background: rgb(97, 97, 97);
       margin: 0 0.5rem;
       cursor: pointer;
       padding: 0.5rem 1rem;
       display: flex;
       border-radius: var(--border-radius-md);
-      color: var(--bg-color);
+      color: white;
       transition: 0.3s background;
 
       &:hover {
-        background: darken($defaultDark, 10%);
+        background: var(--defaultLight);
+        color: var(--bg-color);
+      }
+
+      &:hover svg.item-active{
+         color: var(--bg-color);
+      }
+
+      svg.item-active{
+        color: $default;
       }
     }
   }

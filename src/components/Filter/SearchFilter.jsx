@@ -48,7 +48,7 @@ const SearchFilter = ({ categories }) => {
         <FiSearch className="search-container__icon" />
         <input
           type="search"
-          placeholder="Search by video title and category"
+          placeholder="Search by title"
           className="search-container__input"
           onChange={handleSearch}
           defaultValue={searchQuery}

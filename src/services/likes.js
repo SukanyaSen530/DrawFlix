@@ -1,12 +1,18 @@
 import axios from "axios";
 
 import { likeConstants } from "../context";
+import getConfig from "./config";
 
 //Likes
 export const loadLikedVideos = async (dispatch) => {
+  const config = getConfig();
+
   try {
     dispatch({ type: likeConstants.LOADING });
-    const response = await axios.get(`${process.env.REACT_APP_URL}/user/likes`);
+    const response = await axios.get(
+      `${process.env.REACT_APP_URL}/user/likes`,
+      config
+    );
 
     if (response.status === 200) {
       dispatch({
@@ -23,14 +29,16 @@ export const loadLikedVideos = async (dispatch) => {
 };
 
 export const addToLiked = async (video, dispatch, openAlert) => {
+  const config = getConfig();
+
   try {
     const response = await axios.post(
       `${process.env.REACT_APP_URL}/user/likes`,
-      config,
-      video
+      { video },
+      config
     );
 
-    if (response.status === 200) {
+    if (response.status === 201) {
       openAlert({ message: "Added to Liked videos!", type: "info" });
       dispatch({
         type: likeConstants.ADD_TO_LIKED,
@@ -43,9 +51,12 @@ export const addToLiked = async (video, dispatch, openAlert) => {
 };
 
 export const removeFromLiked = async (id, dispatch, openAlert) => {
+  const config = getConfig();
+
   try {
     const response = await axios.delete(
-      `${process.env.REACT_APP_URL}/user/likes/${id}`
+      `${process.env.REACT_APP_URL}/user/likes/${id}`,
+      config
     );
 
     if (response.status === 200) {

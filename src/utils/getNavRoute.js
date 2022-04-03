@@ -7,8 +7,10 @@ export const getNavRoute = () => {
     "explore",
     "liked",
     "watchlater",
-    "playlist",
+    "playlists",
     "history",
+    "signin",
+    "signup",
   ];
 
   const showPathName = location.pathname.split("/")[1];

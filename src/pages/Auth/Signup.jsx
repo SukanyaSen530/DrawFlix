@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import "./auth.scss";
 
-import sketchLogo from "../../assets/sketch.png";
+import sketchLogo from "../../assets/logo1.png";
 import { InputField } from "../../components";
 
 import { initialFormValues, validateInputs } from "./helper";

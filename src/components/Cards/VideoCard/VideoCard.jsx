@@ -1,21 +1,57 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-import { videoImage } from "../../../utils/imageGenerator";
-import useClickOutside from "../../../hooks/useClickOutside";
-
-import "./video-card.scss";
-
+// Icons
 import { BiDotsVertical } from "react-icons/bi";
 import { AiOutlineLike, AiFillLike } from "react-icons/ai";
 import { MdOutlineAccessTime, MdOutlineAccessTimeFilled } from "react-icons/md";
 import { CgPlayListAdd } from "react-icons/cg";
 import { BsPlayCircle } from "react-icons/bs";
 
+// Image
+import { videoImage } from "../../../utils/imageGenerator";
+
+import {
+  useDataContext,
+  useGlobalContext,
+  useAuthContext,
+} from "../../../context";
+import { addToLiked, removeFromLiked } from "../../../services/likes";
+import useClickOutside from "../../../hooks/useClickOutside";
+
+// Styles
+import "./video-card.scss";
+
 const VideoCard = ({ _id, title, categoryName, creatorImg, creator }) => {
   const [open, setOpen] = useState(false);
+  const domNode = useClickOutside(() => setOpen(false));
+  const navigate = useNavigate();
 
-  let domNode = useClickOutside(() => setOpen(false));
+  const video = { _id, title, categoryName, creatorImg, creator };
+
+  const { dataState, dataDispatch } = useDataContext();
+  const {
+    liked: { items: likedVideos },
+  } = dataState;
+  const {
+    globalHandlers: { openAlert },
+  } = useGlobalContext();
+  const {
+    authState: {
+      user: { token },
+    },
+  } = useAuthContext();
+
+  const inLikedVideos = likedVideos.some((item) => item._id === _id);
+
+  const handleLike = () => {
+    if (token) {
+      if (inLikedVideos) removeFromLiked(videoId, dataDispatch, openAlert);
+      else addToLiked(video, dataDispatch, openAlert);
+    } else {
+      navigate("/signin");
+    }
+  };
 
   return (
     <article className="video-card">
@@ -37,8 +73,12 @@ const VideoCard = ({ _id, title, categoryName, creatorImg, creator }) => {
             onClick={() => setOpen((val) => !val)}
           />
           <ul className={`menu__items ${open ? "active" : ""}`}>
-            <li onClick={() => alert("like")}>
-              <AiOutlineLike />
+            <li onClick={handleLike}>
+              {inLikedVideos && token ? (
+                <AiFillLike className="item-active" />
+              ) : (
+                <AiOutlineLike />
+              )}
             </li>
             <li onClick={() => alert("watch later")}>
               <MdOutlineAccessTime />
