@@ -2,7 +2,7 @@ import SignIn from "./Auth/Signin";
 import SignUp from "./Auth/Signup";
 
 import Home from "./Home/Home";
-import Video from "./Video/Video";
+import VideoPage from "./VideoPage/VideoPage";
 import VideoListing from "./VideoListing/VideoListing";
 import Liked from "./Liked/Liked";
 import History from "./History/History";
@@ -12,7 +12,7 @@ import EmptyState from "./EmptyState/EmptyState";
 
 export {
   Home,
-  Video,
+  VideoPage,
   VideoListing,
   SignIn,
   SignUp,

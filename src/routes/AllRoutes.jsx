@@ -3,13 +3,12 @@ import { Routes, Route } from "react-router-dom";
 import PreventedRoutes from "./PreventedRoutes";
 import ProtectedRoutes from "./ProtectedRoutes";
 
-
 import {
   Home,
   VideoListing,
   SignIn,
   SignUp,
-  Video,
+  VideoPage,
   Liked,
   WatchLater,
   History,
@@ -23,7 +22,7 @@ const AllRoutes = () => {
       {/* Public Routes */}
       <Route path="/" element={<Home />} />
       <Route path="/explore" element={<VideoListing />} />
-      <Route path="/explore/:id" element={<Video />} />
+      <Route path="/explore/:id" element={<VideoPage />} />
       {/* Protected Routes */}
       <Route
         path="/liked"

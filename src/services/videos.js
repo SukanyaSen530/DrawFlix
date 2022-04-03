@@ -38,7 +38,7 @@ export const loadSingleVideo = async (id, dispatch) => {
   } catch (e) {
     dispatch({
       type: videoConstants.ERROR,
-      payload: "Oops! Something went wrong :(",
+      payload: "The requested video can not loaded!",
     });
   }
 };
