@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import ReactPlayer from "react-player/youtube";
 
 import { Loader } from "../../components";
 import { EmptyState } from "..";
@@ -11,24 +12,24 @@ import {
 } from "../../context";
 import { loadSingleVideo } from "../../services/videos";
 
-import { BiDotsVertical } from "react-icons/bi";
 import { AiOutlineLike, AiFillLike } from "react-icons/ai";
 import { MdOutlineAccessTime, MdOutlineAccessTimeFilled } from "react-icons/md";
 import { CgPlayListAdd } from "react-icons/cg";
-import { BsPlayCircle } from "react-icons/bs";
 
 import { addToLiked, removeFromLiked } from "../../services/likes";
 import {
   addToWatchLater,
   removeFromWatchLater,
 } from "../../services/watchlater";
+import { addToHistory } from "../../services/history";
 
 import "./video-page.scss";
 
 const Video = () => {
   const params = useParams();
-  const navigate = useNavigate();
   const videoId = params.id;
+
+  const navigate = useNavigate();
   const [readMore, setReadMore] = useState(false);
 
   const {
@@ -36,6 +37,7 @@ const Video = () => {
       vid: { loading, error, single_video },
       liked: { items: likedVideos },
       watchLater: { items: watchLaterVideos },
+      history: { items: historyVideos },
     },
     dataDispatch,
   } = useDataContext();
@@ -48,10 +50,13 @@ const Video = () => {
     },
   } = useAuthContext();
 
-  let inLikedVideos = likedVideos.some((item) => item._id === single_video._id);
+  const inLikedVideos = likedVideos.some(
+    (item) => item._id === single_video._id
+  );
   const inWatchLater = watchLaterVideos.some(
     (item) => item._id === single_video._id
   );
+  const inHistory = historyVideos.some((item) => item._id === single_video._id);
 
   const handleLike = () => {
     if (token) {
@@ -66,6 +71,12 @@ const Video = () => {
       else addToWatchLater(video, dataDispatch, openAlert);
     } else {
       navigate("/signin");
+    }
+  };
+
+  const handleHistory = () => {
+    if (token && !inHistory) {
+      addToHistory(video, dataDispatch, openAlert);
     }
   };
 
@@ -87,14 +98,16 @@ const Video = () => {
   return (
     <section className="video-section pad-default">
       <div className="video-section__display">
-        <iframe
-          className="video-section__frame"
-          src={`https://www.youtube-nocookie.com/embed/${videoId}`}
-          title="YouTube video player"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        ></iframe>
+        <div className="video-section__frame">
+          <ReactPlayer
+            width="100%"
+            height="100%"
+            controls
+            url={`https://www.youtube-nocookie.com/embed/${videoId}`}
+            onStart={handleHistory}
+          />
+        </div>
+
         <div className="video-section__content">
           <div className="t-margin-md flex flex-space-between flex-center-y b-margin-sm">
             <span className="video-section__title">{title}</span>

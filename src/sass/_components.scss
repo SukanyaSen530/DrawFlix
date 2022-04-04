@@ -1,4 +1,3 @@
-.btn.btn-default-outline{
-  color: var(--defaultDark);
-  background-color: white;
+.btn.btn-contained.defaultDark:hover{
+  background-color: darken($defaultDark, 20%);
 }
