@@ -38,15 +38,15 @@ const History = () => {
         />
       ) : (
         <>
-          <div className="flex flex-space-between">
+          <div className="flex flex-space-between flex-center-y">
             <h1 className="h3 b-margin-lg">
               History ({historyVideos?.length})
             </h1>
             <button
-              className="btn btn-float danger btn-lg"
+              className="btn btn-contained danger btn-md"
               onClick={handleClearHistory}
             >
-              <i className="fa-solid fa-trash"></i>
+              Clear History
             </button>
           </div>
 

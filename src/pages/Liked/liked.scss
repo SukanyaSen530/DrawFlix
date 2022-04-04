@@ -2,6 +2,6 @@
 
 .liked-section{
     &__videos{
-        @include video-container;
+        @include video-container(35rem, 30rem);
     }
 }

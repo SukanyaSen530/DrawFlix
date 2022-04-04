@@ -2,6 +2,6 @@
 
 .history-section {
   &__videos {
-    @include video-container;
+    @include video-container(45rem, 40rem);
   }
 }

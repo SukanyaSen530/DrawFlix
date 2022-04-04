@@ -1,7 +1,7 @@
 @import "../../sass/global";
 
-.watchLater-section{
-    &__videos{
-        @include video-container;
-    }
+.watchLater-section {
+  &__videos {
+    @include video-container(35rem, 30rem);
+  }
 }
