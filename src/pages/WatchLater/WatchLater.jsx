@@ -25,7 +25,9 @@ const WatchLater = () => {
       {watchLaterVideos?.length === 0 ? (
         <EmptyState
           type="empty"
-          msg="Look's like you have no videos! Add some..."
+          msg="You haven't added any video to watch list..."
+          path="/explore"
+          buttonText="browse"
         />
       ) : (
         <>
