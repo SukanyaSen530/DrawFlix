@@ -1,9 +1,12 @@
 import axios from "axios";
 
 import { historyConstants } from "../context";
+import getConfig from "./config";
 
 // History
 export const loadHistoryVideos = async (dispatch) => {
+  const config = getConfig();
+
   try {
     dispatch({ type: historyConstants.LOADING });
     const response = await axios.get(
@@ -26,14 +29,16 @@ export const loadHistoryVideos = async (dispatch) => {
 };
 
 export const addToHistory = async (video, dispatch, openAlert) => {
+  const config = getConfig();
+
   try {
     const response = await axios.post(
-      `${process.env.REACT_APP_URL}/user/hisotry`,
-      config,
-      video
+      `${process.env.REACT_APP_URL}/user/history`,
+      { video },
+      config
     );
 
-    if (response.status === 200) {
+    if (response.status === 201) {
       openAlert({ message: "Added to History!", type: "info" });
       dispatch({
         type: historyConstants.ADD_TO_HISTORY,
@@ -46,6 +51,8 @@ export const addToHistory = async (video, dispatch, openAlert) => {
 };
 
 export const removeFromHistory = async (id, dispatch, openAlert) => {
+  const config = getConfig();
+
   try {
     const response = await axios.delete(
       `${process.env.REACT_APP_URL}/user/history/${id}`,
@@ -65,13 +72,14 @@ export const removeFromHistory = async (id, dispatch, openAlert) => {
 };
 
 export const clearHistory = async (dispatch, openAlert) => {
+  const config = getConfig();
+
+  dispatch({ type: historyConstants.LOADING });
   try {
     const response = await axios.delete(
       `${process.env.REACT_APP_URL}/user/history/all`,
       config
     );
-
-    console.log(response);
 
     if (response.status === 200) {
       openAlert({ message: "Cleared History!", type: "info" });

@@ -31,13 +31,33 @@
   }
 }
 
-@mixin video-container {
+@mixin video-container($normal-width, $small-width) {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(35rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax($normal-width, 1fr));
   gap: 4rem;
   justify-items: center;
 
   @include respond(tab-port) {
-    grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax($small-width 1fr));
   }
+}
+
+@mixin play-button {
+  position: absolute;
+  font-size: 5rem;
+  color: $defaultDark;
+  background: var(--bg-color);
+  padding: 0.5rem;
+  border-radius: 50%;
+  @include absCenter;
+  top: 20%;
+  opacity: 0;
+  transition: 0.4s;
+}
+
+@mixin overflow-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 1.8rem;
 }

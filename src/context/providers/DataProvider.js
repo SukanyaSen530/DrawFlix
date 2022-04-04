@@ -6,6 +6,7 @@ import { loadLikedVideos } from "../../services/likes";
 import { loadwatchLaterVideos } from "../../services/watchlater";
 
 import dataReducer from "../reducers/dataReducer";
+import { loadHistoryVideos } from "../../services/history";
 
 const dataContext = createContext();
 
@@ -64,6 +65,10 @@ const DataProvider = ({ children }) => {
   useEffect(() => {
     if (state.watchLater.items?.length === 0 && token)
       loadwatchLaterVideos(dispatch);
+  }, [token]);
+
+  useEffect(() => {
+    if (state.history.items?.length === 0 && token) loadHistoryVideos(dispatch);
   }, [token]);
 
   return (

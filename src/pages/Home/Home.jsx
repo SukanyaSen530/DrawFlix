@@ -11,7 +11,10 @@ export default function Home() {
           Learn from expert professionals
         </p>
         <div className="flex flex-center gap-md t-margin-md">
-          <Link to="/explore" className="btn btn-contained btn-md secondary">
+          <Link
+            to="/explore"
+            className="btn btn-contained btn-md secondaryLight"
+          >
             View Videos
           </Link>
           <Link to="/signup" className="btn btn-contained btn-md defaultDark">

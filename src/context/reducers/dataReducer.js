@@ -195,6 +195,7 @@ const userReducer = (state, action) => {
         ...state,
         history: {
           ...state.history,
+          loading: false,
           items: [],
         },
       };

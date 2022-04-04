@@ -1,0 +1,7 @@
+@import "../../sass/global";
+
+.history-section {
+  &__videos {
+    @include video-container(45rem, 40rem);
+  }
+}

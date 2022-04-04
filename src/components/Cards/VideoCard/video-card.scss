@@ -16,16 +16,7 @@
   }
 
   &__play {
-    position: absolute;
-    font-size: 5rem;
-    color: $defaultDark;
-    background: var(--bg-color);
-    padding: 0.5rem;
-    border-radius: 50%;
-    @include absCenter;
-    top: 20%;
-    opacity: 0;
-    transition: 0.4s;
+    @include play-button;
   }
 
   &__img-container:hover &__play {
@@ -41,10 +32,7 @@
     &__title {
       width: 70%;
       margin-left: 1rem;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      font-size: 1.8rem;
+      @include overflow-text;
     }
   }
 
