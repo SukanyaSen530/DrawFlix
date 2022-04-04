@@ -13,6 +13,7 @@ import {
   WatchLater,
   History,
   EmptyState,
+  Playlists,
 } from "../pages";
 import Mockman from "mockman-js";
 
@@ -48,11 +49,18 @@ const AllRoutes = () => {
           </ProtectedRoutes>
         }
       />
-      {/* <Route path="/playlists" element={<ProtectedRoutes></ProtectedRoutes>} />
+      <Route
+        path="/playlists"
+        element={
+          <ProtectedRoutes>
+            <Playlists />
+          </ProtectedRoutes>
+        }
+      />
       <Route
         path="/playlists/:id"
         element={<ProtectedRoutes></ProtectedRoutes>}
-      /> */}
+      />
       {/* Prevented Routes */}
       <Route
         path="/signin"
