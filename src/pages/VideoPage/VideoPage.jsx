@@ -103,6 +103,7 @@ const Video = () => {
             width="100%"
             height="100%"
             controls
+            playing={true}
             url={`https://www.youtube-nocookie.com/embed/${videoId}`}
             onStart={handleHistory}
           />
