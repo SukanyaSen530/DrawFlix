@@ -33,7 +33,7 @@ export const addToHistory = async (video, dispatch, openAlert) => {
 
   try {
     const response = await axios.post(
-      `${process.env.REACT_APP_URL}/user/hisotry`,
+      `${process.env.REACT_APP_URL}/user/history`,
       { video },
       config
     );
@@ -74,13 +74,14 @@ export const removeFromHistory = async (id, dispatch, openAlert) => {
 export const clearHistory = async (dispatch, openAlert) => {
   const config = getConfig();
 
+  dispatch({ type: historyConstants.LOADING });
   try {
     const response = await axios.delete(
       `${process.env.REACT_APP_URL}/user/history/all`,
       config
     );
 
-    if (response.status === 201) {
+    if (response.status === 200) {
       openAlert({ message: "Cleared History!", type: "info" });
       dispatch({
         type: historyConstants.CLEAR_HISTORY,

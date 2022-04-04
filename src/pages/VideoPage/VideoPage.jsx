@@ -68,7 +68,7 @@ const Video = () => {
   const handleWatchLater = () => {
     if (token) {
       if (inWatchLater) removeFromWatchLater(videoId, dataDispatch, openAlert);
-      else addToWatchLater(video, dataDispatch, openAlert);
+      else addToWatchLater(single_video, dataDispatch, openAlert);
     } else {
       navigate("/signin");
     }
@@ -76,7 +76,7 @@ const Video = () => {
 
   const handleHistory = () => {
     if (token && !inHistory) {
-      addToHistory(video, dataDispatch, openAlert);
+      addToHistory(single_video, dataDispatch, openAlert);
     }
   };
 
