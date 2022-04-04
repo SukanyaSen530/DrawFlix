@@ -34,7 +34,11 @@ const HorizontalCard = ({ _id, title, categoryName, creator, type }) => {
   return (
     <article className="horizontal-card">
       <Link to={`/explore/${_id}`} className="horizontal-card__img-container">
-        <img src={videoImage(_id, "lg")} className="img-responsive" />
+        <img
+          src={videoImage(_id, "lg")}
+          className="img-responsive"
+          alt={`${title}`}
+        />
         <BsPlayCircle className="horizontal-card__play" />
       </Link>
 
