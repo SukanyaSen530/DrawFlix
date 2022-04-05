@@ -39,7 +39,7 @@ const EmptyState = ({
         <p className="error-text t-margin-sm b-margin-sm">{msg}</p>
         {path ? (
           <button
-            className="btn btn-contained secondaryLight btn-sm"
+            className="btn btn-contained secondaryLight btn-sm empty-btn"
             onClick={() => navigate(path)}
           >
             {buttonText}

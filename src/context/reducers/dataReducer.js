@@ -6,6 +6,8 @@ import {
   playlistConstants,
 } from "../actions/dataActions";
 
+import { addedorRemovedVideo } from "../helper";
+
 const userReducer = (state, action) => {
   const { type, payload } = action;
 
@@ -197,6 +199,73 @@ const userReducer = (state, action) => {
           ...state.history,
           loading: false,
           items: [],
+        },
+      };
+
+    // Playlist
+
+    case playlistConstants.OPEN_MODAL:
+      return {
+        ...state,
+        playlist: {
+          ...state.playlist,
+          playlistModal: true,
+          video: payload,
+        },
+      };
+
+    case playlistConstants.CLOSE_MODAL:
+      return {
+        ...state,
+        playlist: {
+          ...state.playlist,
+          playlistModal: false,
+          video: {},
+        },
+      };
+
+    case playlistConstants.LOADING:
+      return { ...state, playlist: { ...state.playlist, loading: true } };
+
+    case playlistConstants.GET_PLAYLIST:
+      return {
+        ...state,
+        playlist: { ...state.playlist, loading: false, items: payload },
+      };
+
+    case playlistConstants.ERROR:
+      return {
+        ...state,
+        playlist: { ...state.playlist, loading: false, error: payload },
+      };
+
+    case playlistConstants.CREATE_PLAYLIST:
+      return {
+        ...state,
+        playlist: { ...state.playlist, items: payload },
+      };
+
+    case playlistConstants.DELETE_PLAYLIST:
+      return {
+        ...state,
+        playlist: { ...state.playlist, items: payload },
+      };
+
+    case playlistConstants.ADD_TO_PLAYLIST:
+      return {
+        ...state,
+        playlist: {
+          ...state.playlist,
+          items: addedorRemovedVideo(state.playlist.items, payload),
+        },
+      };
+
+    case playlistConstants.REMOVE_FROM_PLAYLIST:
+      return {
+        ...state,
+        playlist: {
+          ...state.playlist,
+          items: addedorRemovedVideo(state.playlist.items, payload),
         },
       };
   }

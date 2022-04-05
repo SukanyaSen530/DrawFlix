@@ -1,0 +1,27 @@
+@import "../../sass/global";
+
+.playlist-input {
+  width: 100%;
+
+  form {
+    width: 100%;
+    display: flex;
+  }
+
+  &__field {
+    padding: 1rem;
+    border-radius: var(--border-radius-sm);
+    border: none;
+    border-bottom: 2px solid grey;
+    width: 100%;
+    font-size: 1.7rem;
+
+    &:focus{
+        outline: none;
+    }
+  }
+
+  &__btn {
+    flex: 0 0 4rem;
+  }
+}

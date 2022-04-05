@@ -34,7 +34,9 @@ const History = () => {
       {historyVideos?.length === 0 ? (
         <EmptyState
           type="empty"
-          msg="Look's like you have no videos! Add some..."
+          msg="You haven't watched any video..."
+          path="/explore"
+          buttonText="browse"
         />
       ) : (
         <>
@@ -52,7 +54,7 @@ const History = () => {
 
           <div className="history-section__videos">
             {historyVideos?.map((video) => (
-              <HorizontalCard key={video._id} {...video} type="history" />
+              <HorizontalCard key={video._id} video={video} type="history" />
             ))}
           </div>
         </>

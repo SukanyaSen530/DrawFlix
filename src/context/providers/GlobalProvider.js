@@ -11,9 +11,6 @@ const initialState = {
     message: "",
     type: "",
   },
-  modal: {
-    show: false,
-  },
 };
 
 const GlobalProvider = ({ children }) => {

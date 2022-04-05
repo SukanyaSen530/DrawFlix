@@ -40,6 +40,7 @@ const Video = () => {
       history: { items: historyVideos },
     },
     dataDispatch,
+    handlers: { openPModal },
   } = useDataContext();
   const {
     globalHandlers: { openAlert },
@@ -80,6 +81,12 @@ const Video = () => {
     }
   };
 
+  const handleOpenPlaylist = () => {
+    if (token) {
+      openPModal(single_video);
+    } else openAlert({ message: "You need to login first!", type: "warning" });
+  };
+
   useEffect(() => {
     loadSingleVideo(videoId, dataDispatch);
   }, [dataDispatch]);
@@ -103,6 +110,7 @@ const Video = () => {
             width="100%"
             height="100%"
             controls
+            playing={true}
             url={`https://www.youtube-nocookie.com/embed/${videoId}`}
             onStart={handleHistory}
           />
@@ -127,7 +135,7 @@ const Video = () => {
                   <MdOutlineAccessTime />
                 )}
               </li>
-              <li onClick={() => alert("add to playlist")}>
+              <li onClick={handleOpenPlaylist}>
                 <CgPlayListAdd />
               </li>
             </ul>
