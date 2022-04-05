@@ -6,6 +6,8 @@ import {
   playlistConstants,
 } from "../actions/dataActions";
 
+import { addedorRemovedVideo } from "../helper";
+
 const userReducer = (state, action) => {
   const { type, payload } = action;
 
@@ -247,6 +249,24 @@ const userReducer = (state, action) => {
       return {
         ...state,
         playlist: { ...state.playlist, items: payload },
+      };
+
+    case playlistConstants.ADD_TO_PLAYLIST:
+      return {
+        ...state,
+        playlist: {
+          ...state.playlist,
+          items: addedorRemovedVideo(state.playlist.items, payload),
+        },
+      };
+
+    case playlistConstants.REMOVE_FROM_PLAYLIST:
+      return {
+        ...state,
+        playlist: {
+          ...state.playlist,
+          items: addedorRemovedVideo(state.playlist.items, payload),
+        },
       };
   }
 };

@@ -72,7 +72,7 @@ const VideoCard = ({ _id, title, categoryName, creatorImg, creator }) => {
     }
   };
 
-  const handleOPenPlaylist = () => {
+  const handleOpenPlaylist = () => {
     if (token) {
       openPModal(video);
     } else openAlert({ message: "You need to login first!", type: "warning" });
@@ -112,7 +112,7 @@ const VideoCard = ({ _id, title, categoryName, creatorImg, creator }) => {
                 <MdOutlineAccessTime />
               )}
             </li>
-            <li onClick={handleOPenPlaylist}>
+            <li onClick={handleOpenPlaylist}>
               <CgPlayListAdd />
             </li>
           </ul>

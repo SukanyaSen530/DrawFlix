@@ -40,6 +40,7 @@ const Video = () => {
       history: { items: historyVideos },
     },
     dataDispatch,
+    handlers: { openPModal },
   } = useDataContext();
   const {
     globalHandlers: { openAlert },
@@ -78,6 +79,12 @@ const Video = () => {
     if (token && !inHistory) {
       addToHistory(single_video, dataDispatch, openAlert);
     }
+  };
+
+  const handleOpenPlaylist = () => {
+    if (token) {
+      openPModal(single_video);
+    } else openAlert({ message: "You need to login first!", type: "warning" });
   };
 
   useEffect(() => {
@@ -128,7 +135,7 @@ const Video = () => {
                   <MdOutlineAccessTime />
                 )}
               </li>
-              <li onClick={() => alert("add to playlist")}>
+              <li onClick={handleOpenPlaylist}>
                 <CgPlayListAdd />
               </li>
             </ul>

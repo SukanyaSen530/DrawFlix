@@ -33,3 +33,14 @@ export const filterByCategory = (
       video.categoryName?.toLowerCase().includes(category?.toLowerCase())
     );
 };
+
+
+export const addedorRemovedVideo = (playlists, newPlaylist) => {
+  const index = playlists.findIndex((item) => item._id === newPlaylist._id);
+
+  return [
+    ...playlists.slice(0, index),
+    newPlaylist,
+    ...playlists.slice(index + 1),
+  ];
+};

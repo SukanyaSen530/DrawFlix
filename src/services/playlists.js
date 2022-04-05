@@ -50,20 +50,44 @@ export const createPlaylist = async (playlist, dispatch, openAlert) => {
   }
 };
 
-export const removePlaylist = async (id, dispatch, openAlert) => {
+
+
+export const addToPlaylist = async (id, video, dispatch, openAlert) => {
+  const config = getConfig();
+
+  try {
+    const response = await axios.post(
+      `${process.env.REACT_APP_URL}/user/playlists/${id}`,
+      { video },
+      config
+    );
+
+    if (response.status === 201) {
+      openAlert({ message: "Added to playlist!", type: "info" });
+      dispatch({
+        type: playlistConstants.ADD_TO_PLAYLIST,
+        payload: response.data.playlist,
+      });
+    }
+  } catch (e) {
+    openAlert({ message: e?.response?.data?.errors[0], type: "error" });
+  }
+};
+
+export const removeFromPlaylist = async (id, videoId, dispatch, openAlert) => {
   const config = getConfig();
 
   try {
     const response = await axios.delete(
-      `${process.env.REACT_APP_URL}/user/history/${id}`,
+      `${process.env.REACT_APP_URL}/user/playlists/${id}/${videoId}`,
       config
     );
 
     if (response.status === 200) {
-      openAlert({ message: "Deleted the playlist!", type: "info" });
+      openAlert({ message: "Removed from playlist!", type: "info" });
       dispatch({
-        type: playlistConstants.DELETE_PLAYLIST,
-        payload: response.data.playlists,
+        type: playlistConstants.ADD_TO_PLAYLIST,
+        payload: response.data.playlist,
       });
     }
   } catch (e) {
