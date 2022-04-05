@@ -59,7 +59,7 @@ const VideoCard = ({ _id, title, categoryName, creatorImg, creator }) => {
       if (inLikedVideos) removeFromLiked(_id, dataDispatch, openAlert);
       else addToLiked(video, dataDispatch, openAlert);
     } else {
-      openAlert({ message: "You need to login first!", type: "error" });
+      openAlert({ message: "You need to login first!", type: "warning" });
     }
   };
 
@@ -68,14 +68,14 @@ const VideoCard = ({ _id, title, categoryName, creatorImg, creator }) => {
       if (inWatchLater) removeFromWatchLater(_id, dataDispatch, openAlert);
       else addToWatchLater(video, dataDispatch, openAlert);
     } else {
-      openAlert({ message: "You need to login first!", type: "error" });
+      openAlert({ message: "You need to login first!", type: "warning" });
     }
   };
 
   const handleOPenPlaylist = () => {
     if (token) {
       openPModal(video);
-    } else openAlert({ message: "You need to login first!", type: "error" });
+    } else openAlert({ message: "You need to login first!", type: "warning" });
   };
 
   return (
