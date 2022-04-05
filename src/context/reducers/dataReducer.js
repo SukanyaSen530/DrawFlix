@@ -199,6 +199,37 @@ const userReducer = (state, action) => {
           items: [],
         },
       };
+
+    // Playlist
+
+    case playlistConstants.OPEN_MODAL:
+      return {
+        ...state,
+        playlist: {
+          ...state.playlist,
+          playlistModal: true,
+          video: payload,
+        },
+      };
+
+    case playlistConstants.CLOSE_MODAL:
+      return {
+        ...state,
+        playlist: {
+          ...state.playlist,
+          playlistModal: false,
+          video: {},
+        },
+      };
+
+    case playlistConstants.LOADING:
+      return { ...state, playlist: { ...state.playlist, loading: true } };
+
+    case playlistConstants.ERROR:
+      return {
+        ...state,
+        playlist: { ...state.playlist, loading: false, error: payload },
+      };
   }
 };
 

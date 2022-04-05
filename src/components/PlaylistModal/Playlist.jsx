@@ -2,9 +2,11 @@ import "./playlist.scss";
 
 const Playlist = () => {
   return (
-    <div>
-      <input type="checkbox" />
-      <label>Dummy</label>
+    <div className="playlist">
+      <div className="playlist__input-container">
+        <input type="checkbox" className="playlist__input" />
+        <label className="playlist__label">Dummy Playlist</label>
+      </div>
     </div>
   );
 };

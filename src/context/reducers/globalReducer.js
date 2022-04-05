@@ -12,12 +12,6 @@ const globalReducer = (state, action) => {
 
     case globalActions.CLOSE_ALERT:
       return { ...state, alert: { show: false, message: "", type: "" } };
-
-    case globalActions.OPEN_MODAL:
-      return { ...state, playlistModal: { show: true } };
-
-    case globalActions.CLOSE_MODAL:
-      return { ...state, playlistModal: { show: false } };
   }
 };
 

@@ -45,6 +45,7 @@
     width: 100%;
     @include respond(tab-port) {
        @include overflow-text;
+       font-size: 1.8rem;
     }
    
   }

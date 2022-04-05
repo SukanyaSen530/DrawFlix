@@ -7,6 +7,7 @@ import { loadwatchLaterVideos } from "../../services/watchlater";
 
 import dataReducer from "../reducers/dataReducer";
 import { loadHistoryVideos } from "../../services/history";
+import { playlistConstants } from "../actions/dataActions";
 
 const dataContext = createContext();
 
@@ -41,11 +42,18 @@ const initialState = {
     items: [],
     error: null,
     single_playlist: [],
+    playlistModal: false,
+    video: {},
   },
 };
 
 const DataProvider = ({ children }) => {
   const [state, dispatch] = useReducer(dataReducer, initialState);
+
+  const openPModal = (video) =>
+    dispatch({ type: playlistConstants.OPEN_MODAL, payload: video });
+
+  const closePModal = () => dispatch({ type: playlistConstants.CLOSE_MODAL });
 
   const filteredVideos = compose(filterByCategory, getSearchResults)(
     state,
@@ -77,6 +85,7 @@ const DataProvider = ({ children }) => {
         dataState: state,
         dataDispatch: dispatch,
         filteredVideos,
+        handlers: { openPModal, closePModal },
       }}
     >
       {children}

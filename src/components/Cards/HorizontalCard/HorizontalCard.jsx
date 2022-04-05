@@ -16,11 +16,16 @@ import { BiDotsVertical } from "react-icons/bi";
 import { RiDeleteBin7Fill } from "react-icons/ri";
 import { CgPlayListAdd } from "react-icons/cg";
 
-const HorizontalCard = ({ _id, title, categoryName, creator, type }) => {
+const HorizontalCard = ({ video, type }) => {
   const [open, setOpen] = useState(false);
   const domNode = useClickOutside(() => setOpen(false));
 
-  const { dataDispatch } = useDataContext();
+  const { _id, title, creator } = video;
+
+  const {
+    dataDispatch,
+    handlers: { openPModal },
+  } = useDataContext();
   const {
     globalHandlers: { openAlert },
   } = useGlobalContext();
@@ -30,6 +35,8 @@ const HorizontalCard = ({ _id, title, categoryName, creator, type }) => {
       removeFromHistory(_id, dataDispatch, openAlert);
     }
   };
+
+  const handleOPenPlaylist = () => openPModal(video);
 
   return (
     <article className="horizontal-card">
@@ -53,7 +60,7 @@ const HorizontalCard = ({ _id, title, categoryName, creator, type }) => {
           onClick={() => setOpen((val) => !val)}
         />
         <ul className={`menu__items ${open ? "active" : ""}`}>
-          <li onClick={() => alert("add to playlist")}>
+          <li onClick={handleOPenPlaylist}>
             <CgPlayListAdd />
           </li>
           <li onClick={handleDelete}>

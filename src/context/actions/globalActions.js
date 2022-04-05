@@ -1,6 +1,4 @@
 export const globalActions = {
   OPEN_ALERT: "OPEN_ALERT",
   CLOSE_ALERT: "CLOSE_ALERT",
-  OPEN_MODAL: "OPEN_MODAL",
-  CLOSE_MODAL: "CLOSE_MODAL",
 };

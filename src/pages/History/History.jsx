@@ -54,7 +54,7 @@ const History = () => {
 
           <div className="history-section__videos">
             {historyVideos?.map((video) => (
-              <HorizontalCard key={video._id} {...video} type="history" />
+              <HorizontalCard key={video._id} video={video} type="history" />
             ))}
           </div>
         </>

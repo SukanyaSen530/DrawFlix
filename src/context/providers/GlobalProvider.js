@@ -11,9 +11,6 @@ const initialState = {
     message: "",
     type: "",
   },
-  playlistModal: {
-    show: false,
-  },
 };
 
 const GlobalProvider = ({ children }) => {
@@ -24,14 +21,11 @@ const GlobalProvider = ({ children }) => {
 
   const closeAlert = () => dispatch({ type: globalActions.CLOSE_ALERT });
 
-  const openPModal = () => dispatch({ type: globalActions.OPEN_ALERT });
-  const closePModal = () => dispatch({ type: globalActions.CLOSE_MODAL });
-
   return (
     <globalContext.Provider
       value={{
         globalState: state,
-        globalHandlers: { openAlert, closeAlert, openPModal, closePModal },
+        globalHandlers: { openAlert, closeAlert },
       }}
     >
       {children}

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // Icons
 import { BiDotsVertical } from "react-icons/bi";
@@ -29,11 +29,15 @@ import "./video-card.scss";
 const VideoCard = ({ _id, title, categoryName, creatorImg, creator }) => {
   const [open, setOpen] = useState(false);
   const domNode = useClickOutside(() => setOpen(false));
-  const navigate = useNavigate();
 
   const video = { _id, title, categoryName, creatorImg, creator };
 
-  const { dataState, dataDispatch } = useDataContext();
+  const {
+    dataState,
+    dataDispatch,
+    handlers: { openPModal },
+  } = useDataContext();
+
   const {
     liked: { items: likedVideos },
     watchLater: { items: watchLaterVideos },
@@ -55,7 +59,7 @@ const VideoCard = ({ _id, title, categoryName, creatorImg, creator }) => {
       if (inLikedVideos) removeFromLiked(_id, dataDispatch, openAlert);
       else addToLiked(video, dataDispatch, openAlert);
     } else {
-      navigate("/signin");
+      openAlert({ message: "You need to login first!", type: "error" });
     }
   };
 
@@ -64,8 +68,14 @@ const VideoCard = ({ _id, title, categoryName, creatorImg, creator }) => {
       if (inWatchLater) removeFromWatchLater(_id, dataDispatch, openAlert);
       else addToWatchLater(video, dataDispatch, openAlert);
     } else {
-      navigate("/signin");
+      openAlert({ message: "You need to login first!", type: "error" });
     }
+  };
+
+  const handleOPenPlaylist = () => {
+    if (token) {
+      openPModal(video);
+    } else openAlert({ message: "You need to login first!", type: "error" });
   };
 
   return (
@@ -102,7 +112,7 @@ const VideoCard = ({ _id, title, categoryName, creatorImg, creator }) => {
                 <MdOutlineAccessTime />
               )}
             </li>
-            <li onClick={() => alert("add to playlist")}>
+            <li onClick={handleOPenPlaylist}>
               <CgPlayListAdd />
             </li>
           </ul>

@@ -1,6 +1,6 @@
 import "./App.scss";
 
-import { Footer, Navbar, Alert } from "./components";
+import { Footer, Navbar, Alert, PlayListModal } from "./components";
 import AllRoutes from "./routes/AllRoutes";
 
 const App = () => {
@@ -9,6 +9,7 @@ const App = () => {
       <Navbar />
       <section className="main-section">
         <Alert />
+        <PlayListModal />
         <AllRoutes />
       </section>
       <Footer />

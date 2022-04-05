@@ -5,6 +5,7 @@ import { HorizontalCard, VideoCard } from "./Cards";
 import Alert from "./Alert/Alert";
 import Loader from "./Loader/Loader";
 import SearchFilter from "./Filter/SearchFilter";
+import PlayListModal from "./PlaylistModal/PlayListModal";
 
 export {
   Navbar,
@@ -15,4 +16,5 @@ export {
   VideoCard,
   Loader,
   SearchFilter,
+  PlayListModal,
 };
