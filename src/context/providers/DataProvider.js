@@ -41,9 +41,9 @@ const initialState = {
     loading: false,
     items: [],
     error: null,
-    single_playlist: [],
     playlistModal: false,
     video: {},
+    single_playlist: {},
   },
 };
 

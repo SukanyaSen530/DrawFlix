@@ -55,6 +55,8 @@ export const createPlaylist = async (playlist, dispatch, openAlert) => {
 export const addToPlaylist = async (id, video, dispatch, openAlert) => {
   const config = getConfig();
 
+  if (!video || Object.keys(video).length === 0) return;
+
   try {
     const response = await axios.post(
       `${process.env.REACT_APP_URL}/user/playlists/${id}`,
@@ -88,6 +90,29 @@ export const removeFromPlaylist = async (id, videoId, dispatch, openAlert) => {
       dispatch({
         type: playlistConstants.ADD_TO_PLAYLIST,
         payload: response.data.playlist,
+      });
+    }
+  } catch (e) {
+    openAlert({ message: e?.response?.data?.errors[0], type: "error" });
+  }
+};
+
+export const deletePlaylist = async (id, dispatch, openAlert) => {
+  const config = getConfig();
+
+  try {
+    const response = await axios.delete(
+      `${process.env.REACT_APP_URL}/user/playlists/${id}`,
+      config
+    );
+
+    console.log(response);
+
+    if (response.status === 200) {
+      openAlert({ message: "Deleted the playlist!", type: "info" });
+      dispatch({
+        type: playlistConstants.DELETE_PLAYLIST,
+        payload: response.data.playlists,
       });
     }
   } catch (e) {

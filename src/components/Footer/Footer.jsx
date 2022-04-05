@@ -60,7 +60,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="footer__copyright b-margin-sm">
+      <div className="footer__copyright">
         <p>
           <strong>Disclaimer - </strong>
           This website is just for illustration purposes.

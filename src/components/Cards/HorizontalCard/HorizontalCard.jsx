@@ -4,6 +4,7 @@ import useClickOutside from "../../../hooks/useClickOutside";
 
 import { useDataContext, useGlobalContext } from "../../../context";
 import { removeFromHistory } from "../../../services/history";
+import { removeFromPlaylist } from "../../../services/playlists";
 
 // Image
 import { videoImage } from "../../../utils/imageGenerator";
@@ -16,7 +17,7 @@ import { BiDotsVertical } from "react-icons/bi";
 import { RiDeleteBin7Fill } from "react-icons/ri";
 import { CgPlayListAdd } from "react-icons/cg";
 
-const HorizontalCard = ({ video, type }) => {
+const HorizontalCard = ({ video, type, playlistId }) => {
   const [open, setOpen] = useState(false);
   const domNode = useClickOutside(() => setOpen(false));
 
@@ -33,9 +34,8 @@ const HorizontalCard = ({ video, type }) => {
   const handleDelete = () => {
     if (type === "history") {
       removeFromHistory(_id, dataDispatch, openAlert);
-    }
+    } else removeFromPlaylist(playlistId, _id, dataDispatch, openAlert);
   };
-
 
   const handleOpenPlaylist = () => openPModal(video);
 
