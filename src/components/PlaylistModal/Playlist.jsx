@@ -15,12 +15,12 @@ const Playlist = () => {
   } = useGlobalContext();
 
   const isVideoInPlaylist = (playlist) =>
-    playlist.videos.some((item) => item._id === video._id);
+    playlist.videos.some((item) => item?._id === video?._id);
 
   const handleAddRemove = (item) => {
     if (!isVideoInPlaylist(item))
       addToPlaylist(item._id, video, dataDispatch, openAlert);
-    else removeFromPlaylist(item._id, video._id, dataDispatch, openAlert);
+    else removeFromPlaylist(item?._id, video?._id, dataDispatch, openAlert);
   };
 
   return (

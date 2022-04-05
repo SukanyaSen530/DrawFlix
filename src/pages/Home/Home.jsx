@@ -6,7 +6,9 @@ export default function Home() {
   return (
     <section className="home-section flex flex-center">
       <div>
-        <h2 className="h2">DrawFlix a community for creative people!</h2>
+        <h2 className="h2 center-aligned">
+          DrawFlix a community for creative people!
+        </h2>
         <p className="para-md center-aligned">
           Learn from expert professionals
         </p>

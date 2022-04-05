@@ -268,6 +268,15 @@ const userReducer = (state, action) => {
           items: addedorRemovedVideo(state.playlist.items, payload),
         },
       };
+
+    case playlistConstants.DELETE_PLAYLIST:
+      return {
+        ...state,
+        playlist: {
+          ...state.playlist,
+          items: payload,
+        },
+      };
   }
 };
 

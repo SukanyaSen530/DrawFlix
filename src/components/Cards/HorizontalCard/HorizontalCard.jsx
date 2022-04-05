@@ -36,7 +36,6 @@ const HorizontalCard = ({ video, type }) => {
     }
   };
 
-
   const handleOpenPlaylist = () => openPModal(video);
 
   return (
