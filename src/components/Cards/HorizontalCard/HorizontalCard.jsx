@@ -37,8 +37,7 @@ const HorizontalCard = ({ video, type }) => {
   };
 
 
-  const handleOPenPlaylist = () => openPModal(video);
-
+  const handleOpenPlaylist = () => openPModal(video);
 
   return (
     <article className="horizontal-card">
@@ -62,7 +61,7 @@ const HorizontalCard = ({ video, type }) => {
           onClick={() => setOpen((val) => !val)}
         />
         <ul className={`menu__items ${open ? "active" : ""}`}>
-          <li onClick={handleOPenPlaylist}>
+          <li onClick={handleOpenPlaylist}>
             <CgPlayListAdd />
           </li>
           <li onClick={handleDelete}>
