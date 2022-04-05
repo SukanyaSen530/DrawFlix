@@ -225,10 +225,28 @@ const userReducer = (state, action) => {
     case playlistConstants.LOADING:
       return { ...state, playlist: { ...state.playlist, loading: true } };
 
+    case playlistConstants.GET_PLAYLIST:
+      return {
+        ...state,
+        playlist: { ...state.playlist, loading: false, items: payload },
+      };
+
     case playlistConstants.ERROR:
       return {
         ...state,
         playlist: { ...state.playlist, loading: false, error: payload },
+      };
+
+    case playlistConstants.CREATE_PLAYLIST:
+      return {
+        ...state,
+        playlist: { ...state.playlist, items: payload },
+      };
+
+    case playlistConstants.DELETE_PLAYLIST:
+      return {
+        ...state,
+        playlist: { ...state.playlist, items: payload },
       };
   }
 };

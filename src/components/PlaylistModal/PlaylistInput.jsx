@@ -2,11 +2,21 @@ import { useState } from "react";
 
 import "./playlist-input.scss";
 
+import { useDataContext, useGlobalContext } from "../../context";
+import { createPlaylist } from "../../services/playlists";
+
 const PlaylistInput = () => {
-  const [playlistName, setPlaylistName] = useState("");
+  const [title, setTitle] = useState("");
+
+  const { dataDispatch } = useDataContext();
+  const {
+    globalHandlers: { openAlert },
+  } = useGlobalContext();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    createPlaylist({ title }, dataDispatch, openAlert);
+    setTitle("");
   };
 
   return (
@@ -16,15 +26,15 @@ const PlaylistInput = () => {
           className="playlist-input__field"
           placeholder="Enter playlist name"
           required
-          value={playlistName}
-          onChange={(e) => setPlaylistName(e.target.value)}
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
         />
 
         <button
           className="playlist-input__btn btn-icon btn-sm secondaryDark"
           type="submit"
         >
-          <i class="fa-solid fa-file-circle-plus"></i>
+          <i className="fa-solid fa-file-circle-plus"></i>
         </button>
       </form>
     </div>
