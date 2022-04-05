@@ -106,11 +106,13 @@ export const deletePlaylist = async (id, dispatch, openAlert) => {
       config
     );
 
+    console.log(response);
+
     if (response.status === 200) {
       openAlert({ message: "Deleted the playlist!", type: "info" });
       dispatch({
         type: playlistConstants.DELETE_PLAYLIST,
-        payload: response.data.playlist,
+        payload: response.data.playlists,
       });
     }
   } catch (e) {

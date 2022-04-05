@@ -1,29 +1,35 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import "./playlists.scss";
 
 import EmptyState from "../EmptyState/EmptyState";
 import { Loader, HorizontalCard } from "../../components";
 import { useDataContext, useGlobalContext } from "../../context";
-import { Fragment } from "react/cjs/react.production.min";
+import { deletePlaylist } from "../../services/playlists";
 
 const Playlists = () => {
-  const [displayPlaylist, setDisplayPlaylist] = useState([]);
+  const [playlistId, setplaylistId] = useState("");
 
   const {
     dataState: { playlist },
+    dataDispatch,
     handlers: { openPModal },
   } = useDataContext();
+  const {
+    globalHandlers: { openAlert },
+  } = useGlobalContext();
 
   const { loading, items: playlists, error } = playlist;
 
   const handleCreate = () => openPModal();
 
-  console.log("displayPL", displayPlaylist);
+  const handleDelete = (e, id) => {
+    e.stopPropagation();
+    deletePlaylist(id, dataDispatch, openAlert);
+  };
 
-  useEffect(() => {
-    if (playlists.length !== 0) setDisplayPlaylist(playlists[0]);
-  }, []);
+  const displayPlaylist =
+    playlists.filter((item) => item._id === playlistId)[0] || {};
 
   if (loading) {
     return <Loader />;
@@ -50,7 +56,7 @@ const Playlists = () => {
           <div
             className="playlist-tabs__tab"
             key={item._id}
-            onClick={() => setDisplayPlaylist(item)}
+            onClick={() => setplaylistId(item._id)}
           >
             <p className="playlist-tabs__tab__title">{item.title}</p>
 
@@ -61,7 +67,7 @@ const Playlists = () => {
               </span>
               <button
                 className="btn btn-icon btn-sm danger"
-                onClick={() => alert("hi")}
+                onClick={(e) => handleDelete(e, item._id)}
               >
                 <i className="fa-solid fa-trash"></i>
               </button>
@@ -71,11 +77,17 @@ const Playlists = () => {
       </div>
       <div className="playlist-info">
         <span className="playlist-info__title">{displayPlaylist?.title}</span>
-        <div className="playlist-info__videos">
-          {displayPlaylist?.videos?.map((item) => (
-            <HorizontalCard key={item._id} video={item} />
-          ))}
-        </div>
+        {Object.keys(displayPlaylist).length > 0 && (
+          <div className="playlist-info__videos">
+            {displayPlaylist?.videos?.map((item) => (
+              <HorizontalCard
+                key={item._id}
+                video={item}
+                playlistId={displayPlaylist._id}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

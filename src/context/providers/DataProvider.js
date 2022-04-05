@@ -43,6 +43,7 @@ const initialState = {
     error: null,
     playlistModal: false,
     video: {},
+    single_playlist: {},
   },
 };
 
