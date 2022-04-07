@@ -3,11 +3,13 @@
 .playlist-section {
   display: flex;
   height: 100vh;
-  gap: 1rem;
+  gap: 3rem;
+  overflow-y: auto;
+  overflow-x: hidden;
 
   @include respond(phone){
     flex-direction: column;
-    min-height: 100vh;
+    min-height: fit-content;
   }
 }
 

@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import "./playlists.scss";
 
-import EmptyState from "../EmptyState/EmptyState";
+import { EmptyState } from "../";
 import { Loader, HorizontalCard } from "../../components";
 import { useDataContext, useGlobalContext } from "../../context";
 import { deletePlaylist } from "../../services/playlists";
@@ -31,6 +31,12 @@ const Playlists = () => {
   const displayPlaylist =
     playlists.filter((item) => item._id === playlistId)[0] || {};
 
+  useEffect(() => {
+    if (playlists.length !== 0) {
+      setplaylistId(playlists[0]._id);
+    }
+  }, [playlists]);
+
   if (loading) {
     return <Loader />;
   }
@@ -41,9 +47,9 @@ const Playlists = () => {
 
   return (
     <section className="playlist-section pad-default">
-      <div className="playlist-tabs">
+      <div className="playlist-tabs scrollbar">
         <div className="flex flex-space-between flex-center-y">
-          <p>All Playlists</p>
+          <p className="h4">All Playlists</p>
           <button
             className="btn btn-contained btn-sm defaultDark"
             onClick={handleCreate}
@@ -75,18 +81,34 @@ const Playlists = () => {
           </div>
         ))}
       </div>
-      <div className="playlist-info">
+      <div className="playlist-info scrollbar">
         <span className="playlist-info__title">{displayPlaylist?.title}</span>
-        {Object.keys(displayPlaylist).length > 0 && (
+        {Object.keys(displayPlaylist).length > 0 ? (
           <div className="playlist-info__videos">
-            {displayPlaylist?.videos?.map((item) => (
-              <HorizontalCard
-                key={item._id}
-                video={item}
-                playlistId={displayPlaylist._id}
+            {displayPlaylist?.videos?.length === 0 ? (
+              <EmptyState
+                type="empty"
+                msg="Your playlist is empty! :( Add videos..."
+                buttonText="browse"
+                path="/explore"
               />
-            ))}
+            ) : (
+              displayPlaylist?.videos?.map((item) => (
+                <HorizontalCard
+                  key={item._id}
+                  video={item}
+                  playlistId={displayPlaylist._id}
+                />
+              ))
+            )}
           </div>
+        ) : (
+          <EmptyState
+            type="empty"
+            msg="Look's like you don't have any playlist!"
+            buttonText="browse"
+            path="/explore"
+          />
         )}
       </div>
     </section>

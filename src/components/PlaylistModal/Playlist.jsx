@@ -24,7 +24,7 @@ const Playlist = () => {
   };
 
   return (
-    <div className="playlist">
+    <div className="playlist scrollbar">
       {playlists?.map((item) => (
         <div className="playlist__input-container" key={item._id}>
           <input

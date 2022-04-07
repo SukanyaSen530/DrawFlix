@@ -7,3 +7,24 @@
        padding: 12rem 2rem 5rem;
    }
 }
+
+
+.scrollbar::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+.scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+.scrollbar::-webkit-scrollbar-thumb {
+ background: rgb(103, 103, 103);
+ transition: 0.2s background ease;
+}
+
+/* Handle on hover */
+.scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgb(69, 71, 93);
+}
