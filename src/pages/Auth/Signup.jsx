@@ -17,6 +17,7 @@ const Signup = () => {
     globalHandlers: { openAlert },
   } = useGlobalContext();
 
+
   const [userData, setUserData] = useState({ ...initialFormValues });
   const [errors, setErrors] = useState({});
 

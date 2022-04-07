@@ -28,22 +28,3 @@
     @include overflow-text;
   }
 }
-
-.playlist::-webkit-scrollbar {
-  width: 10px;
-}
-
-/* Track */
-.playlist::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-/* Handle */
-.playlist::-webkit-scrollbar-thumb {
- background: var(--bg-color);
-}
-
-/* Handle on hover */
-.playlist::-webkit-scrollbar-thumb:hover {
-  background: $color-black;
-}

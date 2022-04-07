@@ -8,10 +8,11 @@ const PreventedRoutes = ({ children }) => {
     },
   } = useAuthContext();
 
-  let location = useLocation();
+  const location = useLocation();
+  const pathName = location?.state?.from?.pathname || "/explore";
 
   if (token) {
-    return <Navigate to="/explore" state={{ from: location }} replace />;
+    return <Navigate to={pathName} state={{ from: location }} replace />;
   }
 
   return children;

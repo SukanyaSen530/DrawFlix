@@ -12,25 +12,25 @@ const Footer = () => {
           <img className="footer__brand-icon" src={logo} alt="brand-logo" />
         </Link>
         <div>
-          <h4 className="b-margin-sm h4">My Account</h4>
+          <h4 className="h4">My Account</h4>
           <ul className="footer__links-container">
-            <Link to="/" className="footer__links">
+            {/* <Link to="/" className="footer__links">
               My Account
-            </Link>
-            <Link to="/" className="footer__links">
+            </Link> */}
+            <Link to="/playlists" className="footer__links">
               My Playlists
             </Link>
-            <Link to="/" className="footer__links">
+            <Link to="/history" className="footer__links">
               History
             </Link>
-            <Link to="/" className="footer__links">
+            <Link to="/liked" className="footer__links">
               Liked Videos
             </Link>
           </ul>
         </div>
 
         <div>
-          <h4 className="b-margin-sm h4">Connect With Us!</h4>
+          <h4 className="h4">Connect With Us!</h4>
           <ul className="footer__links-container">
             <a
               href="https://www.linkedin.com/in/sukanya-sen-615980130/"
