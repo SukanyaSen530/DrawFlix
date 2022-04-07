@@ -31,6 +31,7 @@
 - Authentication: 
     - User Signup 
     - User Login
+- Responsive
 
 # Demo
 
