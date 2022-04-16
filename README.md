@@ -25,9 +25,16 @@
 - Search video
 - Individual video page
 - Like/Unlike a video
-- Add/Remove  video to Watch Later
+- Add/Remove video from Watch Later
 - History management
+    - Add video to history after you watched a video
+    - Remove video from history
+    - Clear history
 - Playlist management 
+    - Create a playlist
+    - Delete a playlist
+    - Add a video to multiple playlist
+    - Remove video from a playlist
 - Authentication: 
     - User Signup 
     - User Login
