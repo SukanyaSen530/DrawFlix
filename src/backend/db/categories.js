@@ -23,4 +23,12 @@ export const categories = [
     _id: "c6",
     categoryName: "Pencil Sketch",
   },
+  {
+    _id: "c7",
+    categoryName: "Pencilcolor",
+  },
+  {
+    _id: "c8",
+    categoryName: "Charcoal",
+  },
 ];
