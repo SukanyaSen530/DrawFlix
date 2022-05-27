@@ -101,6 +101,8 @@ const Video = () => {
 
   const { _id, title, categoryName, creatorImg, creator, description } =
     single_video;
+  
+  console.log("hahahah", single_video);
 
   return (
     <section className="video-section pad-default">
