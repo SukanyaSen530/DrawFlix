@@ -26,7 +26,14 @@ import useClickOutside from "../../../hooks/useClickOutside";
 // Styles
 import "./video-card.scss";
 
-const VideoCard = ({ _id, title, categoryName, creatorImg, creator }) => {
+const VideoCard = ({
+  _id,
+  title,
+  categoryName,
+  creatorImg,
+  creator,
+  createdAt,
+}) => {
   const [open, setOpen] = useState(false);
   const domNode = useClickOutside(() => setOpen(false));
 
@@ -120,6 +127,15 @@ const VideoCard = ({ _id, title, categoryName, creatorImg, creator }) => {
       </div>
       <div className="video-card__info">
         <span>{creator}</span> <span>|</span> <span>{categoryName}</span>
+        <p>
+          Aired on{" "}
+          {new Date(createdAt).toLocaleDateString("en-US", {
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          })}
+        </p>
       </div>
     </article>
   );

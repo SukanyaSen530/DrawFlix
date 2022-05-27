@@ -34,6 +34,25 @@ export const filterByCategory = (
     );
 };
 
+const compareByTimeDesc = ({ createdAt: video1 }, { createdAt: video2 }) =>
+  new Date(video2) - new Date(video1);
+
+const compareByTimeAsc = ({ createdAt: video1 }, { createdAt: video2 }) =>
+  new Date(video1) - new Date(video2);
+
+export const filterByTime = (
+  {
+    vid: {
+      filterOptions: { time },
+    },
+  },
+  data
+) => {
+  return time === "latest"
+    ? [...data].sort(compareByTimeDesc)
+    : [...data].sort(compareByTimeAsc);
+};
+
 
 export const addedorRemovedVideo = (playlists, newPlaylist) => {
   const index = playlists.findIndex((item) => item._id === newPlaylist._id);
