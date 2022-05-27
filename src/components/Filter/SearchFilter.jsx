@@ -7,7 +7,7 @@ const SearchFilter = ({ categories }) => {
   const {
     dataState: {
       vid: {
-        filterOptions: { category, searchQuery },
+        filterOptions: { category, time, searchQuery },
       },
     },
     dataDispatch,
@@ -29,8 +29,24 @@ const SearchFilter = ({ categories }) => {
     });
   };
 
+  const handleFilterByTime = (e) => {
+    dataDispatch({
+      type: videoConstants.FILTER_BY_TIME,
+      payload: e.target.value,
+    });
+  };
+
   return (
     <div className="search-filter b-margin-lg">
+      <select
+        className="category-dropdown"
+        value={time}
+        onChange={handleFilterByTime}
+      >
+        <option value="latest">Latest</option>
+        <option value="oldest">Oldest</option>
+      </select>
+
       <select
         className="category-dropdown"
         value={category}

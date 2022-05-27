@@ -58,6 +58,18 @@ const userReducer = (state, action) => {
         },
       };
 
+    case videoConstants.FILTER_BY_TIME:
+      return {
+        ...state,
+        vid: {
+          ...state.vid,
+          filterOptions: {
+            ...state.vid.filterOptions,
+            time: payload,
+          },
+        },
+      };
+
     case videoConstants.SEARCH:
       return {
         ...state,

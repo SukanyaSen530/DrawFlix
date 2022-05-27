@@ -1,6 +1,11 @@
 import { useReducer, useContext, createContext, useEffect } from "react";
 
-import { compose, filterByCategory, getSearchResults } from "../helper";
+import {
+  compose,
+  filterByCategory,
+  filterByTime,
+  getSearchResults,
+} from "../helper";
 import { useAuthContext } from "./AuthProvider";
 import { loadLikedVideos } from "../../services/likes";
 import { loadwatchLaterVideos } from "../../services/watchlater";
@@ -20,6 +25,7 @@ const initialState = {
     filterOptions: {
       searchQuery: "",
       category: "",
+      time: "latest",
     },
   },
   liked: {
@@ -55,10 +61,11 @@ const DataProvider = ({ children }) => {
 
   const closePModal = () => dispatch({ type: playlistConstants.CLOSE_MODAL });
 
-  const filteredVideos = compose(filterByCategory, getSearchResults)(
-    state,
-    state?.vid?.items || []
-  );
+  const filteredVideos = compose(
+    filterByCategory,
+    filterByTime,
+    getSearchResults
+  )(state, state?.vid?.items || []);
 
   const {
     authState: {
