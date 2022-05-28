@@ -22,6 +22,7 @@ import {
   removeFromWatchLater,
 } from "../../../services/watchlater";
 import useClickOutside from "../../../hooks/useClickOutside";
+import { format } from "../../../utils/dateFormat";
 
 // Styles
 import "./video-card.scss";
@@ -130,14 +131,7 @@ const VideoCard = ({ video }) => {
         <span>{creator}</span> <span>|</span> <span>{categoryName}</span>
         <p>
           <span>
-            {" "}
-            Aired on{" "}
-            {new Date(createdAt).toLocaleDateString("en-US", {
-              weekday: "long",
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })}
+            Aired on {new Date(createdAt).toLocaleDateString("en-US", format)}
           </span>
           <span>{viewCount} views</span>
         </p>

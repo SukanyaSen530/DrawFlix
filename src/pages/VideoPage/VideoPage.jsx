@@ -11,6 +11,7 @@ import {
   useAuthContext,
 } from "../../context";
 import { loadSingleVideo } from "../../services/videos";
+import { format } from "../../utils/dateFormat";
 
 import { AiOutlineLike, AiFillLike } from "react-icons/ai";
 import { MdOutlineAccessTime, MdOutlineAccessTimeFilled } from "react-icons/md";
@@ -164,14 +165,7 @@ const Video = () => {
 
           <p className="video-section__info">
             <span>
-              {" "}
-              Aired on{" "}
-              {new Date(createdAt).toLocaleDateString("en-US", {
-                weekday: "long",
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}
+              Aired on {new Date(createdAt).toLocaleDateString("en-US", format)}
             </span>
             <span>{stats?.viewCount} views</span>
           </p>

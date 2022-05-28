@@ -57,14 +57,6 @@ const userReducer = (state, action) => {
               item._id === payload._id ? payload : item
             ),
           },
-          // playlist: {
-          //   ...state.playlist,
-          //   items: state.playlist.items.map((item) =>
-          //     item.videos.map((video) =>
-          //       video._id === payload._id ? payload : video
-          //     )
-          //   ),
-          // },
           vid: {
             ...state.vid,
             items: state.vid.items?.map((item) =>

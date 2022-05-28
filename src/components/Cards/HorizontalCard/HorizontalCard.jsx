@@ -5,6 +5,7 @@ import useClickOutside from "../../../hooks/useClickOutside";
 import { useDataContext, useGlobalContext } from "../../../context";
 import { removeFromHistory } from "../../../services/history";
 import { removeFromPlaylist } from "../../../services/playlists";
+import { format } from "../../../utils/dateFormat";
 
 // Image
 import { videoImage } from "../../../utils/imageGenerator";
@@ -63,12 +64,7 @@ const HorizontalCard = ({ video, type, playlistId }) => {
         <p className="horizontal-card__details">
           <span>
             Aired on
-            {new Date(createdAt).toLocaleDateString("en-US", {
-              weekday: "long",
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })}
+            {new Date(createdAt).toLocaleDateString("en-US", format)}
           </span>
         </p>
       </div>
