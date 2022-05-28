@@ -92,6 +92,7 @@ const Video = () => {
     loadSingleVideo(videoId, dataDispatch);
   }, [dataDispatch]);
 
+
   if (loading) {
     return <Loader />;
   }
