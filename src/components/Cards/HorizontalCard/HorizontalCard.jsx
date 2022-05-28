@@ -21,7 +21,13 @@ const HorizontalCard = ({ video, type, playlistId }) => {
   const [open, setOpen] = useState(false);
   const domNode = useClickOutside(() => setOpen(false));
 
-  const { _id, title, creator } = video;
+  const {
+    _id,
+    title,
+    creator,
+    createdAt,
+    stats: { viewCount },
+  } = video;
 
   const {
     dataDispatch,
@@ -53,6 +59,18 @@ const HorizontalCard = ({ video, type, playlistId }) => {
       <div className="horizontal-card__content">
         <p className="horizontal-card__title t-margin-sm">{title}</p>
         <p>{creator}</p>
+
+        <p className="horizontal-card__details">
+          <span>
+            Aired on
+            {new Date(createdAt).toLocaleDateString("en-US", {
+              weekday: "long",
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
+          </span>
+        </p>
       </div>
 
       <div className="horizontal-card__menu menu" ref={domNode}>

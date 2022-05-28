@@ -42,6 +42,9 @@
 
      p{
        font-size: 1.3rem;
+       display: flex;
+       justify-content: space-between;
+       padding-right: 2rem;
      }
 
      span:not(:first-child){

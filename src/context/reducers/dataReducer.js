@@ -5,6 +5,12 @@ import {
   historyConstants,
   playlistConstants,
 } from "../actions/dataActions";
+import { tokenName } from "../providers/AuthProvider";
+
+const isLoggedIn = () => {
+  if (window.localStorage.getItem(tokenName)) return true;
+  else return false;
+};
 
 import { addedorRemovedVideo } from "../helper";
 
@@ -30,15 +36,59 @@ const userReducer = (state, action) => {
       };
 
     case videoConstants.GET_VIDEO:
-      return {
-        ...state,
-        vid: {
-          ...state.vid,
-          error: null,
-          loading: false,
-          single_video: payload,
-        },
-      };
+      if (isLoggedIn()) {
+        return {
+          ...state,
+          liked: {
+            ...state.liked,
+            items: state.liked.items?.map((item) =>
+              item._id === payload._id ? payload : item
+            ),
+          },
+          watchLater: {
+            ...state.watchLater,
+            items: state.watchLater.items?.map((item) =>
+              item._id === payload._id ? payload : item
+            ),
+          },
+          history: {
+            ...state.history,
+            items: state.history.items?.map((item) =>
+              item._id === payload._id ? payload : item
+            ),
+          },
+          // playlist: {
+          //   ...state.playlist,
+          //   items: state.playlist.items.map((item) =>
+          //     item.videos.map((video) =>
+          //       video._id === payload._id ? payload : video
+          //     )
+          //   ),
+          // },
+          vid: {
+            ...state.vid,
+            items: state.vid.items?.map((item) =>
+              item._id === payload._id ? payload : item
+            ),
+            error: null,
+            loading: false,
+            single_video: payload,
+          },
+        };
+      } else {
+        return {
+          ...state,
+          vid: {
+            ...state.vid,
+            items: state.vid.items?.map((item) =>
+              item._id === payload._id ? payload : item
+            ),
+            error: null,
+            loading: false,
+            single_video: payload,
+          },
+        };
+      }
 
     case videoConstants.ERROR:
       return {

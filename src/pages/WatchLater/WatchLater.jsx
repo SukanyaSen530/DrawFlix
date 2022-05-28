@@ -37,7 +37,7 @@ const WatchLater = () => {
 
           <div className="watchLater-section__videos">
             {watchLaterVideos?.map((video) => (
-              <VideoCard key={video._id} {...video} />
+              <VideoCard key={video._id} video={video} />
             ))}
           </div>
         </>

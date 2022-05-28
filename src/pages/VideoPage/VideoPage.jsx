@@ -99,10 +99,16 @@ const Video = () => {
     return <EmptyState msg={error} type="error" path="/explore" />;
   }
 
-  const { _id, title, categoryName, creatorImg, creator, description } =
-    single_video;
-  
-  console.log("hahahah", single_video);
+  const {
+    _id,
+    title,
+    categoryName,
+    creatorImg,
+    creator,
+    description,
+    stats,
+    createdAt,
+  } = single_video;
 
   return (
     <section className="video-section pad-default">
@@ -155,6 +161,20 @@ const Video = () => {
             <span>|</span>
             <p>{categoryName}</p>
           </div>
+
+          <p className="video-section__info">
+            <span>
+              {" "}
+              Aired on{" "}
+              {new Date(createdAt).toLocaleDateString("en-US", {
+                weekday: "long",
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
+            </span>
+            <span>{stats?.viewCount} views</span>
+          </p>
           <p className="divider"></p>
 
           <p className="video-section__description">
