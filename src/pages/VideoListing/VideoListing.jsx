@@ -5,6 +5,7 @@ import { useDataContext } from "../../context";
 import { loadVideos, getCategories } from "../../services/videos";
 import { Loader, VideoCard, SearchFilter } from "../../components";
 import EmptyState from "../EmptyState/EmptyState";
+import useScrollToTop from "../../hooks/useScrollToTop";
 
 import "./video-listing.scss";
 
@@ -18,6 +19,8 @@ const VideoListing = () => {
   } = useDataContext();
 
   const [categories, setCategories] = useState([]);
+
+  useScrollToTop();
 
   useEffect(() => {
     if (filteredVideos?.length === 0) loadVideos(dataDispatch);

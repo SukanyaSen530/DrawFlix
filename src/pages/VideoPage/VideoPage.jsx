@@ -23,6 +23,7 @@ import {
   removeFromWatchLater,
 } from "../../services/watchlater";
 import { addToHistory } from "../../services/history";
+import useScrollToTop from "../../hooks/useScrollToTop";
 
 import "./video-page.scss";
 
@@ -32,7 +33,6 @@ const Video = () => {
 
   const navigate = useNavigate();
   const [readMore, setReadMore] = useState(false);
-
   const {
     dataState: {
       vid: { loading, error, single_video },
@@ -51,6 +51,8 @@ const Video = () => {
       user: { token },
     },
   } = useAuthContext();
+
+  useScrollToTop();
 
   const inLikedVideos = likedVideos.some(
     (item) => item._id === single_video._id
@@ -91,7 +93,6 @@ const Video = () => {
   useEffect(() => {
     loadSingleVideo(videoId, dataDispatch);
   }, [dataDispatch]);
-
 
   if (loading) {
     return <Loader />;

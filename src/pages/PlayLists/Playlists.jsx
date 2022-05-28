@@ -6,6 +6,7 @@ import { EmptyState } from "../";
 import { Loader, HorizontalCard } from "../../components";
 import { useDataContext, useGlobalContext } from "../../context";
 import { deletePlaylist } from "../../services/playlists";
+import useScrollToTop from "../../hooks/useScrollToTop";
 
 const Playlists = () => {
   const [playlistId, setplaylistId] = useState("");
@@ -30,6 +31,8 @@ const Playlists = () => {
 
   const displayPlaylist =
     playlists.filter((item) => item._id === playlistId)[0] || {};
+
+  useScrollToTop();
 
   useEffect(() => {
     if (playlists.length !== 0) {
