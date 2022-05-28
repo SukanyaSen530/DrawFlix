@@ -37,7 +37,7 @@ const Liked = () => {
 
           <div className="liked-section__videos">
             {likedVideos?.map((video) => (
-              <VideoCard key={video._id} {...video} />
+              <VideoCard key={video._id} video={video} />
             ))}
           </div>
         </>

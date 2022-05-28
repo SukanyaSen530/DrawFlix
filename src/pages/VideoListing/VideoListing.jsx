@@ -41,7 +41,7 @@ const VideoListing = () => {
       {filteredVideos.length !== 0 ? (
         <div className="explore-section__videos">
           {filteredVideos?.map((video) => (
-            <VideoCard key={video._id} {...video} />
+            <VideoCard key={video._id} video={video} />
           ))}
         </div>
       ) : (

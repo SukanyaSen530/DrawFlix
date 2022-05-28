@@ -19,11 +19,11 @@
     flex: 0 0 30rem;
     position: relative;
 
-    @include respond(tab-land){
+    @include respond(tab-land) {
       flex: 0 0 25rem;
     }
 
-    @include respond(phone){
+    @include respond(phone) {
       flex: 0 0 20rem;
     }
 
@@ -46,16 +46,22 @@
     overflow: hidden;
   }
 
+  &__details {
+    font-size: 1.3rem;
+    & > * {
+      margin-right: 2rem;
+    }
+  }
+
   &__title {
     font-size: 2rem;
     font-weight: 600;
     color: $default;
     width: 100%;
     @include respond(tab-port) {
-       @include overflow-text;
-       font-size: 1.8rem;
+      @include overflow-text;
+      font-size: 1.8rem;
     }
-   
   }
 
   &__menu {
