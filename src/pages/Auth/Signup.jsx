@@ -10,6 +10,7 @@ import { initialFormValues, validateInputs } from "./helper";
 
 import { registerUser } from "../../services/authentication";
 import { useAuthContext, useGlobalContext } from "../../context";
+import useScrollToTop from "../../hooks/useScrollToTop";
 
 const Signup = () => {
   const { authDispatch } = useAuthContext();
@@ -17,6 +18,7 @@ const Signup = () => {
     globalHandlers: { openAlert },
   } = useGlobalContext();
 
+  useScrollToTop();
 
   const [userData, setUserData] = useState({ ...initialFormValues });
   const [errors, setErrors] = useState({});
