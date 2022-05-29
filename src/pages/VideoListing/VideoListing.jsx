@@ -71,6 +71,7 @@ const VideoListing = () => {
   return (
     <section className="explore-section pad-default">
       <SearchFilter categories={categories} />
+
       {filteredVideos.length !== 0 ? (
         <>
           <div className="explore-section__videos">

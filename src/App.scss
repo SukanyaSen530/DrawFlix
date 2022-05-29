@@ -1,6 +1,7 @@
 .main-section {
   min-height: calc(100vh - 10rem);
   position: relative;
+  overflow-x: hidden;
 
   .alert{
     position: fixed;

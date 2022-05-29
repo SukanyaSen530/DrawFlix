@@ -24,7 +24,7 @@ const initialState = {
     single_video: {},
     filterOptions: {
       searchQuery: "",
-      category: "",
+      category: "all",
       time: "latest",
     },
   },
