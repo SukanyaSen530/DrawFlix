@@ -6,6 +6,7 @@ import Alert from "./Alert/Alert";
 import Loader from "./Loader/Loader";
 import SearchFilter from "./Filter/SearchFilter";
 import PlayListModal from "./PlaylistModal/PlayListModal";
+import Tab from "./Tab/Tab";
 
 export {
   Navbar,
@@ -17,4 +18,5 @@ export {
   Loader,
   SearchFilter,
   PlayListModal,
+  Tab,
 };

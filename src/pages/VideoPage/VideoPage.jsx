@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import ReactPlayer from "react-player/youtube";
 
-import { Loader } from "../../components";
+import { Loader, VideoCard } from "../../components";
 import { EmptyState } from "..";
 
 import {
@@ -35,7 +35,7 @@ const Video = () => {
   const [readMore, setReadMore] = useState(false);
   const {
     dataState: {
-      vid: { loading, error, single_video },
+      vid: { loading, error, single_video, items: videos },
       liked: { items: likedVideos },
       watchLater: { items: watchLaterVideos },
       history: { items: historyVideos },
@@ -114,77 +114,95 @@ const Video = () => {
   } = single_video;
 
   return (
-    <section className="video-section pad-default">
-      <div className="video-section__display">
-        <div className="video-section__frame">
-          <ReactPlayer
-            width="100%"
-            height="100%"
-            controls
-            playing={true}
-            url={`https://www.youtube-nocookie.com/embed/${videoId}`}
-            onStart={handleHistory}
-          />
-        </div>
-
-        <div className="video-section__content">
-          <div className="t-margin-md flex flex-space-between flex-center-y b-margin-sm">
-            <span className="video-section__title">{title}</span>
-
-            <ul className="video-section__menu">
-              <li onClick={handleLike}>
-                {inLikedVideos && token ? (
-                  <AiFillLike className="item-active" />
-                ) : (
-                  <AiOutlineLike />
-                )}
-              </li>
-              <li onClick={handleWatchLater}>
-                {inWatchLater && token ? (
-                  <MdOutlineAccessTimeFilled className="item-active" />
-                ) : (
-                  <MdOutlineAccessTime />
-                )}
-              </li>
-              <li onClick={handleOpenPlaylist}>
-                <CgPlayListAdd />
-              </li>
-            </ul>
-          </div>
-          <p className="divider"></p>
-          <div className="video-section__creator-details flex flex-center-y">
-            <figure className="avatar avatar-lg">
-              <img
-                className="avatar-img"
-                src={creatorImg}
-                alt="creator image"
-              />
-            </figure>
-            <p>{creator}</p>
-            <span>|</span>
-            <p>{categoryName}</p>
+    <>
+      <section className="video-section pad-default">
+        <div className="video-section__display">
+          <div className="video-section__frame">
+            <ReactPlayer
+              width="100%"
+              height="100%"
+              controls
+              playing={true}
+              url={`https://www.youtube-nocookie.com/embed/${videoId}`}
+              onStart={handleHistory}
+            />
           </div>
 
-          <p className="video-section__info">
-            <span>
-              Aired on {new Date(createdAt).toLocaleDateString("en-US", format)}
-            </span>
-            <span>{stats?.viewCount} views</span>
-          </p>
-          <p className="divider"></p>
+          <div className="video-section__content">
+            <div className="t-margin-md flex flex-space-between flex-center-y b-margin-sm">
+              <span className="video-section__title">{title}</span>
 
-          <p className="video-section__description">
-            {readMore ? description : `${description?.substr(0, 200)}... `}
-            <button
-              onClick={() => setReadMore((val) => !val)}
-              className="video-section__description__btn"
-            >
-              {readMore ? "Read Less" : "Read More"}
-            </button>
-          </p>
+              <ul className="video-section__menu">
+                <li onClick={handleLike}>
+                  {inLikedVideos && token ? (
+                    <AiFillLike className="item-active" />
+                  ) : (
+                    <AiOutlineLike />
+                  )}
+                </li>
+                <li onClick={handleWatchLater}>
+                  {inWatchLater && token ? (
+                    <MdOutlineAccessTimeFilled className="item-active" />
+                  ) : (
+                    <MdOutlineAccessTime />
+                  )}
+                </li>
+                <li onClick={handleOpenPlaylist}>
+                  <CgPlayListAdd />
+                </li>
+              </ul>
+            </div>
+            <p className="divider"></p>
+            <div className="video-section__creator-details flex flex-center-y">
+              <figure className="avatar avatar-lg">
+                <img
+                  className="avatar-img"
+                  src={creatorImg}
+                  alt="creator image"
+                />
+              </figure>
+              <p>{creator}</p>
+              <span>|</span>
+              <p>{categoryName}</p>
+            </div>
+
+            <p className="video-section__info">
+              <span>
+                Aired on{" "}
+                {new Date(createdAt).toLocaleDateString("en-US", format)}
+              </span>
+              <span>{stats?.viewCount} views</span>
+            </p>
+            <p className="divider"></p>
+
+            <p className="video-section__description">
+              {readMore ? description : `${description?.substr(0, 200)}... `}
+              <button
+                onClick={() => setReadMore((val) => !val)}
+                className="video-section__description__btn"
+              >
+                {readMore ? "Read Less" : "Read More"}
+              </button>
+            </p>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+      <section className="related-videos">
+        {videos?.length > 0 && <h3 className="h3">Relates Videos</h3>}
+        <div className="related-videos__caraousel scrollbar">
+          {videos
+            ?.filter((video) =>
+              video?.categoryName
+                ?.toLowerCase()
+                .includes(categoryName?.toLowerCase())
+            )
+            .filter((video) => video._id !== _id)
+            .map((video) => (
+              <VideoCard key={video._id} video={video} />
+            ))}
+        </div>
+      </section>
+    </>
   );
 };
 
