@@ -32,12 +32,20 @@ import {
   addVideoToPlaylistHandler,
   removeVideoFromPlaylistHandler,
 } from "./backend/controllers/PlaylistController";
-import { users } from "./backend/db/users";
 import {
   addItemToWatchLaterVideos,
   getWatchLaterVideosHandler,
   removeItemFromWatchLaterVideos,
 } from "./backend/controllers/WatchLaterController";
+import {
+  getUserVideoNotes,
+  addNewNote,
+  updateNote,
+  deleteNote,
+  clearVideoNotes,
+} from "./backend/controllers/NotesController";
+import { users } from "./backend/db/users";
+
 export function makeServer({ environment = "development" } = {}) {
   return new Server({
     serializers: {
@@ -53,6 +61,7 @@ export function makeServer({ environment = "development" } = {}) {
       history: Model,
       playlist: Model,
       watchlater: Model,
+      notes: Model,
     },
 
     // Runs on the start of the server
@@ -131,6 +140,22 @@ export function makeServer({ environment = "development" } = {}) {
         removeVideoFromHistoryHandler.bind(this)
       );
       this.delete("/user/history/all", clearHistoryHandler.bind(this));
+
+      // notes route
+      this.get("/user/watchlater", getWatchLaterVideosHandler.bind(this));
+      this.post("/user/watchlater", addItemToWatchLaterVideos.bind(this));
+      this.delete(
+        "/user/watchlater/:videoId",
+        removeItemFromWatchLaterVideos.bind(this)
+      );
+
+      // notes routes (private)
+      // /api/user/notes/:videoId
+      this.get("/user/notes/:videoId", getUserVideoNotes.bind(this));
+      this.post("/user/notes/:videoId", addNewNote.bind(this));
+      this.put("/user/notes/:videoId/:noteId", updateNote.bind(this));
+      this.delete("/user/notes/:videoId/:noteId", deleteNote.bind(this));
+      this.delete("/user/notes/:videoId/all", clearVideoNotes.bind(this));
     },
   });
 }
