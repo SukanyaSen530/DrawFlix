@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import ReactPlayer from "react-player/youtube";
 
-import { Loader, VideoCard } from "../../components";
+import { Loader } from "../../components";
 import { EmptyState } from "..";
 
 import {
@@ -26,6 +26,8 @@ import { addToHistory } from "../../services/history";
 import useScrollToTop from "../../hooks/useScrollToTop";
 
 import "./video-page.scss";
+import RelatedVideos from "./RelatedVideos";
+import Notes from "./Notes/Notes";
 
 const Video = () => {
   const params = useParams();
@@ -35,7 +37,13 @@ const Video = () => {
   const [readMore, setReadMore] = useState(false);
   const {
     dataState: {
-      vid: { loading, error, single_video, items: videos },
+      vid: {
+        loading,
+        error,
+        single_video,
+        items: videos,
+        filterOptions: { category: stateCategory },
+      },
       liked: { items: likedVideos },
       watchLater: { items: watchLaterVideos },
       history: { items: historyVideos },
@@ -113,6 +121,14 @@ const Video = () => {
     createdAt,
   } = single_video;
 
+  const filteredVideos = videos
+    ?.filter((video) =>
+      video?.categoryName
+        .toLowerCase()
+        .includes(stateCategory ? stateCategory.toLowerCase() : "")
+    )
+    .filter((video) => video._id !== _id);
+
   return (
     <>
       <section className="video-section pad-default">
@@ -127,7 +143,6 @@ const Video = () => {
               onStart={handleHistory}
             />
           </div>
-
           <div className="video-section__content">
             <div className="t-margin-md flex flex-space-between flex-center-y b-margin-sm">
               <span className="video-section__title">{title}</span>
@@ -186,22 +201,13 @@ const Video = () => {
             </p>
           </div>
         </div>
-      </section>
-      <section className="related-videos">
-        {videos?.length > 0 && <h3 className="h3">Relates Videos</h3>}
-        <div className="related-videos__caraousel scrollbar">
-          {videos
-            ?.filter((video) =>
-              video?.categoryName
-                ?.toLowerCase()
-                .includes(categoryName?.toLowerCase())
-            )
-            .filter((video) => video._id !== _id)
-            .map((video) => (
-              <VideoCard key={video._id} video={video} />
-            ))}
+
+        <div className="video-section__notes-section">
+          {token ? <Notes videoName={title} /> : null}
         </div>
       </section>
+
+      <RelatedVideos filteredVideos={filteredVideos} />
     </>
   );
 };

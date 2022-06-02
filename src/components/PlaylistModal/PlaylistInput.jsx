@@ -31,7 +31,7 @@ const PlaylistInput = () => {
         />
 
         <button
-          className="playlist-input__btn btn-icon btn-sm secondaryDark"
+          className="playlist-input__btn btn-icon btn-sm secondary"
           type="submit"
         >
           <i className="fa-solid fa-file-circle-plus"></i>

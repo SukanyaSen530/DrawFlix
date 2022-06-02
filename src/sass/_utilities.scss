@@ -22,10 +22,10 @@
 /* Handle */
 .scrollbar::-webkit-scrollbar-thumb {
  background: rgb(103, 103, 103);
- transition: 0.2s background ease;
+ transition: 0.3s all;
 }
 
 /* Handle on hover */
 .scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgb(69, 71, 93);
+  background: rgb(126, 126, 126);
 }

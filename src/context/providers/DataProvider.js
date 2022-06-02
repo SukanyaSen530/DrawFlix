@@ -51,6 +51,11 @@ const initialState = {
     video: {},
     single_playlist: {},
   },
+  notes: {
+    loading: false,
+    items: [],
+    error: null,
+  },
 };
 
 const DataProvider = ({ children }) => {

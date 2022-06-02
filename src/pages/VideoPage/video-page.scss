@@ -1,12 +1,20 @@
 @import "../../sass/global";
 
 .video-section {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+
   &__display {
-    width: 60vw;
+    width: 55%;
 
     @include respond(tab-port) {
       width: 100%;
     }
+  }
+
+  &__notes-section {
+    width: 40%;
   }
 
   &__frame {

@@ -1,0 +1,27 @@
+.notes-modal {
+  &__label {
+    font-size: 1.5rem;
+    padding: 1rem;
+    color: var(--default);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__textarea {
+    background-color: transparent;
+    border: 2px solid grey;
+    outline: 0;
+    transition: 0.4s all;
+    color: var(--text-color);
+
+    &:focus {
+      border: 2px solid var(--default);
+    }
+  }
+
+  &__btn {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
