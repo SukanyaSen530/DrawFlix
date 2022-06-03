@@ -1,12 +1,8 @@
-import React from "react";
-
 import Modal from "../Modal/Modal";
 import PlaylistInput from "./PlaylistInput";
 import Playlist from "./Playlist";
 
 import { useDataContext } from "../../context";
-
-import "./playlist-modal.scss";
 
 const PlayListModal = () => {
   const {

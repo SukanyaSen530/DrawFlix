@@ -78,7 +78,15 @@ const AllRoutes = () => {
           </PreventedRoutes>
         }
       />
-      <Route path="/mockman" element={<Mockman />} />;
+      <Route
+        path="/mockman"
+        element={
+          <div style={{ paddingTop: "20rem" }}>
+            <Mockman />
+          </div>
+        }
+      />
+      ;
       <Route
         path="*"
         element={

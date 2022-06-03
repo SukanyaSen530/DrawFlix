@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 import useClickOutside from "../../../hooks/useClickOutside";
 
 import { useDataContext, useGlobalContext } from "../../../context";
-import { removeFromHistory } from "../../../services/history";
-import { removeFromPlaylist } from "../../../services/playlists";
+import { removeFromHistory, removeFromPlaylist } from "../../../services";
 import { format } from "../../../utils/dateFormat";
 
 // Image

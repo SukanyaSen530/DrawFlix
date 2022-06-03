@@ -25,6 +25,9 @@
   border-radius: var(--border-radius-md);
   cursor: auto;
   overflow: hidden;
+  background: var(--bg-color);
+  color: var(--text-color);
+  border: 1px solid rgb(79, 79, 79);
 
   @include respond(tab-port) {
     width: 80%;
@@ -42,7 +45,7 @@
     width: 3rem;
     font-weight: 600;
     cursor: pointer;
-    color: $color-black;
+    color: $color-white;
 
     &:hover {
       color: $defaultDark;

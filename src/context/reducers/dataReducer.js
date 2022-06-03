@@ -4,6 +4,7 @@ import {
   watchLaterConstants,
   historyConstants,
   playlistConstants,
+  notesConstants,
 } from "../actions/dataActions";
 import { tokenName } from "../providers/AuthProvider";
 
@@ -225,7 +226,7 @@ const userReducer = (state, action) => {
     case historyConstants.ERROR:
       return {
         ...state,
-        history: { loading: false, error: null, items: [] },
+        history: { loading: false, error: payload, items: [] },
       };
 
     case historyConstants.ADD_TO_HISTORY:
@@ -330,6 +331,56 @@ const userReducer = (state, action) => {
           ...state.playlist,
           items: payload,
         },
+      };
+
+    // Notes
+    case notesConstants.LOADING:
+      return { ...state, notes: { ...state.notes, loading: true } };
+
+    case notesConstants.ERROR:
+      return { ...state, notes: { loading: false, item: {}, error: payload } };
+
+    case notesConstants.GET_NOTES:
+      return {
+        ...state,
+        notes: {
+          loading: false,
+          error: null,
+          item: payload,
+        },
+      };
+
+    case notesConstants.CREATE_NOTE:
+      return {
+        ...state,
+        notes: {
+          ...state.notes,
+          item: payload,
+        },
+      };
+
+    case notesConstants.UPDATE_NOTE:
+      return {
+        ...state,
+        notes: {
+          ...state.notes,
+          item: payload,
+        },
+      };
+
+    case notesConstants.DELETE_NOTE:
+      return {
+        ...state,
+        notes: {
+          ...state.notes,
+          item: payload,
+        },
+      };
+
+    case notesConstants.DELETE_ALL_NOTES:
+      return {
+        ...state,
+        notes: { ...state.notes, item: { ...state.notes.item, notes: [] } },
       };
   }
 };

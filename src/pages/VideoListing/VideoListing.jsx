@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { useDataContext } from "../../context";
 
-import { loadVideos, getCategories } from "../../services/videos";
+import { loadVideos, getCategories } from "../../services";
 import { Loader, VideoCard, SearchFilter } from "../../components";
 import EmptyState from "../EmptyState/EmptyState";
 import useScrollToTop from "../../hooks/useScrollToTop";

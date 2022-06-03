@@ -15,6 +15,7 @@
   cursor: pointer;
   transition: 0.3s all;
   font-weight: 500;
+  border-radius: 5px;
 
   &:hover {
     background-color: $default;

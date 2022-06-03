@@ -1,7 +1,7 @@
 import "./playlist.scss";
 
 import { useDataContext, useGlobalContext } from "../../context";
-import { addToPlaylist, removeFromPlaylist } from "../../services/playlists";
+import { addToPlaylist, removeFromPlaylist } from "../../services";
 
 const Playlist = () => {
   const {
