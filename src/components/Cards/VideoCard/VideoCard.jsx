@@ -16,11 +16,12 @@ import {
   useGlobalContext,
   useAuthContext,
 } from "../../../context";
-import { addToLiked, removeFromLiked } from "../../../services/likes";
 import {
+  addToLiked,
+  removeFromLiked,
   addToWatchLater,
   removeFromWatchLater,
-} from "../../../services/watchlater";
+} from "../../../services";
 import useClickOutside from "../../../hooks/useClickOutside";
 import { format } from "../../../utils/dateFormat";
 

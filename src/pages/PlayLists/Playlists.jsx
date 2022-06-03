@@ -5,7 +5,7 @@ import "./playlists.scss";
 import { EmptyState } from "../";
 import { Loader, HorizontalCard } from "../../components";
 import { useDataContext, useGlobalContext } from "../../context";
-import { deletePlaylist } from "../../services/playlists";
+import { deletePlaylist } from "../../services";
 import useScrollToTop from "../../hooks/useScrollToTop";
 
 const Playlists = () => {

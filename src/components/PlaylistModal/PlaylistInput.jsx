@@ -3,7 +3,7 @@ import { useState } from "react";
 import "./playlist-input.scss";
 
 import { useDataContext, useGlobalContext } from "../../context";
-import { createPlaylist } from "../../services/playlists";
+import { createPlaylist } from "../../services";
 
 const PlaylistInput = () => {
   const [title, setTitle] = useState("");

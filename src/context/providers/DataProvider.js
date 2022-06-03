@@ -7,12 +7,14 @@ import {
   getSearchResults,
 } from "../helper";
 import { useAuthContext } from "./AuthProvider";
-import { loadLikedVideos } from "../../services/likes";
-import { loadwatchLaterVideos } from "../../services/watchlater";
+import { playlistConstants } from "../";
+import {
+  loadLikedVideos,
+  loadwatchLaterVideos,
+  loadHistoryVideos,
+} from "../../services";
 
 import dataReducer from "../reducers/dataReducer";
-import { loadHistoryVideos } from "../../services/history";
-import { playlistConstants } from "../actions/dataActions";
 
 const dataContext = createContext();
 

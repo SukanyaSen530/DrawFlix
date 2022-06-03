@@ -50,7 +50,7 @@ export const createNote = async (note, dispatch, openAlert) => {
   }
 };
 
-export const upadteNote = async (note, dispatch, openAlert) => {
+export const updateNote = async (note, dispatch, openAlert) => {
   const config = getConfig();
 
   try {

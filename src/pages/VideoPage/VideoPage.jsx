@@ -10,24 +10,26 @@ import {
   useGlobalContext,
   useAuthContext,
 } from "../../context";
-import { loadSingleVideo } from "../../services/videos";
 import { format } from "../../utils/dateFormat";
 
 import { AiOutlineLike, AiFillLike } from "react-icons/ai";
 import { MdOutlineAccessTime, MdOutlineAccessTimeFilled } from "react-icons/md";
 import { CgPlayListAdd } from "react-icons/cg";
 
-import { addToLiked, removeFromLiked } from "../../services/likes";
 import {
+  addToLiked,
+  removeFromLiked,
   addToWatchLater,
   removeFromWatchLater,
-} from "../../services/watchlater";
-import { addToHistory } from "../../services/history";
+  addToHistory,
+  loadSingleVideo,
+} from "../../services";
 import useScrollToTop from "../../hooks/useScrollToTop";
-
-import "./video-page.scss";
 import RelatedVideos from "./RelatedVideos";
 import Notes from "./Notes/Notes";
+
+import "./video-page.scss";
+
 
 const Video = () => {
   const params = useParams();
