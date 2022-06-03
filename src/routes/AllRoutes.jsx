@@ -2,7 +2,6 @@ import { Routes, Route } from "react-router-dom";
 
 import PreventedRoutes from "./PreventedRoutes";
 import ProtectedRoutes from "./ProtectedRoutes";
-
 import {
   Home,
   VideoListing,
@@ -14,6 +13,7 @@ import {
   History,
   EmptyState,
   Playlists,
+  UserProfile,
 } from "../pages";
 import Mockman from "mockman-js";
 
@@ -58,8 +58,12 @@ const AllRoutes = () => {
         }
       />
       <Route
-        path="/playlists/:id"
-        element={<ProtectedRoutes></ProtectedRoutes>}
+        path="/profile"
+        element={
+          <ProtectedRoutes>
+            <UserProfile />
+          </ProtectedRoutes>
+        }
       />
       {/* Prevented Routes */}
       <Route
