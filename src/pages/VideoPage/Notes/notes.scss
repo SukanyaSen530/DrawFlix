@@ -18,6 +18,10 @@
     height: 60vh;
     overflow-y: auto;
     padding-right: 2rem;
+
+    @include respond(phone) {
+       height: 30vh;
+    }
   }
 
   .note-card {
@@ -64,7 +68,7 @@
           color: $color-black;
         }
 
-        &:active{
+        &:active {
           background-color: $defaultDark;
         }
       }
