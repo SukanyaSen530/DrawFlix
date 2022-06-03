@@ -10,7 +10,7 @@ import { v4 as uuid } from "uuid";
 
 /*
  * This handler handles getting all user's video notes.
- * send GET Request at /api/user/:videoId/notes
+ * send GET Request at /api/user/notes/:videoId
  */
 
 export const getUserVideoNotes = function (schema, request) {
@@ -42,7 +42,7 @@ export const getUserVideoNotes = function (schema, request) {
 /*
  * This handler handles adding notes to a video.
  * send POST Request at /api/user/notes/:videoId
- * body contains {video}
+ * body contains {note}
  */
 
 export const addNewNote = function (schema, request) {
@@ -57,11 +57,11 @@ export const addNewNote = function (schema, request) {
     }
 
     const { videoId } = request.params;
-    const { description, time } = JSON.parse(request.requestBody);
+    const { note } = JSON.parse(request.requestBody);
     const videoNote = user.notes.find((item) => item._id === videoId);
-    videoNote.notes.push({ id: uuid(), description, time });
+    videoNote.notes.push({ id: uuid(), ...note });
 
-    return new Response(201, {}, { notes });
+    return new Response(201, {}, { notes: videoNote });
   } catch (error) {
     return new Response(
       500,
@@ -76,7 +76,7 @@ export const addNewNote = function (schema, request) {
 /*
  * This handler handles updating s note of a video.
  * send POST Request at /api/user/notes/:videoId/:notedId
- * body contains {video}
+ * body contains {note_description}
  */
 
 export const updateNote = function (schema, request) {
@@ -144,8 +144,8 @@ export const deleteNote = function (schema, request) {
 };
 
 /*
- * This handler handles deleting note.
- * send DELETE Request at /api/user/notes/:videoId/:notesId
+ * This handler handles deleting all notes of a video.
+ * send DELETE Request at /api/user/notes/:videoId/all
  */
 
 export const clearVideoNotes = function (schema, request) {

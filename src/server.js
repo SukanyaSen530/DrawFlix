@@ -78,6 +78,7 @@ export function makeServer({ environment = "development" } = {}) {
           watchlater: [],
           history: [],
           playlists: [],
+          notes: []
         })
       );
     },
@@ -111,6 +112,15 @@ export function makeServer({ environment = "development" } = {}) {
         removeItemFromWatchLaterVideos.bind(this)
       );
 
+      // history routes (private)
+      this.get("/user/history", getHistoryVideosHandler.bind(this));
+      this.post("/user/history", addVideoToHistoryHandler.bind(this));
+      this.delete(
+        "/user/history/:videoId",
+        removeVideoFromHistoryHandler.bind(this)
+      );
+      this.delete("/user/history/all", clearHistoryHandler.bind(this));
+
       // playlist routes (private)
       this.get("/user/playlists", getAllPlaylistsHandler.bind(this));
       this.post("/user/playlists", addNewPlaylistHandler.bind(this));
@@ -132,25 +142,7 @@ export function makeServer({ environment = "development" } = {}) {
         removeVideoFromPlaylistHandler.bind(this)
       );
 
-      // history routes (private)
-      this.get("/user/history", getHistoryVideosHandler.bind(this));
-      this.post("/user/history", addVideoToHistoryHandler.bind(this));
-      this.delete(
-        "/user/history/:videoId",
-        removeVideoFromHistoryHandler.bind(this)
-      );
-      this.delete("/user/history/all", clearHistoryHandler.bind(this));
-
-      // notes route
-      this.get("/user/watchlater", getWatchLaterVideosHandler.bind(this));
-      this.post("/user/watchlater", addItemToWatchLaterVideos.bind(this));
-      this.delete(
-        "/user/watchlater/:videoId",
-        removeItemFromWatchLaterVideos.bind(this)
-      );
-
       // notes routes (private)
-      // /api/user/notes/:videoId
       this.get("/user/notes/:videoId", getUserVideoNotes.bind(this));
       this.post("/user/notes/:videoId", addNewNote.bind(this));
       this.put("/user/notes/:videoId/:noteId", updateNote.bind(this));

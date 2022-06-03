@@ -5,7 +5,7 @@ import { NotesModal } from "../../../components";
 
 import "./notes.scss";
 
-const Notes = ({ videoName }) => {
+const Notes = ({ videoName, videoRef }) => {
   const {
     dataState: {
       notes: { items: videoNotes, loading, error },
@@ -26,7 +26,6 @@ const Notes = ({ videoName }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
-
   const handleDelete = () => {};
   const updateDelete = () => {};
 

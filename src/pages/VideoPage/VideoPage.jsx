@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import ReactPlayer from "react-player/youtube";
 
@@ -33,6 +33,7 @@ const Video = () => {
   const params = useParams();
   const videoId = params.id;
 
+  const videoRef = useRef(null);
   const navigate = useNavigate();
   const [readMore, setReadMore] = useState(false);
   const {
@@ -141,6 +142,7 @@ const Video = () => {
               playing={true}
               url={`https://www.youtube-nocookie.com/embed/${videoId}`}
               onStart={handleHistory}
+              ref={videoRef}
             />
           </div>
           <div className="video-section__content">
@@ -203,7 +205,7 @@ const Video = () => {
         </div>
 
         <div className="video-section__notes-section">
-          {token ? <Notes videoName={title} /> : null}
+          {token ? <Notes videoName={title} videoRef={videoRef} /> : null}
         </div>
       </section>
 
