@@ -1,0 +1,27 @@
+@import "../../sass/global";
+
+.profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  &__details {
+    border-radius: 10px;
+    padding: 4rem;
+    box-shadow: rgba(207, 207, 207, 0.27) 0px 0px 0.25em,
+      rgba(203, 203, 203, 0.05) 0px 0.25em 1em;
+
+    &__icon {
+      text-align: center;
+      font-size: 6rem;
+      margin-bottom: 2rem;
+    }
+
+    span:first-child {
+      color: $default;
+      width: 60px;
+      display: inline-block;
+    }
+  }
+}

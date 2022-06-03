@@ -56,7 +56,13 @@ const Navbar = () => {
 
         <ul className="nav-links">
           {token ? (
-            <button onClick={handleLogout}>Logout</button>
+            <>
+              <Link to="/profile" className="nav-links__profile-btn">
+                <i className="fa-solid fa-circle-user"></i>
+              </Link>
+
+              <button onClick={handleLogout}>Logout</button>
+            </>
           ) : (
             <Link to="/signin">Sign In</Link>
           )}

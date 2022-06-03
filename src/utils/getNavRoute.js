@@ -11,6 +11,7 @@ export const getNavRoute = () => {
     "history",
     "signin",
     "signup",
+    "profile",
   ];
 
   const showPathName = location.pathname.split("/")[1];
