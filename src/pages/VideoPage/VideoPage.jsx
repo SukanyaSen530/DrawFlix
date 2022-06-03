@@ -30,7 +30,6 @@ import Notes from "./Notes/Notes";
 
 import "./video-page.scss";
 
-
 const Video = () => {
   const params = useParams();
   const videoId = params.id;
@@ -207,7 +206,7 @@ const Video = () => {
         </div>
 
         <div className="video-section__notes-section">
-          {token ? <Notes videoName={title} videoRef={videoRef} /> : null}
+          {token ? <Notes video={single_video} videoRef={videoRef} /> : null}
         </div>
       </section>
 

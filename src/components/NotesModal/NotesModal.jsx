@@ -8,6 +8,7 @@ const NotesModal = ({
   description = "",
   setDescription = () => {},
   handleSubmit = () => {},
+  isEdit = false,
 }) => {
   return (
     <Modal open={open} onClose={onClose}>
@@ -32,7 +33,7 @@ const NotesModal = ({
           className="btn btn-contained btn-sm block-btn defaultDark t-margin-sm notes-modal__btn"
           type="submit"
         >
-          <i className="fa-solid fa-plus"></i>
+          {isEdit.type ? "Update" : "Create"}
         </button>
       </form>
     </Modal>

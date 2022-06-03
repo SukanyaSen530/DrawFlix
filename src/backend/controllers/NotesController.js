@@ -25,9 +25,9 @@ export const getUserVideoNotes = function (schema, request) {
     }
 
     const { videoId } = request.params;
-    const notes = user.notes.find((item) => item._id !== videoId);
+    const notes = user.notes.find((item) => item._id === videoId);
 
-    return new Response(200, {}, { notes });
+    return new Response(200, {}, { notes: notes || {} });
   } catch (error) {
     return new Response(
       500,
@@ -59,9 +59,21 @@ export const addNewNote = function (schema, request) {
     const { videoId } = request.params;
     const { note } = JSON.parse(request.requestBody);
     const videoNote = user.notes.find((item) => item._id === videoId);
-    videoNote.notes.push({ id: uuid(), ...note });
 
-    return new Response(201, {}, { notes: videoNote });
+    let newVideoNote = { _id: videoId };
+    if (!videoNote) {
+      newVideoNote.notes = [];
+      newVideoNote.notes.push({ _id: uuid(), ...note });
+      user.notes.push(newVideoNote);
+    } else {
+      videoNote.notes.push({ _id: uuid(), ...note });
+    }
+
+    return new Response(
+      201,
+      {},
+      { notes: !videoNote ? newVideoNote : videoNote }
+    );
   } catch (error) {
     return new Response(
       500,
@@ -97,7 +109,7 @@ export const updateNote = function (schema, request) {
       note._id === noteId ? { ...note, description } : note
     );
     videoNote.notes = updatedNotes;
-    return new Response(201, {}, { notes: videoNote });
+    return new Response(200, {}, { notes: videoNote });
   } catch (error) {
     return new Response(
       500,
@@ -128,8 +140,9 @@ export const deleteNote = function (schema, request) {
     const { videoId, noteId } = request.params;
     const videoNote = user.notes.find((item) => item._id === videoId);
     const filteredNotes = videoNote.notes?.filter(
-      (note) => note._id === noteId
+      (note) => note._id !== noteId
     );
+
     videoNote.notes = filteredNotes;
     return new Response(200, {}, { notes: videoNote });
   } catch (error) {
@@ -160,10 +173,9 @@ export const clearVideoNotes = function (schema, request) {
     }
 
     const { videoId } = request.params;
-    const filteredNotes = user.notes.find((item) => item._id !== videoId);
-    this.db.users.update({ notes: filteredNotes });
-
-    return new Response(200, {}, { notes: [] });
+    const videoNote = user.notes.find((item) => item._id === videoId);
+    videoNote.notes = [];
+    return new Response(200, {}, {});
   } catch (error) {
     return new Response(
       500,

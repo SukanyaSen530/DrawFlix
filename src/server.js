@@ -145,7 +145,7 @@ export function makeServer({ environment = "development" } = {}) {
       // notes routes (private)
       this.get("/user/notes/:videoId", getUserVideoNotes.bind(this));
       this.post("/user/notes/:videoId", addNewNote.bind(this));
-      this.put("/user/notes/:videoId/:noteId", updateNote.bind(this));
+      this.put("/user/notes/:videoId/:noteId/", updateNote.bind(this));
       this.delete("/user/notes/:videoId/:noteId", deleteNote.bind(this));
       this.delete("/user/notes/:videoId/all", clearVideoNotes.bind(this));
     },

@@ -55,7 +55,7 @@ const initialState = {
   },
   notes: {
     loading: false,
-    items: [],
+    item: {},
     error: null,
   },
 };

@@ -4,13 +4,13 @@ import { notesConstants } from "../context";
 import getConfig from "./config";
 
 // Notes
-export const loadAllNotes = async (dispatch) => {
+export const loadAllNotes = async (videoId, dispatch) => {
   const config = getConfig();
 
   try {
     dispatch({ type: notesConstants.LOADING });
     const response = await axios.get(
-      `${process.env.REACT_APP_URL}/user/notes`,
+      `${process.env.REACT_APP_URL}/user/notes/${videoId}`,
       config
     );
 
@@ -28,12 +28,12 @@ export const loadAllNotes = async (dispatch) => {
   }
 };
 
-export const createNote = async (note, dispatch, openAlert) => {
+export const createNote = async (videoId, note, dispatch, openAlert) => {
   const config = getConfig();
 
   try {
     const response = await axios.post(
-      `${process.env.REACT_APP_URL}/user/notes`,
+      `${process.env.REACT_APP_URL}/user/notes/${videoId}`,
       { note },
       config
     );
@@ -46,16 +46,21 @@ export const createNote = async (note, dispatch, openAlert) => {
       });
     }
   } catch (e) {
-    openAlert({ message: e?.response?.data?.errors[0], type: "error" });
+    openAlert({
+      message: e?.response?.data?.errors[0] || "Unable to create note!",
+      type: "error",
+    });
   }
 };
 
-export const updateNote = async (note, dispatch, openAlert) => {
+export const updateNote = async (ids, description, dispatch, openAlert) => {
   const config = getConfig();
+
+  const { videoId, noteId } = ids;
 
   try {
     const response = await axios.put(
-      `${process.env.REACT_APP_URL}/user/notes`,
+      `${process.env.REACT_APP_URL}/user/notes/${videoId}/${noteId}`,
       { description },
       config
     );
@@ -63,7 +68,7 @@ export const updateNote = async (note, dispatch, openAlert) => {
     if (response.status === 200) {
       openAlert({ message: "Updated note", type: "success" });
       dispatch({
-        type: notesConstants.CREATE_NOTE,
+        type: notesConstants.UPDATE_NOTE,
         payload: response.data.notes,
       });
     }
@@ -76,7 +81,6 @@ export const deleteNote = async (ids, dispatch, openAlert) => {
   const config = getConfig();
 
   const { videoId, noteId } = ids;
-
   try {
     const response = await axios.delete(
       `${process.env.REACT_APP_URL}/user/notes/${videoId}/${noteId}`,
@@ -95,13 +99,12 @@ export const deleteNote = async (ids, dispatch, openAlert) => {
   }
 };
 
-export const deleteAllNotes = async (dispatch, openAlert) => {
+export const deleteAllNotes = async (videoId, dispatch, openAlert) => {
   const config = getConfig();
 
   try {
-    const response = await axios.post(
-      `${process.env.REACT_APP_URL}/user/notes`,
-      { note },
+    const response = await axios.delete(
+      `${process.env.REACT_APP_URL}/user/notes/${videoId}/all`,
       config
     );
 
@@ -110,6 +113,9 @@ export const deleteAllNotes = async (dispatch, openAlert) => {
       dispatch({ type: notesConstants.DELETE_ALL_NOTES });
     }
   } catch (e) {
-    openAlert({ message: e?.response?.data?.errors[0], type: "error" });
+    openAlert({
+      message: e?.response?.data?.errors[0] || "Unable to clear notes!",
+      type: "error",
+    });
   }
 };
