@@ -7,14 +7,17 @@ import sketchLogo from "../../assets/logo1.png";
 import { InputField } from "../../components";
 
 import { testCredentials, initialFormValues } from "./helper";
-import { loginUser } from "../../services/authentication";
+import { loginUser } from "../../services";
 import { useAuthContext, useGlobalContext } from "../../context";
+import useScrollToTop from "../../hooks/useScrollToTop";
 
 const Signin = () => {
   const { authDispatch } = useAuthContext();
   const {
     globalHandlers: { openAlert },
   } = useGlobalContext();
+
+  useScrollToTop();
 
   const [userData, setUserData] = useState({ ...initialFormValues });
 

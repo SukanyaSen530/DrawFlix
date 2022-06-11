@@ -2,7 +2,8 @@ import { useDataContext, useGlobalContext } from "../../context";
 
 import EmptyState from "../EmptyState/EmptyState";
 import { Loader, HorizontalCard } from "../../components";
-import { clearHistory } from "../../services/history";
+import { clearHistory } from "../../services";
+import useScrollToTop from "../../hooks/useScrollToTop";
 
 import "./history.scss";
 
@@ -16,6 +17,8 @@ const History = () => {
   const {
     globalHandlers: { openAlert },
   } = useGlobalContext();
+
+  useScrollToTop();
 
   const handleClearHistory = () => {
     clearHistory(dataDispatch, openAlert);

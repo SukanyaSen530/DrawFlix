@@ -1,16 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { navData, authNavigation } from "./data";
 
 import { FaBars } from "react-icons/fa";
-
-import "./navbar.scss";
 
 import logo from "../../assets/logo.png";
 
 import { authActions, useAuthContext, useGlobalContext } from "../../context";
-import useChangeColor from "../../hooks/useChangeColor";
+import { navData, authNavigation } from "./data";
 import { getNavRoute } from "../../utils/getNavRoute";
+import useDocumentTitle from "../../hooks/useDocumentTitle";
+import useChangeColor from "../../hooks/useChangeColor";
+
+import "./navbar.scss";
 
 const Navbar = () => {
   const {
@@ -28,6 +29,7 @@ const Navbar = () => {
 
   const pathName = getNavRoute();
 
+  useDocumentTitle(pathName);
   useChangeColor(setDarkNav);
 
   const handleLogout = () => {
@@ -54,7 +56,13 @@ const Navbar = () => {
 
         <ul className="nav-links">
           {token ? (
-            <button onClick={handleLogout}>Logout</button>
+            <>
+              <Link to="/profile" className="nav-links__profile-btn">
+                <i className="fa-solid fa-circle-user"></i>
+              </Link>
+
+              <button onClick={handleLogout}>Logout</button>
+            </>
           ) : (
             <Link to="/signin">Sign In</Link>
           )}

@@ -2,6 +2,7 @@ import { useDataContext } from "../../context";
 
 import EmptyState from "../EmptyState/EmptyState";
 import { Loader, VideoCard } from "../../components";
+import useScrollToTop from "../../hooks/useScrollToTop";
 
 import "./liked.scss";
 
@@ -11,6 +12,8 @@ const Liked = () => {
   const {
     liked: { loading, error, items: likedVideos },
   } = dataState;
+
+  useScrollToTop();
 
   if (loading) {
     return <Loader />;
@@ -37,7 +40,7 @@ const Liked = () => {
 
           <div className="liked-section__videos">
             {likedVideos?.map((video) => (
-              <VideoCard key={video._id} {...video} />
+              <VideoCard key={video._id} video={video} />
             ))}
           </div>
         </>

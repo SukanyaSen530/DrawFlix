@@ -75,5 +75,10 @@
     border-top: 1px solid $color-white;
     width: 100%;
     text-align: center;
+    padding: 1rem;
+    p{
+      font-size: 1.3rem;
+      line-height: 2rem;
+    }
   }
 }

@@ -28,6 +28,7 @@
     padding: 1rem 0;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 
     &__title {
       width: 70%;
@@ -38,6 +39,13 @@
 
    &__info{
      font-size: 1.5rem;
+
+     p{
+       font-size: 1.3rem;
+       display: flex;
+       justify-content: space-between;
+       padding-right: 2rem;
+     }
 
      span:not(:first-child){
        margin-left: 1rem;

@@ -1,9 +1,9 @@
 import "./loader.scss";
 
-const Loader = () => {
+const Loader = ({ size = "lg" }) => {
   const numOfBalls = 5;
   return (
-    <div className="loader-section">
+    <div className={`loader-section section-${size}`}>
       <div className="loader">
         {Array(numOfBalls)
           .fill(0)

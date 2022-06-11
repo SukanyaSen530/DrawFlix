@@ -1,0 +1,38 @@
+@import "../../sass/global";
+
+.tab {
+  min-width: 100px;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: $color-white;
+  text-transform: capitalize;
+  display: inline-block;
+  transform: skew(-20deg);
+  border: 1px solid rgb(65, 65, 65);
+  padding: 1.5rem 2rem;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: 0.3s all;
+  font-weight: 500;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: $default;
+    color: $color-black;
+  }
+
+  span {
+    display: inline-block;
+    transform: skew(20deg);
+  }
+
+  &.active {
+    background-color: $defaultDark;
+    color: $color-black;
+  }
+
+  &.active:hover {
+    background-color: $default;
+  }
+}

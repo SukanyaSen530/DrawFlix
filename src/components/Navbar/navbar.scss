@@ -30,8 +30,8 @@
       text-transform: capitalize;
     }
 
-    &__link{
-      height: 6rem;;
+    &__link {
+      height: 6rem;
     }
 
     .menu-btn {
@@ -53,7 +53,8 @@
   }
 
   .nav-links {
-    a, button {
+    a,
+    button {
       color: $color-white;
       margin: 0 1rem;
       font-size: 1.7rem;
@@ -61,10 +62,22 @@
       transition: 0.3s background-color ease;
       background: transparent;
       border: none;
-    
 
       &:hover {
         background-color: rgba($color-white, 0.3);
+      }
+    }
+
+    &__profile-btn {
+      border-radius: 50%;
+      height: 4rem;
+      width: 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+      i {
+        font-size: 3rem;
       }
     }
   }
@@ -133,8 +146,6 @@
   left: 0;
   transition: 0.35s;
 }
-
-
 
 .sidebar__links.active_link {
   color: var(--default);

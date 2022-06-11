@@ -16,21 +16,31 @@ import {
   useGlobalContext,
   useAuthContext,
 } from "../../../context";
-import { addToLiked, removeFromLiked } from "../../../services/likes";
 import {
+  addToLiked,
+  removeFromLiked,
   addToWatchLater,
   removeFromWatchLater,
-} from "../../../services/watchlater";
+} from "../../../services";
 import useClickOutside from "../../../hooks/useClickOutside";
+import { format } from "../../../utils/dateFormat";
 
 // Styles
 import "./video-card.scss";
 
-const VideoCard = ({ _id, title, categoryName, creatorImg, creator }) => {
+const VideoCard = ({ video }) => {
   const [open, setOpen] = useState(false);
   const domNode = useClickOutside(() => setOpen(false));
 
-  const video = { _id, title, categoryName, creatorImg, creator };
+  const {
+    _id,
+    title,
+    categoryName,
+    creatorImg,
+    creator,
+    createdAt,
+    stats: { viewCount },
+  } = video;
 
   const {
     dataState,
@@ -120,6 +130,12 @@ const VideoCard = ({ _id, title, categoryName, creatorImg, creator }) => {
       </div>
       <div className="video-card__info">
         <span>{creator}</span> <span>|</span> <span>{categoryName}</span>
+        <p>
+          <span>
+            Aired on {new Date(createdAt).toLocaleDateString("en-US", format)}
+          </span>
+          <span>{viewCount} views</span>
+        </p>
       </div>
     </article>
   );

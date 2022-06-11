@@ -6,6 +6,7 @@ import {
   watchLaterConstants,
   historyConstants,
   playlistConstants,
+  notesConstants,
 } from "./actions/dataActions";
 
 import { GlobalProvider, useGlobalContext } from "./providers/GlobalProvider";
@@ -20,6 +21,7 @@ export {
   watchLaterConstants,
   historyConstants,
   playlistConstants,
+  notesConstants,
   useAuthContext,
   useGlobalContext,
   useDataContext,

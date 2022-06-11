@@ -1,10 +1,21 @@
 @import "../../sass/global";
 
 .loader-section {
-  height: 60vh;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.section-lg {
+  height: 60vh;
+}
+
+.section-md {
+  height: 40vh;
+}
+
+.section-sm {
+  height: 20vh;
 }
 
 .loader {

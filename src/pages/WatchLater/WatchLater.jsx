@@ -2,6 +2,7 @@ import { useDataContext } from "../../context";
 
 import EmptyState from "../EmptyState/EmptyState";
 import { Loader, VideoCard } from "../../components";
+import useScrollToTop from "../../hooks/useScrollToTop";
 
 import "./water-later.scss";
 
@@ -11,6 +12,8 @@ const WatchLater = () => {
   const {
     watchLater: { loading, error, items: watchLaterVideos },
   } = dataState;
+
+  useScrollToTop();
 
   if (loading) {
     return <Loader />;
@@ -37,7 +40,7 @@ const WatchLater = () => {
 
           <div className="watchLater-section__videos">
             {watchLaterVideos?.map((video) => (
-              <VideoCard key={video._id} {...video} />
+              <VideoCard key={video._id} video={video} />
             ))}
           </div>
         </>

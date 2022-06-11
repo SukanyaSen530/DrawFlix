@@ -1,13 +1,20 @@
 import { useReducer, useContext, createContext, useEffect } from "react";
 
-import { compose, filterByCategory, getSearchResults } from "../helper";
+import {
+  compose,
+  filterByCategory,
+  filterByTime,
+  getSearchResults,
+} from "../helper";
 import { useAuthContext } from "./AuthProvider";
-import { loadLikedVideos } from "../../services/likes";
-import { loadwatchLaterVideos } from "../../services/watchlater";
+import { playlistConstants } from "../";
+import {
+  loadLikedVideos,
+  loadwatchLaterVideos,
+  loadHistoryVideos,
+} from "../../services";
 
 import dataReducer from "../reducers/dataReducer";
-import { loadHistoryVideos } from "../../services/history";
-import { playlistConstants } from "../actions/dataActions";
 
 const dataContext = createContext();
 
@@ -19,7 +26,8 @@ const initialState = {
     single_video: {},
     filterOptions: {
       searchQuery: "",
-      category: "",
+      category: "all",
+      time: "latest",
     },
   },
   liked: {
@@ -45,6 +53,11 @@ const initialState = {
     video: {},
     single_playlist: {},
   },
+  notes: {
+    loading: false,
+    item: {},
+    error: null,
+  },
 };
 
 const DataProvider = ({ children }) => {
@@ -55,10 +68,11 @@ const DataProvider = ({ children }) => {
 
   const closePModal = () => dispatch({ type: playlistConstants.CLOSE_MODAL });
 
-  const filteredVideos = compose(filterByCategory, getSearchResults)(
-    state,
-    state?.vid?.items || []
-  );
+  const filteredVideos = compose(
+    filterByCategory,
+    filterByTime,
+    getSearchResults
+  )(state, state?.vid?.items || []);
 
   const {
     authState: {

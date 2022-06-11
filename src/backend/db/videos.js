@@ -1,3 +1,6 @@
+const randomDate = (start, end) =>
+  new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+
 export const videos = [
   {
     _id: "eNtv1_8MQds",
@@ -9,8 +12,9 @@ export const videos = [
       "https://yt3.ggpht.com/ytc/AKedOLTBSdm3gfTtP-OU67n8FbIu40a_zE5ZOaB1GFYx=s176-c-k-c0x00ffffff-no-rj",
     creator: "Drawlikeasir",
     stats: {
-      viewCount: "3057",
+      viewCount: 0,
     },
+    createdAt: randomDate(new Date(2010, 0, 1), new Date()),
   },
   {
     _id: "m583-GDIFCQ",
@@ -22,8 +26,9 @@ export const videos = [
     description:
       "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
     stats: {
-      viewCount: "132",
+      viewCount: 0,
     },
+    createdAt: randomDate(new Date(2010, 0, 1), new Date()),
   },
   {
     _id: "5W3Wj-a_7Vo",
@@ -35,8 +40,9 @@ export const videos = [
     description:
       "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
     stats: {
-      viewCount: "1653",
+      viewCount: 0,
     },
+    createdAt: randomDate(new Date(2010, 0, 1), new Date()),
   },
   ,
   {
@@ -49,8 +55,9 @@ export const videos = [
     creatorImg:
       "https://yt3.ggpht.com/ytc/AKedOLTBSdm3gfTtP-OU67n8FbIu40a_zE5ZOaB1GFYx=s176-c-k-c0x00ffffff-no-rj",
     stats: {
-      viewCount: "453",
+      viewCount: 0,
     },
+    createdAt: randomDate(new Date(2010, 0, 1), new Date()),
   },
   {
     _id: "aPflB7_XXaY",
@@ -62,8 +69,9 @@ export const videos = [
     description:
       "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
     stats: {
-      viewCount: "4332",
+      viewCount: 0,
     },
+    createdAt: randomDate(new Date(2010, 0, 1), new Date()),
   },
   {
     _id: "yqxPHew5bGQ",
@@ -75,8 +83,9 @@ export const videos = [
     description:
       "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
     stats: {
-      viewCount: "412",
+      viewCount: 0,
     },
+    createdAt: randomDate(new Date(2010, 0, 1), new Date()),
   },
   {
     _id: "6T_-DiAzYBc",
@@ -88,8 +97,9 @@ export const videos = [
     description:
       "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
     stats: {
-      viewCount: "412",
+      viewCount: 0,
     },
+    createdAt: randomDate(new Date(2010, 0, 1), new Date()),
   },
   {
     _id: "jDvvlHONjJA",
@@ -101,8 +111,9 @@ export const videos = [
     description:
       "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
     stats: {
-      viewCount: "500",
+      viewCount: 0,
     },
+    createdAt: randomDate(new Date(2010, 0, 1), new Date()),
   },
   {
     _id: "ewMksAbgdBI",
@@ -114,8 +125,9 @@ export const videos = [
     description:
       "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
     stats: {
-      viewCount: "347",
+      viewCount: 0,
     },
+    createdAt: randomDate(new Date(2010, 0, 1), new Date()),
   },
   ,
   {
@@ -128,8 +140,9 @@ export const videos = [
     description:
       "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
     stats: {
-      viewCount: "157",
+      viewCount: 0,
     },
+    createdAt: randomDate(new Date(2010, 0, 1), new Date()),
   },
   {
     _id: "5Zc1xVS_X7Q",
@@ -141,8 +154,9 @@ export const videos = [
     description:
       "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
     stats: {
-      viewCount: "2427",
+      viewCount: 0,
     },
+    createdAt: randomDate(new Date(2010, 0, 1), new Date()),
   },
   ,
   {
@@ -155,8 +169,9 @@ export const videos = [
     description:
       "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
     stats: {
-      viewCount: "3431",
+      viewCount: 0,
     },
+    createdAt: randomDate(new Date(2010, 0, 1), new Date()),
   },
   {
     _id: "3kojEoKgrTY",
@@ -168,8 +183,9 @@ export const videos = [
     description:
       "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
     stats: {
-      viewCount: "9867",
+      viewCount: 0,
     },
+    createdAt: randomDate(new Date(2010, 0, 1), new Date()),
   },
   {
     _id: "9P0ot0ifwXk",
@@ -182,8 +198,9 @@ export const videos = [
     description:
       "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
     stats: {
-      viewCount: "5344",
+      viewCount: 0,
     },
+    createdAt: randomDate(new Date(2010, 0, 1), new Date()),
   },
   ,
   {
@@ -196,8 +213,9 @@ export const videos = [
     creatorImg:
       "https://yt3.ggpht.com/ytc/AKedOLRf0Q4WJiAv7FXwXpLTink80b5uax0ANq5T1I-7=s176-c-k-c0x00ffffff-no-rj",
     stats: {
-      viewCount: "1978",
+      viewCount: 0,
     },
+    createdAt: randomDate(new Date(2010, 0, 1), new Date()),
   },
   {
     _id: "AWvTb69cm24",
@@ -209,7 +227,149 @@ export const videos = [
     description:
       "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
     stats: {
-      viewCount: "543",
+      viewCount: 0,
     },
+    createdAt: randomDate(new Date(2010, 0, 1), new Date()),
+  },
+
+  {
+    _id: "YcM5PHft0EQ",
+    title: "How To Draw HANDS",
+    creator: "David Finch",
+    categoryName: "Pencil Sketch",
+    creatorImg:
+      "https://yt3.ggpht.com/ytc/AKedOLTVufC_ZM9TRO-Fb2D0PSXHV3LL_HvKgf28x6-daw=s176-c-k-c0x00ffffff-no-rj",
+    description:
+      "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
+    stats: {
+      viewCount: 0,
+    },
+    createdAt: randomDate(new Date(2010, 0, 1), new Date()),
+  },
+  {
+    _id: "7cVUyIZ3rvE",
+    title: "Shadowing and Texturing Armour",
+    creator: "David Finch",
+    categoryName: "Pencil Sketch",
+    creatorImg:
+      "https://yt3.ggpht.com/ytc/AKedOLTVufC_ZM9TRO-Fb2D0PSXHV3LL_HvKgf28x6-daw=s176-c-k-c0x00ffffff-no-rj",
+    description:
+      "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
+    stats: {
+      viewCount: 0,
+    },
+    createdAt: randomDate(new Date(2010, 0, 1), new Date()),
+  },
+  {
+    _id: "hhpQJkquioU",
+    title: "HOW TO USE COLORED PENCIL - Guide for Beginners",
+    creator: "Kirsty Partridge Art",
+    categoryName: "Pencilcolor",
+    creatorImg:
+      "https://yt3.ggpht.com/ytc/AKedOLT49LCpm8pmR6bR_i1_qEwh6DJbiNTQdO1CO2qP5g=s176-c-k-c0x00ffffff-no-rj",
+    description:
+      "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
+    stats: {
+      viewCount: 0,
+    },
+    createdAt: randomDate(new Date(2010, 0, 1), new Date()),
+  },
+  {
+    _id: "JRf2jCREKEU",
+    title: "Trying WATERCOLOR PENCILS for the FIRST TIME!",
+    creator: "Kirsty Partridge Art",
+    categoryName: "Pencilcolor",
+    creatorImg:
+      "https://yt3.ggpht.com/ytc/AKedOLT49LCpm8pmR6bR_i1_qEwh6DJbiNTQdO1CO2qP5g=s176-c-k-c0x00ffffff-no-rj",
+    description:
+      "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
+    stats: {
+      viewCount: 0,
+    },
+    createdAt: randomDate(new Date(2010, 0, 1), new Date()),
+  },
+  {
+    _id: "mws4aoGljTo",
+    title: "DO'S & DON'TS for BLENDING Colored Pencils",
+    creator: "Kirsty Partridge Art",
+    categoryName: "Pencilcolor",
+    creatorImg:
+      "https://yt3.ggpht.com/ytc/AKedOLT49LCpm8pmR6bR_i1_qEwh6DJbiNTQdO1CO2qP5g=s176-c-k-c0x00ffffff-no-rj",
+    description:
+      "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
+    stats: {
+      viewCount: 0,
+    },
+    createdAt: randomDate(new Date(2010, 0, 1), new Date()),
+  },
+  {
+    _id: "pZrcj6kq0TE",
+    title: "DO'S & DON'TS: How to Draw with Colored Pencils",
+    creator: "Kirsty Partridge Art",
+    categoryName: "Pencilcolor",
+    creatorImg:
+      "https://yt3.ggpht.com/ytc/AKedOLT49LCpm8pmR6bR_i1_qEwh6DJbiNTQdO1CO2qP5g=s176-c-k-c0x00ffffff-no-rj",
+    description:
+      "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
+    stats: {
+      viewCount: 0,
+    },
+    createdAt: randomDate(new Date(2010, 0, 1), new Date()),
+  },
+  {
+    _id: "YPjzylMdjQ4",
+    title: "5 Colored Pencil MISTAKES Most BEGINNERS Make",
+    creator: "Kirsty Partridge Art",
+    categoryName: "Pencilcolor, Beginner",
+    creatorImg:
+      "https://yt3.ggpht.com/ytc/AKedOLT49LCpm8pmR6bR_i1_qEwh6DJbiNTQdO1CO2qP5g=s176-c-k-c0x00ffffff-no-rj",
+    description:
+      "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
+    stats: {
+      viewCount: 0,
+    },
+    createdAt: randomDate(new Date(2010, 0, 1), new Date()),
+  },
+  {
+    _id: "KsnR-j-s1Fc",
+    title: "How to Draw White Hair in Colored Pencil",
+    creator: "Kirsty Partridge Art",
+    categoryName: "Pencilcolor",
+    creatorImg:
+      "https://yt3.ggpht.com/ytc/AKedOLT49LCpm8pmR6bR_i1_qEwh6DJbiNTQdO1CO2qP5g=s176-c-k-c0x00ffffff-no-rj",
+    description:
+      "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
+    stats: {
+      viewCount: 0,
+    },
+    createdAt: randomDate(new Date(2010, 0, 1), new Date()),
+  },
+  {
+    _id: "BAi100vt76g",
+    title: "Charcoal Portrait Drawing Tutorial",
+    creator: "Mad Charcoal",
+    categoryName: "Charcoal",
+    creatorImg:
+      "https://yt3.ggpht.com/ytc/AKedOLQzdTjUHDLnUGpxIddCdEFJW50khQ_ntwdjeBBnSA=s176-c-k-c0x00ffffff-no-rj",
+    description:
+      "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
+    stats: {
+      viewCount: 0,
+    },
+    createdAt: randomDate(new Date(2010, 0, 1), new Date()),
+  },
+  {
+    _id: "URwWcu_hd68",
+    title: "HOW TO DRAW WITH WHITE ON BLACK PAPER",
+    creator: "Mad Charcoal",
+    categoryName: "Charcoal",
+    creatorImg:
+      "https://yt3.ggpht.com/ytc/AKedOLQzdTjUHDLnUGpxIddCdEFJW50khQ_ntwdjeBBnSA=s176-c-k-c0x00ffffff-no-rj",
+    description:
+      "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
+    stats: {
+      viewCount: 0,
+    },
+    createdAt: randomDate(new Date(2010, 0, 1), new Date()),
   },
 ];
