@@ -58,8 +58,8 @@
     font-weight: 600;
     color: $default;
     width: 100%;
+    @include overflow-text;
     @include respond(tab-port) {
-      @include overflow-text;
       font-size: 1.8rem;
     }
   }
