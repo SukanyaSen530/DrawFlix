@@ -101,7 +101,7 @@ const Signup = () => {
         <div className="t-margin-md center-aligned signup-route">
           <span> Already have an account? </span>
           <Link to="/signin" className="btn-link">
-            Sign In
+            Sign Up
           </Link>
         </div>
       </div>

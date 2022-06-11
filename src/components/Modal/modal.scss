@@ -1,51 +1,56 @@
 @import "../../sass/global";
 
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(#303030, 0.6);
-  backdrop-filter: blur(1px);
-  z-index: 100;
-  cursor: pointer;
-}
-
-.modal-content {
-  position: fixed;
-  width: 30%;
-  max-width: 40rem;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 3rem;
-  background: $color-white;
-  z-index: 100;
-  border-radius: var(--border-radius-md);
-  cursor: auto;
-  overflow: hidden;
-
-  @include respond(tab-port) {
-    width: 80%;
-  }
-
-  @include respond(phone) {
-    width: 90%;
-  }
-
-  &__close-btn {
-    position: absolute;
-    right: 5px;
-    top: 5px;
-    height: 3rem;
-    width: 3rem;
-    font-weight: 600;
+.modal {
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(#303030, 0.6);
+    backdrop-filter: blur(1px);
+    z-index: 100;
     cursor: pointer;
-    color: $color-black;
+  }
 
-    &:hover {
-      color: $defaultDark;
+  &__content {
+    position: fixed;
+    width: 30%;
+    max-width: 40rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 3rem;
+    background: $color-white;
+    z-index: 100;
+    border-radius: var(--border-radius-md);
+    cursor: auto;
+    overflow: hidden;
+    background: var(--bg-color);
+    color: var(--text-color);
+    border: 1px solid rgb(79, 79, 79);
+
+    @include respond(tab-port) {
+      width: 80%;
+    }
+
+    @include respond(phone) {
+      width: 90%;
+    }
+
+    &__close-btn {
+      position: absolute;
+      right: 5px;
+      top: 5px;
+      height: 3rem;
+      width: 3rem;
+      font-weight: 600;
+      cursor: pointer;
+      color: $color-white;
+
+      &:hover {
+        color: $defaultDark;
+      }
     }
   }
 }
