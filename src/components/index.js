@@ -7,7 +7,6 @@ import Loader from "./Loader/Loader";
 import SearchFilter from "./Filter/SearchFilter";
 import PlayListModal from "./PlaylistModal/PlayListModal";
 import Tab from "./Tab/Tab";
-import NotesModal from "./NotesModal/NotesModal";
 
 export {
   Navbar,
@@ -19,6 +18,5 @@ export {
   Loader,
   SearchFilter,
   PlayListModal,
-  NotesModal,
   Tab,
 };
