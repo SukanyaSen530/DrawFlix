@@ -14,9 +14,18 @@ const PlaylistInput = () => {
   } = useGlobalContext();
 
   const handleSubmit = (e) => {
+    const regex = /^[^-\s][a-zA-Z0-9_\s-]+$/;
     e.preventDefault();
-    createPlaylist({ title }, dataDispatch, openAlert);
-    setTitle("");
+
+    if (regex.test(title) || title.length !== 0) {
+      createPlaylist({ title }, dataDispatch, openAlert);
+      setTitle("");
+    } else
+      openAlert({
+        message:
+          "Title can not contain empty spaces/trailing spaces or special characters!",
+        type: "error",
+      });
   };
 
   return (

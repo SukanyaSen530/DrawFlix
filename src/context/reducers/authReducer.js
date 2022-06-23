@@ -11,7 +11,7 @@ const authReducer = (state, action) => {
 
     case authActions.LOAD_USER:
       if (payload.token !== "" || !payload.token) {
-        window.localStorage.setItem(tokenName, payload.token);
+        window.sessionStorage.setItem(tokenName, payload.token);
       }
       if (payload.token !== "" || !payload.token) {
         window.sessionStorage.setItem(
@@ -33,8 +33,7 @@ const authReducer = (state, action) => {
       };
 
     case authActions.LOGOUT: {
-      window.localStorage.removeItem(tokenName);
-      window.sessionStorage.removeItem("userDetails");
+      window.sessionStorage.clear()
       return {
         ...state,
         user: { token: null, details: null },
