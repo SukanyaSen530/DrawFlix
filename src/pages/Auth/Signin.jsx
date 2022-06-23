@@ -79,15 +79,16 @@ const Signin = () => {
           </button>
         </form>
 
-        <div className="t-margin-md center-aligned signup-route">
+        <button className="test-cred" onClick={handleAuthwithTestCred}>
+          Use Test Credentials
+        </button>
+
+        <div className="t-margin-lg center-aligned signup-route">
           <span> New to Drawflix? </span>
           <Link to="/signup" className="btn-link">
             Create an account
           </Link>
         </div>
-        <button className="test-cred" onClick={handleAuthwithTestCred}>
-          Use Test Credentials
-        </button>
       </div>
     </section>
   );

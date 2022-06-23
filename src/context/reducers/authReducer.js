@@ -13,6 +13,12 @@ const authReducer = (state, action) => {
       if (payload.token !== "" || !payload.token) {
         window.localStorage.setItem(tokenName, payload.token);
       }
+      if (payload.token !== "" || !payload.token) {
+        window.sessionStorage.setItem(
+          "userDetails",
+          JSON.stringify(payload.user)
+        );
+      }
       return {
         ...state,
         loading: false,
@@ -28,7 +34,7 @@ const authReducer = (state, action) => {
 
     case authActions.LOGOUT: {
       window.localStorage.removeItem(tokenName);
-
+      window.sessionStorage.removeItem("userDetails");
       return {
         ...state,
         user: { token: null, details: null },

@@ -10,7 +10,7 @@ const initialState = {
   loading: false,
   user: {
     token: localStorage.getItem(`${tokenName}`),
-    details: null,
+    details: JSON.parse(sessionStorage.getItem("userDetails")),
   },
 };
 

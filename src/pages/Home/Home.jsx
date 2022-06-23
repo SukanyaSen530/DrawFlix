@@ -1,8 +1,15 @@
 import { Link } from "react-router-dom";
+import { useAuthContext } from "../../context";
 
 import "./home.scss";
 
 export default function Home() {
+  const {
+    authState: {
+      user: { token },
+    },
+  } = useAuthContext();
+
   return (
     <section className="home-section flex flex-center">
       <div>
@@ -19,9 +26,11 @@ export default function Home() {
           >
             View Videos
           </Link>
-          <Link to="/signup" className="btn btn-contained btn-md defaultDark">
-            Create Account
-          </Link>
+          {!token && (
+            <Link to="/signup" className="btn btn-contained btn-md defaultDark">
+              Create Account
+            </Link>
+          )}
         </div>
       </div>
     </section>
