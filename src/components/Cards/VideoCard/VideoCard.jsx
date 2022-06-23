@@ -7,6 +7,7 @@ import { AiOutlineLike, AiFillLike } from "react-icons/ai";
 import { MdOutlineAccessTime, MdOutlineAccessTimeFilled } from "react-icons/md";
 import { CgPlayListAdd } from "react-icons/cg";
 import { BsPlayCircle } from "react-icons/bs";
+import { IoMdShareAlt } from "react-icons/io";
 
 // Image
 import { videoImage } from "../../../utils/imageGenerator";
@@ -88,6 +89,14 @@ const VideoCard = ({ video }) => {
     } else openAlert({ message: "You need to login first!", type: "warning" });
   };
 
+  const handleShare = () => {
+    navigator.clipboard.writeText(window.location.href + `/${_id}`);
+    openAlert({
+      message: "Successfully copied text to clipboard!",
+      type: "success",
+    });
+  };
+
   return (
     <article className="video-card">
       <Link to={`/explore/${_id}`}>
@@ -124,6 +133,9 @@ const VideoCard = ({ video }) => {
             </li>
             <li onClick={handleOpenPlaylist}>
               <CgPlayListAdd />
+            </li>
+            <li onClick={handleShare}>
+              <IoMdShareAlt />
             </li>
           </ul>
         </div>
