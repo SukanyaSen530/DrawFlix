@@ -1,4 +1,4 @@
-export const validateInputs = (values) => {
+export const validateInputsSignUp = (values) => {
   const errors = {};
 
   const pwdRegex =
@@ -24,6 +24,24 @@ export const validateInputs = (values) => {
 
   if (!values.confirmPassword || values.confirmPassword !== values.password) {
     errors.confirmPassword = "Passwords do not match!";
+  }
+
+  return errors;
+};
+
+export const validateInputsSignIn = (values) => {
+  const errors = {};
+
+  const emailRegex = /^\S+@\S+\.\S+$/;
+
+  if (!values.email) {
+    errors.email = "Email is required!";
+  } else if (!emailRegex.test(values.email)) {
+    errors.email = "Enter a valid email!";
+  }
+
+  if (!values.password) {
+    errors.password = "Password is required!";
   }
 
   return errors;

@@ -4,10 +4,9 @@ import { Link } from "react-router-dom";
 import "./auth.scss";
 
 import sketchLogo from "../../assets/logo1.png";
+
 import { InputField } from "../../components";
-
-import { initialFormValues, validateInputs } from "./helper";
-
+import { initialFormValues, validateInputsSignUp } from "./helper";
 import { registerUser } from "../../services";
 import { useAuthContext, useGlobalContext } from "../../context";
 import useScrollToTop from "../../hooks/useScrollToTop";
@@ -22,26 +21,31 @@ const Signup = () => {
 
   const [userData, setUserData] = useState({ ...initialFormValues });
   const [errors, setErrors] = useState({});
+  const [signUpLoading, setSignUpLoading] = useState(false);
 
   const handleChange = ({ target: { name, value } }) =>
     setUserData((data) => ({ ...data, [name]: value }));
 
   const handleAuth = (e) => {
     e.preventDefault();
-    const err = validateInputs(userData, true);
+    const err = validateInputsSignUp(userData, true);
     setErrors(err);
 
     if (Object.keys(err).length === 0) {
-      registerUser(
-        {
-          email: userData.email,
-          password: userData.password,
-          fullName: userData.fullName,
-        },
-        authDispatch,
-        openAlert
-      );
-      setUserData({ ...initialFormValues });
+      setSignUpLoading(true);
+      setTimeout(() => {
+        registerUser(
+          {
+            email: userData.email,
+            password: userData.password,
+            fullName: userData.fullName,
+          },
+          authDispatch,
+          openAlert
+        );
+        setUserData({ ...initialFormValues });
+        setSignUpLoading(true);
+      }, 1500);
     }
   };
 
@@ -97,13 +101,19 @@ const Signup = () => {
           className="btn btn-contained defaultDark block-btn btn-md t-margin-sm"
           onClick={handleAuth}
         >
-          Sign In
+          {signUpLoading ? (
+            <span>
+              <i className="fas fa-cog fa-spin"></i> Signin up...
+            </span>
+          ) : (
+            "Sign Up"
+          )}
         </button>
 
         <div className="t-margin-md center-aligned signup-route">
           <span> Already have an account? </span>
           <Link to="/signin" className="btn-link">
-            Sign Up
+            Sign In
           </Link>
         </div>
       </div>

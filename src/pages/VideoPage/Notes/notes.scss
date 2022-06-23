@@ -15,12 +15,12 @@
   }
 
   &__content {
-    height: 60vh;
+    height: 40vh;
     overflow-y: auto;
     padding-right: 2rem;
 
     @include respond(phone) {
-       height: 30vh;
+      height: 30vh;
     }
   }
 
@@ -73,5 +73,42 @@
         }
       }
     }
+  }
+}
+
+.notes-input {
+  width: 90%;
+
+  @include respond(phone) {
+    width: 95%;
+  }
+
+  &__label {
+    font-size: 1.5rem;
+    padding: 1rem;
+    color: var(--default);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: inherit;
+  }
+
+  &__textarea {
+    background-color: transparent;
+    border: 2px solid grey;
+    outline: 0;
+    transition: 0.4s all;
+    color: var(--text-color);
+    font-family: inherit;
+    height: 10rem;
+
+    &:focus {
+      border: 2px solid var(--default);
+    }
+  }
+
+  &__btn {
+    margin-left: 0;
+    margin-right: 0;
   }
 }

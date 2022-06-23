@@ -63,6 +63,8 @@ const Navbar = () => {
 
               <button onClick={handleLogout}>Logout</button>
             </>
+          ) : pathName === "signin" ? (
+            <Link to="/signup">Sign Up</Link>
           ) : (
             <Link to="/signin">Sign In</Link>
           )}

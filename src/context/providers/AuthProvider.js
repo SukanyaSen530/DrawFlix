@@ -9,8 +9,8 @@ const authContext = createContext();
 const initialState = {
   loading: false,
   user: {
-    token: localStorage.getItem(`${tokenName}`),
-    details: null,
+    token: window.sessionStorage.getItem(`${tokenName}`),
+    details: JSON.parse(window.sessionStorage.getItem("userDetails")),
   },
 };
 

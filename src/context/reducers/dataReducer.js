@@ -9,7 +9,7 @@ import {
 import { tokenName } from "../providers/AuthProvider";
 
 const isLoggedIn = () => {
-  if (window.localStorage.getItem(tokenName)) return true;
+  if (window.sessionStorage.getItem(tokenName)) return true;
   else return false;
 };
 

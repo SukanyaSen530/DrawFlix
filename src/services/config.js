@@ -1,7 +1,7 @@
 import { tokenName } from "../context/providers/AuthProvider";
 
  const getConfig = () => {
-   const encodedToken = localStorage.getItem(`${tokenName}`);
+   const encodedToken = window.sessionStorage.getItem(`${tokenName}`);
 
    if (encodedToken)
      return {

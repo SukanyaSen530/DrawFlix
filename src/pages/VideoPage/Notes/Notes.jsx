@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 import { useDataContext, useGlobalContext } from "../../../context";
-import { Loader, NotesModal } from "../../../components";
+import { Loader } from "../../../components";
 
 import {
   loadAllNotes,
@@ -40,12 +40,12 @@ const Notes = ({ video, videoRef }) => {
     loadAllNotes(video._id, dataDispatch);
   }, []);
 
-  const [openNotesModal, setOpenNotesModal] = useState(false);
+  const [openNotesInput, setOpenNotesInput] = useState(false);
   const [description, setDescription] = useState("");
   const [isEdit, setIsEdit] = useState({ type: false, noteId: null });
 
-  const handleNotesModal = () => {
-    setOpenNotesModal((val) => !val);
+  const handleNotesInput = () => {
+    setOpenNotesInput((val) => !val);
     setDescription("");
     setIsEdit({ type: false, noteId: null });
   };
@@ -63,7 +63,7 @@ const Notes = ({ video, videoRef }) => {
       const note = { description, time: videoRef.current.getCurrentTime() };
       createNote(video._id, note, dataDispatch, openAlert);
     }
-    handleNotesModal();
+    handleNotesInput();
   };
 
   const handleDelete = (noteId) => {
@@ -75,7 +75,7 @@ const Notes = ({ video, videoRef }) => {
   };
 
   const handleUpdate = (note_id, description) => {
-    handleNotesModal();
+    handleNotesInput();
     setIsEdit({ type: true, noteId: note_id });
     setDescription(description);
   };
@@ -93,7 +93,7 @@ const Notes = ({ video, videoRef }) => {
         <h4 className="h4">Notes for {video.title}</h4>
         <button
           className="btn btn-float defaultDark btn-sm"
-          onClick={handleNotesModal}
+          onClick={handleNotesInput}
         >
           <i className="fa-solid fa-plus"></i>
         </button>
@@ -133,15 +133,31 @@ const Notes = ({ video, videoRef }) => {
         )}
       </div>
 
-      {openNotesModal ? (
-        <NotesModal
-          open={openNotesModal}
-          onClose={handleNotesModal}
-          description={description}
-          setDescription={setDescription}
-          handleSubmit={handleSubmit}
-          isEdit={isEdit}
-        />
+      {openNotesInput ? (
+        <form onSubmit={handleSubmit} className="notes-input">
+          <label htmlFor="description" className="notes-input__label">
+            <span>Note Description</span>
+            <span>{description.length} / 300</span>
+          </label>
+          <textarea
+            className="notes-input__textarea scrollbar"
+            name="decsription"
+            placeholder="Note Description"
+            required
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            minLength={10}
+            maxLength={300}
+            rows={5}
+          />
+
+          <button
+            className="btn btn-contained btn-sm block-btn defaultDark t-margin-sm notes-input__btn"
+            type="submit"
+          >
+            {isEdit.type ? "Update" : "Create"}
+          </button>
+        </form>
       ) : null}
     </section>
   );

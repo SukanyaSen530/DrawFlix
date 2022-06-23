@@ -15,6 +15,7 @@ import { format } from "../../utils/dateFormat";
 import { AiOutlineLike, AiFillLike } from "react-icons/ai";
 import { MdOutlineAccessTime, MdOutlineAccessTimeFilled } from "react-icons/md";
 import { CgPlayListAdd } from "react-icons/cg";
+import { IoMdShareAlt } from "react-icons/io";
 
 import {
   addToLiked,
@@ -100,6 +101,14 @@ const Video = () => {
     } else openAlert({ message: "You need to login first!", type: "warning" });
   };
 
+  const handleShare = () => {
+    navigator.clipboard.writeText(window.location.href);
+    openAlert({
+      message: "Successfully copied text to clipboard!",
+      type: "success",
+    });
+  };
+
   useEffect(() => {
     loadSingleVideo(videoId, dataDispatch);
   }, [dataDispatch]);
@@ -167,6 +176,9 @@ const Video = () => {
                 </li>
                 <li onClick={handleOpenPlaylist}>
                   <CgPlayListAdd />
+                </li>
+                <li onClick={handleShare}>
+                  <IoMdShareAlt />
                 </li>
               </ul>
             </div>
