@@ -14,7 +14,7 @@ const Alert = () => {
 
   useEffect(() => {
     if (show) {
-      setTimeout(() => closeAlert(), 1000);
+      setTimeout(() => closeAlert(), 2000);
     }
   }, [show]);
 

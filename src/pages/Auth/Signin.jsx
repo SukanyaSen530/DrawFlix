@@ -6,7 +6,11 @@ import "./auth.scss";
 import sketchLogo from "../../assets/logo1.png";
 import { InputField } from "../../components";
 
-import { testCredentials, initialFormValues } from "./helper";
+import {
+  testCredentials,
+  initialFormValues,
+  validateInputsSignIn,
+} from "./helper";
 import { loginUser } from "../../services";
 import { useAuthContext, useGlobalContext } from "../../context";
 import useScrollToTop from "../../hooks/useScrollToTop";
@@ -20,6 +24,8 @@ const Signin = () => {
   useScrollToTop();
 
   const [userData, setUserData] = useState({ ...initialFormValues });
+  const [errors, setErrors] = useState({});
+  const [signInLoading, setSignInLoading] = useState(false);
 
   const handleChange = ({ target: { name, value } }) =>
     setUserData((data) => ({ ...data, [name]: value }));
@@ -32,13 +38,21 @@ const Signin = () => {
 
   const handleAuth = (e) => {
     e.preventDefault();
+    const err = validateInputsSignIn(userData);
+    setErrors(err);
 
-    loginUser(
-      { email: userData.email, password: userData.password },
-      authDispatch,
-      openAlert
-    );
-    setUserData({ ...initialFormValues });
+    if (Object.keys(err).length === 0) {
+      setSignInLoading(true);
+      setTimeout(() => {
+        loginUser(
+          { email: userData.email, password: userData.password },
+          authDispatch,
+          openAlert
+        );
+        setSignInLoading(false);
+        setUserData({ ...initialFormValues });
+      }, 1500);
+    }
   };
 
   return (
@@ -58,24 +72,30 @@ const Signin = () => {
             label="Email"
             name="email"
             autoFocus
-            required
             value={userData.email}
             onChange={handleChange}
+            errorMessage={errors.email}
           />
           <InputField
             type="password"
             label="Password"
             name="password"
-            required
             value={userData.password}
             onChange={handleChange}
+            errorMessage={errors.password}
           />
 
           <button
             className="btn btn-contained defaultDark block-btn btn-md t-margin-sm"
             type="submit"
           >
-            Sign In
+            {signInLoading ? (
+              <span>
+                <i className="fas fa-cog fa-spin"></i> Signin in...
+              </span>
+            ) : (
+              "Sign In"
+            )}
           </button>
         </form>
 
