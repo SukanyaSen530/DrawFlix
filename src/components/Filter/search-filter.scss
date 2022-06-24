@@ -86,3 +86,9 @@
       rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
   }
 }
+
+.tabs{
+  @include respond(phone){
+    text-align: center;
+  }
+}

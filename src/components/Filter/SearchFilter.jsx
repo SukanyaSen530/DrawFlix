@@ -61,7 +61,7 @@ const SearchFilter = ({ categories }) => {
           />
         </div>
       </div>
-      <div>
+      <div className="tabs">
         <Tab
           name="all"
           handleClick={handleFilterByCategory}

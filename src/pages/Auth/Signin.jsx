@@ -71,6 +71,7 @@ const Signin = () => {
             type="email"
             label="Email"
             name="email"
+            id="email"
             autoFocus
             value={userData.email}
             onChange={handleChange}
@@ -80,6 +81,7 @@ const Signin = () => {
             type="password"
             label="Password"
             name="password"
+            id="password"
             value={userData.password}
             onChange={handleChange}
             errorMessage={errors.password}
