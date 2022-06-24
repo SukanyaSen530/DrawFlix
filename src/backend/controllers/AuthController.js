@@ -100,7 +100,3 @@ export const loginHandler = function (schema, request) {
   }
 };
 
-/* *
-   * This handler handles user login.
-   * send GET Request at /api/auth/user
-   * */
