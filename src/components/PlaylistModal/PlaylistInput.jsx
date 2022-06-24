@@ -16,8 +16,7 @@ const PlaylistInput = () => {
   const handleSubmit = (e) => {
     const regex = /^[^-\s][a-zA-Z0-9_\s-]+$/;
     e.preventDefault();
-
-    if (regex.test(title) || title.length !== 0) {
+    if (regex.test(title) && title.length !== 0) {
       createPlaylist({ title }, dataDispatch, openAlert);
       setTitle("");
     } else

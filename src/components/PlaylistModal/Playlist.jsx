@@ -31,10 +31,11 @@ const Playlist = () => {
             type="checkbox"
             className="playlist__input"
             value={item._id}
+            id={item._id}
             checked={isVideoInPlaylist(item)}
             onChange={() => handleAddRemove(item)}
           />
-          <label className="playlist__label" htmlFor={item._id}>
+          <label htmlFor={item._id} className="playlist__label">
             {item.title}
           </label>
         </div>

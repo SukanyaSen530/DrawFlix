@@ -64,6 +64,7 @@ const Signup = () => {
           type="text"
           label="Full Name"
           name="fullName"
+          id="fullName"
           autoFocus
           value={userData.fullName}
           onChange={handleChange}
@@ -74,6 +75,7 @@ const Signup = () => {
           type="email"
           label="Email"
           name="email"
+          id="email"
           value={userData.email}
           onChange={handleChange}
           errorMessage={errors.email}
@@ -83,6 +85,7 @@ const Signup = () => {
           type="password"
           label="Password"
           name="password"
+          id="password"
           value={userData.password}
           onChange={handleChange}
           errorMessage={errors.password}
@@ -92,6 +95,7 @@ const Signup = () => {
           type="password"
           label="Confirm Password"
           name="confirmPassword"
+          id="confirmPassword"
           value={userData.confirmPassword}
           onChange={handleChange}
           errorMessage={errors.confirmPassword}
