@@ -1,0 +1,22 @@
+@import "../../sass/global";
+
+.loader-backdrop {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 30;
+  left: 50%;
+  right: 50%;
+  transform: translate(-50%, -50%);
+
+  .loader-content {
+    border: 16px solid #424242; 
+    border-top: 16px solid $defaultDark;
+    border-radius: 50%;
+    width: 10rem;
+    height: 10rem;
+    animation: spin_animation 2s linear infinite;
+  }
+}

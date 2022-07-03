@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import PreventedRoutes from "./PreventedRoutes";
 import ProtectedRoutes from "./ProtectedRoutes";
 
-import { Loader } from "../components";
+import { TransparentLoader } from "../components";
 
 import EmptyState from "../pages/EmptyState/EmptyState";
 
@@ -25,7 +25,7 @@ const AllRoutes = () => {
       <Route
         path="/"
         element={
-          <Suspense fallback={<Loader />}>
+          <Suspense fallback={<TransparentLoader />}>
             <Home />
           </Suspense>
         }
@@ -33,7 +33,7 @@ const AllRoutes = () => {
       <Route
         path="/explore"
         element={
-          <Suspense fallback={<Loader />}>
+          <Suspense fallback={<TransparentLoader />}>
             <VideoListing />
           </Suspense>
         }
@@ -41,7 +41,7 @@ const AllRoutes = () => {
       <Route
         path="/explore/:id"
         element={
-          <Suspense fallback={<Loader />}>
+          <Suspense fallback={<TransparentLoader />}>
             <VideoPage />
           </Suspense>
         }
@@ -52,7 +52,7 @@ const AllRoutes = () => {
         path="/liked"
         element={
           <ProtectedRoutes>
-            <Suspense fallback={<Loader />}>
+            <Suspense fallback={<TransparentLoader />}>
               <Liked />
             </Suspense>
           </ProtectedRoutes>
@@ -62,7 +62,7 @@ const AllRoutes = () => {
         path="/watchlater"
         element={
           <ProtectedRoutes>
-            <Suspense fallback={<Loader />}>
+            <Suspense fallback={<TransparentLoader />}>
               <WatchLater />
             </Suspense>
           </ProtectedRoutes>
@@ -72,7 +72,7 @@ const AllRoutes = () => {
         path="/history"
         element={
           <ProtectedRoutes>
-            <Suspense fallback={<Loader />}>
+            <Suspense fallback={<TransparentLoader />}>
               <History />
             </Suspense>
           </ProtectedRoutes>
@@ -82,7 +82,7 @@ const AllRoutes = () => {
         path="/playlists"
         element={
           <ProtectedRoutes>
-            <Suspense fallback={<Loader />}>
+            <Suspense fallback={<TransparentLoader />}>
               <Playlists />
             </Suspense>
           </ProtectedRoutes>
@@ -92,7 +92,7 @@ const AllRoutes = () => {
         path="/profile"
         element={
           <ProtectedRoutes>
-            <Suspense fallback={<Loader />}>
+            <Suspense fallback={<TransparentLoader />}>
               <UserProfile />
             </Suspense>
           </ProtectedRoutes>
@@ -104,7 +104,7 @@ const AllRoutes = () => {
         path="/signin"
         element={
           <PreventedRoutes>
-            <Suspense fallback={<Loader />}>
+            <Suspense fallback={<TransparentLoader />}>
               <SignIn />
             </Suspense>
           </PreventedRoutes>
@@ -114,7 +114,7 @@ const AllRoutes = () => {
         path="/signup"
         element={
           <PreventedRoutes>
-            <Suspense fallback={<Loader />}>
+            <Suspense fallback={<TransparentLoader />}>
               <SignUp />
             </Suspense>
           </PreventedRoutes>
