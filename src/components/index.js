@@ -4,6 +4,7 @@ import InputField from "./InputField/InputField";
 import { HorizontalCard, VideoCard } from "./Cards";
 import Alert from "./Alert/Alert";
 import Loader from "./Loader/Loader";
+import TransparentLoader from "./Loader/TransparentLoader";
 import SearchFilter from "./Filter/SearchFilter";
 import PlayListModal from "./PlaylistModal/PlayListModal";
 import Tab from "./Tab/Tab";
@@ -16,6 +17,7 @@ export {
   HorizontalCard,
   VideoCard,
   Loader,
+  TransparentLoader,
   SearchFilter,
   PlayListModal,
   Tab,

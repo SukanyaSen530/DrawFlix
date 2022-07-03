@@ -2,8 +2,16 @@
   from {
     transform: translateY(0);
   }
-
   to {
     transform: translateY(-5rem);
+  }
+}
+
+@keyframes spin_animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }

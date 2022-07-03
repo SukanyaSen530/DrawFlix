@@ -1,35 +1,60 @@
+import { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
-
 import PreventedRoutes from "./PreventedRoutes";
 import ProtectedRoutes from "./ProtectedRoutes";
-import {
-  Home,
-  VideoListing,
-  SignIn,
-  SignUp,
-  VideoPage,
-  Liked,
-  WatchLater,
-  History,
-  EmptyState,
-  Playlists,
-  UserProfile,
-} from "../pages";
-import Mockman from "mockman-js";
+
+import { TransparentLoader } from "../components";
+
+import EmptyState from "../pages/EmptyState/EmptyState";
+
+const Home = lazy(() => import("../pages/Home/Home"));
+const SignIn = lazy(() => import("../pages/Auth/Signin"));
+const SignUp = lazy(() => import("../pages/Auth/Signup"));
+const VideoListing = lazy(() => import("../pages/VideoListing/VideoListing"));
+const VideoPage = lazy(() => import("../pages/VideoPage/VideoPage"));
+const Liked = lazy(() => import("../pages/Liked/Liked"));
+const WatchLater = lazy(() => import("../pages/WatchLater/WatchLater"));
+const History = lazy(() => import("../pages/History/History"));
+const Playlists = lazy(() => import("../pages/PlayLists/Playlists"));
+const UserProfile = lazy(() => import("../pages/User/UserProfile"));
 
 const AllRoutes = () => {
   return (
     <Routes>
       {/* Public Routes */}
-      <Route path="/" element={<Home />} />
-      <Route path="/explore" element={<VideoListing />} />
-      <Route path="/explore/:id" element={<VideoPage />} />
+      <Route
+        path="/"
+        element={
+          <Suspense fallback={<TransparentLoader />}>
+            <Home />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/explore"
+        element={
+          <Suspense fallback={<TransparentLoader />}>
+            <VideoListing />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/explore/:id"
+        element={
+          <Suspense fallback={<TransparentLoader />}>
+            <VideoPage />
+          </Suspense>
+        }
+      />
+
       {/* Protected Routes */}
       <Route
         path="/liked"
         element={
           <ProtectedRoutes>
-            <Liked />
+            <Suspense fallback={<TransparentLoader />}>
+              <Liked />
+            </Suspense>
           </ProtectedRoutes>
         }
       />
@@ -37,7 +62,9 @@ const AllRoutes = () => {
         path="/watchlater"
         element={
           <ProtectedRoutes>
-            <WatchLater />
+            <Suspense fallback={<TransparentLoader />}>
+              <WatchLater />
+            </Suspense>
           </ProtectedRoutes>
         }
       />
@@ -45,7 +72,9 @@ const AllRoutes = () => {
         path="/history"
         element={
           <ProtectedRoutes>
-            <History />
+            <Suspense fallback={<TransparentLoader />}>
+              <History />
+            </Suspense>
           </ProtectedRoutes>
         }
       />
@@ -53,7 +82,9 @@ const AllRoutes = () => {
         path="/playlists"
         element={
           <ProtectedRoutes>
-            <Playlists />
+            <Suspense fallback={<TransparentLoader />}>
+              <Playlists />
+            </Suspense>
           </ProtectedRoutes>
         }
       />
@@ -61,16 +92,21 @@ const AllRoutes = () => {
         path="/profile"
         element={
           <ProtectedRoutes>
-            <UserProfile />
+            <Suspense fallback={<TransparentLoader />}>
+              <UserProfile />
+            </Suspense>
           </ProtectedRoutes>
         }
       />
+
       {/* Prevented Routes */}
       <Route
         path="/signin"
         element={
           <PreventedRoutes>
-            <SignIn />
+            <Suspense fallback={<TransparentLoader />}>
+              <SignIn />
+            </Suspense>
           </PreventedRoutes>
         }
       />
@@ -78,19 +114,13 @@ const AllRoutes = () => {
         path="/signup"
         element={
           <PreventedRoutes>
-            <SignUp />
+            <Suspense fallback={<TransparentLoader />}>
+              <SignUp />
+            </Suspense>
           </PreventedRoutes>
         }
       />
-      <Route
-        path="/mockman"
-        element={
-          <div style={{ paddingTop: "20rem" }}>
-            <Mockman />
-          </div>
-        }
-      />
-      ;
+
       <Route
         path="*"
         element={

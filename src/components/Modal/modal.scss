@@ -9,7 +9,7 @@
     bottom: 0;
     background-color: rgba(#303030, 0.6);
     backdrop-filter: blur(1px);
-    z-index: 100;
+    z-index: 25;
     cursor: pointer;
   }
 
@@ -22,7 +22,7 @@
     transform: translate(-50%, -50%);
     padding: 3rem;
     background: $color-white;
-    z-index: 100;
+    z-index: 25;
     border-radius: var(--border-radius-md);
     cursor: auto;
     overflow: hidden;
