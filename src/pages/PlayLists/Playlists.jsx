@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import "./playlists.scss";
 
-import { EmptyState } from "../";
+import EmptyState from "../EmptyState/EmptyState";
 import { Loader, HorizontalCard } from "../../components";
 import { useDataContext, useGlobalContext } from "../../context";
 import { deletePlaylist } from "../../services";

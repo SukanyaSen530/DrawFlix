@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import ReactPlayer from "react-player/youtube";
 
 import { Loader } from "../../components";
-import { EmptyState } from "..";
+import EmptyState from "../EmptyState/EmptyState";
 
 import {
   useDataContext,
