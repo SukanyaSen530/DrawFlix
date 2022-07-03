@@ -15,14 +15,24 @@ const SearchFilter = ({ categories }) => {
     dataDispatch,
   } = useDataContext();
 
-  const handleSearch = (e) => {
-    setTimeout(() => {
-      dataDispatch({
-        type: videoConstants.SEARCH,
-        payload: e.target.value,
-      });
-    }, 1000);
+  const debounce = (cb, delay = 1000) => {
+    let timeout;
+    return (...args) => {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        cb(...args);
+      }, delay);
+    };
   };
+
+  const handleSearch = (e) => {
+    dataDispatch({
+      type: videoConstants.SEARCH,
+      payload: e.target.value,
+    });
+  };
+
+  const debounedSearch = debounce(handleSearch);
 
   const handleFilterByCategory = (name) => {
     dataDispatch({
@@ -56,7 +66,7 @@ const SearchFilter = ({ categories }) => {
             type="search"
             placeholder="Search by title"
             className="search-container__input"
-            onChange={handleSearch}
+            onChange={debounedSearch}
             defaultValue={searchQuery}
           />
         </div>

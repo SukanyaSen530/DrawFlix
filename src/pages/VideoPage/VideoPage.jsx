@@ -217,9 +217,11 @@ const Video = () => {
           </div>
         </div>
 
-        <div className="video-section__notes-section">
-          {token ? <Notes video={single_video} videoRef={videoRef} /> : null}
-        </div>
+        {token ? (
+          <div className="video-section__notes-section">
+            <Notes video={single_video} videoRef={videoRef} />
+          </div>
+        ) : null}
       </section>
 
       <RelatedVideos filteredVideos={filteredVideos} />
