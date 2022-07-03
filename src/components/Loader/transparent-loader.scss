@@ -10,9 +10,12 @@
   left: 50%;
   right: 50%;
   transform: translate(-50%, -50%);
+  background-color: rgba(#303030, 0.6);
+  backdrop-filter: blur(1px);
 
+  
   .loader-content {
-    border: 16px solid #424242; 
+    border: 16px solid #424242;
     border-top: 16px solid $defaultDark;
     border-radius: 50%;
     width: 10rem;
